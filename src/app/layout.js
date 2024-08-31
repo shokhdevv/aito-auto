@@ -1,9 +1,36 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Head from "next/head";
-import { Navbar } from "@/components";
+import { Footer, Navbar } from "@/components";
+import localFont from 'next/font/local'
 
-const inter = Inter({ subsets: ["latin"] });
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+const futura = localFont({
+  src: '../font/futuramdbtrusbyme_medium.otf' ,
+  weight: '400',
+  variable: '--font-futura'
+})
+const goodTiming = localFont({
+  src: '../font/good-timing-bd.ttf' ,
+  weight: '700',
+  variable: '--font-goodTiming'
+})
+const conquera = localFont({
+  src: [
+    {
+      path: '../font/Conquera-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../font/Conquera-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-conquera',
+})
 
 export const metadata = {
   title: "Aito Auto",
@@ -13,11 +40,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-       <Head>
-      </Head>
-      <body className={inter.className}>
+      <body className={`font-futura ${futura.variable} ${conquera.variable} ${goodTiming.variable} `}>
         <Navbar/>
         {children}
+        <Footer/>
       </body>
     </html>
   );

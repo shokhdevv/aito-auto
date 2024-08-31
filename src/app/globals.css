@@ -4,3 +4,91 @@
 
 
 
+.gradient-text {
+  background: linear-gradient(180deg, #FFFFFFCC, #707070CC, #010101CC);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: animation-gradient 1s ease-in-out infinite;
+}
+
+@keyframes animation-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-text-light {
+  background: linear-gradient(180deg, #C5C5C540 20%, #262626 160%);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: animation-gradient 1s ease-in-out infinite;
+}
+
+.gradient-text-dark {
+  background: linear-gradient(180deg, #828282 10%, #262626 120%);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: animation-gradient 1s ease-in-out infinite;
+}
+.gradient-text-black {
+  background: linear-gradient(180deg, #C5C5C540 10%, #14141440 120%);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: animation-gradient 1s ease-in-out infinite;
+}
+.newsSwiper .swiper-pagination  {
+  position: relative !important;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 30px ;
+}
+.newsSwiper .swiper-pagination .swiper-pagination-bullet{
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: white 1px solid; 
+  &::before{
+    width: 300%;
+    height: 300%;
+    border-radius: 100%;
+    content: ' ';
+    display: none;
+    border: white 1px solid; 
+    background-color: transparent;
+    position: absolute;
+    
+  }
+  &::after{
+    width: 400%;
+    display: none;
+    height: 2px;
+    background: white ;
+    content: ' ';
+  }
+}
+.newsSwiper .swiper-pagination .swiper-pagination-bullet-active{
+  &::after{
+    display: block;
+  }
+  &::before{
+    display: block;
+  }
+}

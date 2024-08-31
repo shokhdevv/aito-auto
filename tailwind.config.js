@@ -1,9 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+ 
+    // Or if using `src` directory:
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     container: {
@@ -14,8 +17,25 @@ module.exports = {
       },
     },
     extend: {
+      animation: {
+        'spin-reverse': 'spinReverse 1.5s linear infinite',
+        'spin-slow': 'spin 1.5s linear infinite',
+      },
+      keyframes: {
+        spinReverse: {
+          'from': { transform: 'rotate(0deg)' },
+          'to': { transform: 'rotate(-360deg)' },
+        }
+      },
+      fontFamily: {
+        futura: 'var(--font-futura)',
+        conquera: 'var(--font-conquera)', 
+        goodTiming: 'var(--font-goodTiming)', 
+      },
       colors: {
         'currentDark': '#151515',
+        'labelText': '#999999',
+
       },
       screens: {
         '3xl': '1680px',

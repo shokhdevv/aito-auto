@@ -52,7 +52,7 @@ const positions = [
   },
   {
     title: "AITO M5 Ultimate",
-    _id: 0,
+    _id: 1,
     list: [
       {
         title: "12-позиционная электрорегулировка передних сидений",
@@ -96,7 +96,7 @@ const positions = [
   },
   {
     title: "AITO M5 Ultimate",
-    _id: 0,
+    _id: 2,
     list: [
       {
         title: "12-позиционная электрорегулировка передних сидений",
@@ -165,7 +165,6 @@ const buttons = [
 ]
 export default function ModelCharacters({  }) {
   const [angle, setAngle] = useState(-105);
-  console.log(angle);
   useEffect(() => {
     const handleResize = () => {
       setAngle(window.innerWidth > 1024 ? -105 : -195);
@@ -205,7 +204,7 @@ export default function ModelCharacters({  }) {
         >
           {
             positions.map(card => (
-              <SwiperSlide>
+              <SwiperSlide key={card._id}>
                 <PositionCard title={card?.title} key={card?._id} list={card?.list}   />
               </SwiperSlide>
             ))

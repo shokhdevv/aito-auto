@@ -39,8 +39,8 @@ export default function Page() {
       </section>
       <section className='py-7 lg:py-10 bg-currentDark'>
         <div className="container">
-          <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10 lg:grid-rows-2'>
-            <div className='w-full aspect-square lg:row-span-2 lg:h-full relative rounded-xl overflow-hidden max-sm:order-2'>
+          <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10 lg:grid-rows-3'>
+            <div className='w-full aspect-square lg:row-span-3 lg:h-full relative rounded-xl overflow-hidden max-sm:order-2'>
               <ImgUI src={'/inner-page.png'} alt={'Image About car'} imageStyle={'object-center'}/>
             </div>
             <div className='text-white lg:col-span-2 lg:h-full flex flex-col justify-center lg:justify-between max-sm:order-1'>
@@ -50,7 +50,7 @@ export default function Page() {
               </div>
 
             </div>
-            <div className='w-full  max-sm:order-3 sm:col-span-2'>
+            <div className='w-full  max-sm:order-3 sm:col-span-2 lg:row-span-2'>
               <Swiper
                 slidesPerView={1}
                 breakpoints={{
@@ -69,7 +69,7 @@ export default function Page() {
                   clickable: true,
                 }}
                 modules={[Pagination]}
-                className="mySwiper"
+                className="exteriorSwiper"
               >
                 <SwiperSlide className='w-full '>
                   <div className='relative aspect-[4/3] overflow-hidden rounded-xl'>

@@ -56,7 +56,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="relative bg-[#F9F9F9] max-md:pt-10 overflow-x-hidden md:pb-16 ">
+      <section className="relative bg-[#F9F9F9] max-md:pt-10 overflow-x-hidden overflow-y-visible md:pb-16 ">
         <div className="container">
           <h2 className=" text-[14vw] md:text-[12vw] !leading-[1.3] font-goodTiming text-nowrap ">
             <span className=" gradient-text-light ">О БРЕНДЕ</span>
@@ -116,7 +116,7 @@ const NewsSwiper = () => {
           },
         }}
         modules={[Pagination]}
-        className="newsSwiper !pb-5"
+        className="newsSwiper custom-pagination !pb-5"
       >
         {
           news?.map(card => (

@@ -2,7 +2,36 @@
 import { NewsBanner, NewsCard } from '@/components'
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-
+const news = [
+  {
+    _id: 0,
+    text: 'Мы вынуждены отталкиваться от того, что социально-экономическое развитие способствует повышению качества прогресса профессионального сообщества. ',
+    date: "03 август, 2024",
+    image: "/news1home.jpg",
+    slug: "/news/1"
+  },
+  {
+    _id: 1,
+    text: 'Мы вынуждены отталкиваться от того, что социально-экономическое развитие способствует повышению качества прогресса профессионального сообщества. ',
+    date: "03 август, 2024",
+    image: "/news2home.jpeg",
+    slug: "/news/1"
+  },
+  {
+    _id: 2,
+    text: 'Мы вынуждены отталкиваться от того, что социально-экономическое развитие способствует повышению качества прогресса профессионального сообщества. ',
+    date: "03 август, 2024",
+    image: "/news3home.webp",
+    slug: "/news/1"
+  },
+  {
+    _id: 3,
+    text: 'Мы вынуждены отталкиваться от того, что социально-экономическое развитие способствует повышению качества прогресса профессионального сообщества. ',
+    date: "03 август, 2024",
+    image: "/news3home.webp",
+    slug: "/news/1"
+  },
+]
 export default function page() {
   return (
     <>
@@ -26,14 +55,34 @@ export default function page() {
             </div>
             <Swiper
               slidesPerView={3}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1.4,
+                },
+                768: {
+                  slidesPerView: 1.7,
+                },
+                1024: {
+                  slidesPerView: 2,
+                },
+                1280: {
+                  slidesPerView: 2.6,
+                },
+                1500: {
+                  slidesPerView: 3,
+                },
+              }}
               spaceBetween={30}
               modules={[Navigation]}
               className="mySwiper w-full"
             >
-              <SwiperSlide>
-                <NewsCard />
-              </SwiperSlide>
-              
+              {
+          news?.map(card => (
+            <SwiperSlide key={card?._id}>
+              <NewsCard image={card?.image} slug={card?.slug} text={card?.text} date={card?.date}/>
+            </SwiperSlide>
+          ))
+        }
             </Swiper>
           </div>
         </div>

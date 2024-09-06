@@ -2,6 +2,11 @@
 import {  CarIndex, ImgUI, IndexBanner, NewsCard, TestDriveSection } from "@/components";
 import {Swiper, SwiperSlide} from "swiper/react";
 import { Pagination } from 'swiper/modules';
+import gsap from "gsap";
+import {useEffect, useRef} from "react";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const banner = {
     src : 'https://www.global-seres.com/website-resources/video/WHATISSERES.mp4?v=72727988',
@@ -39,6 +44,58 @@ const news = [
 ]
 
 export default function Home() {
+  const component = useRef();
+  const slider = useRef();
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      let images = gsap.utils.toArray(".comparisonImage");
+    let panelsTitle = gsap.utils.toArray(".comparisonSection h2");
+    let panels = gsap.utils.toArray(".comparisonSection");
+
+      images.forEach((image , index) => {
+        gsap.fromTo(
+            image,
+            { opacity: 0, scale: 0.8 , yPercent:-10 , xPercent:100 },
+            {
+              yPercent:0,
+              xPercent:0,
+              opacity: 1,
+              scale: 1,
+              scrollTrigger: {
+                trigger: panels[index],
+                start: '-50% top',
+                end:'center center',
+                // pin:true,
+                scrub: 2,
+                markers: true,
+              },
+            }
+        );
+      });
+      panelsTitle.forEach((title , index) => {
+        gsap.fromTo(
+            title,
+            { opacity: 0, scale: 0.6 , yPercent:80 },
+            {
+              yPercent:0,
+              opacity: 1,
+              scale: 1,
+              duration:1,
+              scrollTrigger: {
+                trigger: panels[index],
+                start: '-50% top',
+                end:'center center',
+                // end:'center bottom',
+                scrub: true,
+              },
+            }
+        );
+    });
+  });
+    return () => ctx.revert();
+  }, []);
+
+
   return (
     <>
       <section className=" ">
@@ -47,11 +104,11 @@ export default function Home() {
       <section className="bg-currentDark pt-10 pb-7 lg:pt-20 lg:pb-14 relative">
         <div className="container flex flex-col items-center">
           <div className="w-full lg:px-[5%] scroll-thin">
-            <h2 className=" font-futura text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-[#FFFFFF9C]">Модели</h2>
-            <div className="">
-              <CarIndex name={'AITO M5'} image={'/aitoM5.png'} slug={'/models/m5'}/>
-              <CarIndex name={'AITO M7'} image={'/aitoM7.png'} slug={'/models/m7'}/>
-              <CarIndex name={'AITO M9'} image={'/aitoM9.png'} slug={'/models/m9'}/>
+            {/*<h2 className=" font-futura text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-[#FFFFFF9C]">Модели</h2>*/}
+            <div className=" overflow-x-hidden relative"  ref={component}>
+              <CarIndex name={'AITO M5'} image={'/aitoM5.png'} slug={'/models/m5'} useRef={slider}/>
+              <CarIndex name={'AITO M7'} image={'/aitoM7.png'} slug={'/models/m7'} useRef={slider}/>
+              <CarIndex name={'AITO M9'} image={'/aitoM9.png'} slug={'/models/m9'} useRef={slider}/>
             </div>
           </div>
         </div>

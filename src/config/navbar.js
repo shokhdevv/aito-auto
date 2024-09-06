@@ -2,7 +2,7 @@ export const NavList = [
   {
     name: 'Модели',
     _id: 0,
-    slug: '/models'
+    slug: '/#models'
   },
   {
     name: 'О бренде',

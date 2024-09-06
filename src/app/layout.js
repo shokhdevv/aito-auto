@@ -7,8 +7,18 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 const futura = localFont({
-  src: '../font/futuramdbtrusbyme_medium.otf' ,
-  weight: '400',
+  src: [
+    {
+      path: '../font/FuturaBoldBT.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../font/FuturaMediumBT.ttf' ,
+      weight: '400',
+      style: 'normal',
+    },
+  ],
   variable: '--font-futura'
 })
 const goodTiming = localFont({

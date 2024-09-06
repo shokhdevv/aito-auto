@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 
-
+*{
+  scroll-behavior: smooth;
+}
 .gradient-text {
   background: linear-gradient(180deg, #FFFFFFCC, #707070CC, #010101CC);
   background-size: 400%;
@@ -91,4 +93,7 @@
   &::before{
     display: block;
   }
+}
+.clip-path-triagle {
+  clip-path: polygon(51% 100%, 0 0, 100% 0);
 }

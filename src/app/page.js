@@ -44,7 +44,7 @@ export default function Home() {
       <section className=" ">
         <IndexBanner src={banner.src}/>
       </section>
-      <section className="bg-currentDark pt-10 pb-7 lg:pt-20 lg:pb-14 relative">
+      <section id="models" className="bg-currentDark pt-10 pb-7 lg:pt-20 lg:pb-14 relative">
         <div className="container flex flex-col items-center">
           <div className="w-full lg:px-[5%] scroll-thin">
             <h2 className=" font-futura text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-[#FFFFFF9C]">Модели</h2>

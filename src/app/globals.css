@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 
-
+*{
+  scroll-behavior: smooth;
+}
 .gradient-text {
   background: linear-gradient(180deg, #FFFFFFCC, #707070CC, #010101CC);
   background-size: 400%;
@@ -50,14 +52,14 @@
   background-clip: text;
   animation: animation-gradient 1s ease-in-out infinite;
 }
-.newsSwiper .swiper-pagination  {
+.custom-pagination .swiper-pagination  {
   position: relative !important;
   display: flex;
   justify-content: center;
   gap: 20px;
   padding-top: 30px ;
 }
-.newsSwiper .swiper-pagination .swiper-pagination-bullet{
+.custom-pagination .swiper-pagination .swiper-pagination-bullet{
   background-color: transparent;
   display: flex;
   flex-direction: column;
@@ -84,11 +86,14 @@
     content: ' ';
   }
 }
-.newsSwiper .swiper-pagination .swiper-pagination-bullet-active{
+.custom-pagination .swiper-pagination .swiper-pagination-bullet-active{
   &::after{
     display: block;
   }
   &::before{
     display: block;
   }
+}
+.clip-path-triagle {
+  clip-path: polygon(51% 100%, 0 0, 100% 0);
 }

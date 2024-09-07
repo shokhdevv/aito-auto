@@ -165,7 +165,7 @@ export default function Home() {
       <section className=" ">
         <IndexBanner src={banner.src}/>
       </section>
-      <section className="bg-currentDark pt-10 pb-7 lg:pt-20 lg:pb-14 relative">
+      <section id="models" className="bg-currentDark pt-10 pb-7 lg:pt-20 lg:pb-14 relative">
         <div className="container flex flex-col items-center">
           <div className="w-full lg:px-[5%] scroll-thin">
             {/*<h2 className=" font-futura text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-[#FFFFFF9C]">Модели</h2>*/}
@@ -177,7 +177,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="relative bg-[#F9F9F9] max-md:pt-10 overflow-x-hidden md:pb-16 " ref={about}>
+      <section ref={about} className="relative bg-[#F9F9F9] max-md:pt-10 overflow-x-hidden overflow-y-visible md:pb-16 ">
         <div className="container">
           <h2 className=" text-[14vw] md:text-[12vw] !leading-[1.3] font-goodTiming text-nowrap ">
             <span className=" gradient-text-light ">О БРЕНДЕ</span>
@@ -232,13 +232,12 @@ const NewsSwiper = () => {
           1280: {
             slidesPerView: 2.6,
           },
-
           1500: {
             slidesPerView: 3,
           },
         }}
         modules={[Pagination]}
-        className="newsSwiper !pb-5"
+        className="newsSwiper custom-pagination !pb-5"
       >
         {
           news?.map(card => (

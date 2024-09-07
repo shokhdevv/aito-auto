@@ -232,6 +232,7 @@ const NewsSwiper = () => {
           1280: {
             slidesPerView: 2.6,
           },
+
           1500: {
             slidesPerView: 3,
           },

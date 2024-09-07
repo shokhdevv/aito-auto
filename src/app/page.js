@@ -1,5 +1,5 @@
 "use client"
-import {  CarIndex, ImgUI, IndexBanner, NewsCard, TestDriveSection } from "@/components";
+import {  BgPage, CarIndex, ImgUI, IndexBanner, NewsCard, TestDriveSection } from "@/components";
 import {Swiper, SwiperSlide} from "swiper/react";
 import { Pagination } from 'swiper/modules';
 import gsap from "gsap";
@@ -161,12 +161,12 @@ export default function Home() {
 
 
   return (
-    <>
-      <section className=" ">
+    <main className=" overflow-x-hidden">
+      <section className="">
         <IndexBanner src={banner.src}/>
       </section>
       <section id="models" className="bg-currentDark pt-10 pb-7 lg:pt-20 lg:pb-14 relative">
-        <div className="container flex flex-col items-center">
+        <div className="container flex flex-col items-center relative z-10">
           <div className="w-full lg:px-[5%] scroll-thin">
             {/*<h2 className=" font-futura text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-[#FFFFFF9C]">Модели</h2>*/}
             <div className=" overflow-x-hidden relative"  ref={component}>
@@ -176,6 +176,10 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <BgPage positionStyle={'w-[250px] lg:w-[500px] -top-[5%] -left-[40%] md:-top-[4%] md:-left-[17%]'}/>
+        <BgPage positionStyle={'w-[250px] lg:w-[500px] top-[10%] -left-[25%] md:top-[8%] md:-left-[10%]'}/>
+        <BgPage positionStyle={'w-[250px] lg:w-[500px] bottom-[10%] -right-[40%] md:bottom-[8%] md:-right-[17%]'}/>
+        <BgPage positionStyle={'w-[250px] lg:w-[500px]  -bottom-[5%] -right-[25%] md:-bottom-[4%]  md:-right-[10%]'}/>
       </section>
       <section ref={about} className="relative bg-[#F9F9F9] max-md:pt-10 overflow-x-hidden overflow-y-visible md:pb-16 ">
         <div className="container">
@@ -190,22 +194,24 @@ export default function Home() {
             <p>В 2021 году в сотрудничестве с Huawei, одной из крупнейших мировых компаний в сфере телекоммуникаций, было запущено производство премиальных гибридных и электромобилей под брендом AITO. Бренд AITO был выбран для продвижения на внешних для КНР рынках.</p>
           </div>
         </div>
-          <div className="w-full relative md:absolute bottom-0 right-0 aspect-[2/1] lg:w-[1100px] md:-right-1/2 lg:-right-[400px] 2xl:-right-[230px] aboutImage ">
-            <ImgUI  src={'/abouthome.png'} alt={'About Home'} />
+          <div className="w-full relative md:absolute bottom-0 right-0 aspect-[2/1] lg:w-[1000px] xl:w-[1100px] md:-right-1/2 lg:-right-[400px] 2xl:-right-[230px] aboutImage ">
+            <ImgUI src={'/abouthome.png'} alt={'About Home'} />
           </div>
       </section>
-      <section className=" bg-gradient-to-b from-[#2A2A2A] to-[#151515] py-14">
-        <div className="container">
+      <section className=" bg-gradient-to-b from-[#2A2A2A] to-[#151515] py-14 relative">
+        <div className="container relative z-10">
           <h2 className="text-[14vw] md:text-[12vw] !leading-[1.3] mb-5 font-goodTiming font-bold text-nowrap">
             <span className="gradient-text-black ">НОВОСТИ</span>
           </h2>
-          <NewsSwiper />
+          <NewsSwiper/>
         </div>
+        <BgPage positionStyle={'w-[250px] lg:w-[500px] xl:w-[600px] bottom-0 -left-[10%]'}/>
+        <BgPage positionStyle={'w-[250px] lg:w-[500px] xl:w-[600px] top-[20%] -right-[5%]'}/>
       </section>
       <section className=" bg-currentDark pb-10 lg:py-16 relative overflow-hidden">
         <TestDriveSection/>
       </section>
-    </>
+    </main>
   );
 }
 

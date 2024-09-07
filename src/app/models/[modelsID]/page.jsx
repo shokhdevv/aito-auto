@@ -1,12 +1,12 @@
 "use client"
-import { ButtonUI, ImgUI, ModelCharacters, SectionTitle } from '@/components'
+import { BgPage, ButtonUI, ImgUI, ModelCharacters, SectionTitle } from '@/components'
 import React from 'react'
 import { Pagination } from 'swiper/modules'
 import { SwiperSlide, Swiper } from 'swiper/react'
 
 export default function Page() {
   return (
-    <div>
+    <main className=' overflow-x-hidden'>
       <section className='h-screen relative flex flex-col items-center justify-end'>
         <div className=' absolute top-0 left-0 w-full h-full z-[4]'>
           <ImgUI src={'/bannermodelpage.jpg'} alt={'Header Image'}/>
@@ -34,11 +34,14 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <section className='pt-28 pb-10  bg-currentDark'>
+      <section className='pt-28 pb-10  bg-currentDark relative '>
         <ModelCharacters />
+        <BgPage positionStyle={'max-lg:hidden lg:w-[500px] xl:w-[600px] bottom-0 lg:-right-[250px] xl:-right-[300px] 2xl:-bottom-2 2xl:-right-[340px] 2xl:w-[680px] 3xl:-right-[360px] 3xl:w-[720px]'}/>
+        <BgPage positionStyle={'max-lg:hidden bottom-[-18%] -left-[10%] lg:w-[350px] xl:left-[-120px]'}/>
+
       </section>
       <section className='py-7 lg:py-10 bg-currentDark'>
-        <div className="container">
+        <div className="container relative z-10">
           <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10 lg:grid-rows-3'>
             <div className='w-full aspect-square lg:row-span-3 lg:h-full relative rounded-xl overflow-hidden max-sm:order-2'>
               <ImgUI src={'/inner-page.png'} alt={'Image About car'} imageStyle={'object-center'}/>
@@ -119,7 +122,7 @@ export default function Page() {
         <div className='absolute top-0 left-0 w-full h-full z-[5]'>
           <ImgUI src={'/bg-inner.png'} alt={'Bg Image'} />
         </div>
-        <div className="container flex flex-col items-center relative z-10">
+        <div className="container flex flex-col items-center relative z-10 px-[5%]">
           <SectionTitle title={'Технические характеристики'} extraStyle={'text-center'} isLittleSize={true}/>
           <p className=' text-white text-center mt-2 lg:mt-4 max-lg:text-sm'>Узнайте больше о внутренних системах автомобиля</p>
           <div className='w-full mt-6 lg:mt-10 xl:mt-[60px]'>
@@ -146,7 +149,7 @@ export default function Page() {
             </div>
           </div>
       </section>
-    </div>
+    </main>
   )
 }
 
@@ -181,25 +184,17 @@ function SwiperSpecification () {
               <ImgUI src={'/spefication-inner-1.webp'}/>
             </div>
             <div className=' flex flex-col h-auto items-center justify-between py-4 gap-y-5 lg:py-6 px-2 lg:px-5'>
-              <h2 className=''>Высоковольтная аккумуляторная батарея</h2>
-              <div className='w-full flex flex-col items-center text-center text-[#FFFFFFCC] text-sm'>
+              <h2 className='lg:text-lg'>Высоковольтная аккумуляторная батарея</h2>
+              <div className='w-full flex flex-col items-center text-center text-[#FFFFFFCC] gap-1 text-sm'>
                 <span className='h-[0.5px] bg-[#FFFFFFCC] w-[40%]  mb-3 lg:mb-6'></span>
-                <div className='flex items-center gap-1'>
-                  <p>Суммарная максимальная мощность: </p>
-                  <p>449 л.с.</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Разгон до 100 км/ч : </p>
-                  <p> 4.8 с</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Расход топлива в смешанном цикле:  </p>
-                  <p>1.09 л/100 км</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Суммарный запас хода: </p>
-                  <p>1100 км</p>
-                </div>
+                {
+                  Array.from({ length: 6 }).map((_, index) => (
+                    <div key={index} className='max-md:flex-col flex items-center gap-1'>
+                      <p>Расход топлива в смешанном цикле:  </p>
+                      <p>1.09 л/100 км</p>
+                    </div>
+                  ))
+                }
               </div>
             </div>
           </div>
@@ -210,33 +205,17 @@ function SwiperSpecification () {
               <ImgUI src={'/spefication-inner-2.webp'}/>
             </div>
             <div className=' flex flex-col h-auto items-center justify-between py-4 gap-y-5 lg:py-6 px-2 lg:px-5'>
-              <h2 className=''>Высоковольтная аккумуляторная батарея</h2>
-              <div className='w-full flex flex-col items-center text-center text-[#FFFFFFCC] text-sm'>
+              <h2 className='lg:text-lg'>Высоковольтная аккумуляторная батарея</h2>
+              <div className='w-full flex flex-col items-center text-center text-[#FFFFFFCC] text-sm gap-1'>
                 <span className='h-[0.5px] bg-[#FFFFFFCC] w-[40%]  mb-3 lg:mb-6'></span>
-                <div className='flex items-center gap-1'>
-                  <p>Суммарная максимальная мощность: </p>
-                  <p>449 л.с.</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Суммарная максимальная мощность: </p>
-                  <p>449 л.с.</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Суммарная максимальная мощность: </p>
-                  <p>449 л.с.</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Разгон до 100 км/ч : </p>
-                  <p> 4.8 с</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Расход топлива в смешанном цикле:  </p>
-                  <p>1.09 л/100 км</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Суммарный запас хода: </p>
-                  <p>1100 км</p>
-                </div>
+                {
+                  Array.from({ length: 8 }).map((_, index) => (
+                    <div key={index} className=' max-md:flex-col flex items-center gap-1'>
+                      <p>Суммарная максимальная мощность: </p>
+                      <p>449 л.с.</p>
+                    </div>
+                  ))
+                }
               </div>
             </div>
           </div>
@@ -247,57 +226,17 @@ function SwiperSpecification () {
               <ImgUI src={'/spefication-inner-3.webp'}/>
             </div>
             <div className=' flex flex-col h-auto items-center justify-between py-4 gap-y-5 lg:py-6 px-2 lg:px-5'>
-              <h2 className=''>Высоковольтная аккумуляторная батарея</h2>
-              <div className='w-full flex flex-col items-center text-center text-[#FFFFFFCC] text-sm'>
+              <h2 className='lg:text-lg'>Высоковольтная аккумуляторная батарея</h2>
+              <div className='w-full flex flex-col items-center text-center text-[#FFFFFFCC] gap-1 text-sm'>
                 <span className='h-[0.5px] bg-[#FFFFFFCC] w-[40%]  mb-3 lg:mb-6'></span>
-                <div className='flex items-center gap-1'>
-                  <p>Суммарная максимальная мощность: </p>
-                  <p>449 л.с.</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Разгон до 100 км/ч : </p>
-                  <p> 4.8 с</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Расход топлива в смешанном цикле:  </p>
-                  <p>1.09 л/100 км</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Суммарный запас хода: </p>
-                  <p>1100 км</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Суммарная максимальная мощность: </p>
-                  <p>449 л.с.</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Разгон до 100 км/ч : </p>
-                  <p> 4.8 с</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Расход топлива в смешанном цикле:  </p>
-                  <p>1.09 л/100 км</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Суммарный запас хода: </p>
-                  <p>1100 км</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Суммарная максимальная мощность: </p>
-                  <p>449 л.с.</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Разгон до 100 км/ч : </p>
-                  <p> 4.8 с</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Расход топлива в смешанном цикле:  </p>
-                  <p>1.09 л/100 км</p>
-                </div>
-                <div className='flex items-center gap-1'>
-                  <p>Суммарный запас хода: </p>
-                  <p>1100 км</p>
-                </div>
+                {
+                  Array.from({ length: 8 }).map((_, index) => (
+                    <div key={index} className='max-md:flex-col flex items-center gap-1'>
+                      <p>Расход топлива в смешанном цикле:  </p>
+                      <p>1.09 л/100 км</p>
+                    </div>
+                  ))
+                }
               </div>
             </div>
           </div>

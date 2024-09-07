@@ -46,53 +46,117 @@ const news = [
 export default function Home() {
   const component = useRef();
   const slider = useRef();
+  const about = useRef();
   useEffect(() => {
     let ctx = gsap.context(() => {
-      let images = gsap.utils.toArray(".comparisonImage");
-    let panelsTitle = gsap.utils.toArray(".comparisonSection h2");
-    let panels = gsap.utils.toArray(".comparisonSection");
+      let carImageBanner = gsap.utils.toArray(".comparisonImage");
+      let panelsTitle = gsap.utils.toArray(".comparisonSection h2");
+      let panels = gsap.utils.toArray(".comparisonSection");
+      let aboutImage = gsap.utils.toArray(".aboutImage");
+      let mm = gsap.matchMedia();
 
-      images.forEach((image , index) => {
-        gsap.fromTo(
-            image,
-            { opacity: 0, scale: 0.8 , yPercent:-10 , xPercent:100 },
-            {
-              yPercent:0,
-              xPercent:0,
-              opacity: 1,
-              scale: 1,
-              scrollTrigger: {
-                trigger: panels[index],
-                start: '-50% top',
-                end:'center center',
-                // pin:true,
-                scrub: 2,
-                markers: true,
-              },
-            }
-        );
+      mm.add("(min-width: 600px)", () => {
+        aboutImage?.forEach((image) => {
+          gsap.fromTo(
+              image,
+              { opacity: 0, scale: 0.8, yPercent: -10, xPercent: 100 },
+              {
+                yPercent: 0,
+                xPercent: 0,
+                opacity: 1,
+                scale: 1,
+                scrollTrigger: {
+                  trigger:about.current,
+                  start: '-50% top',
+                  end: 'center center',
+                  scrub: 2,
+                  marker:true,
+                },
+              }
+          );
+        });
+        carImageBanner.forEach((image, index) => {
+          gsap.fromTo(
+              image,
+              { opacity: 0, scale: 0.8, yPercent: -10, xPercent: 100 },
+              {
+                yPercent: 0,
+                xPercent: 0,
+                opacity: 1,
+                scale: 1,
+                scrollTrigger: {
+                  trigger: panels[index],
+                  start: '-50% top',
+                  end: 'center center',
+                  scrub: 2,
+                },
+              }
+          );
+        });
+
+        panelsTitle.forEach((title, index) => {
+          gsap.fromTo(
+              title,
+              { opacity: 0, scale: 0.6, yPercent: 80 },
+              {
+                yPercent: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 1,
+                scrollTrigger: {
+                  trigger: panels[index],
+                  start: '-50% top',
+                  end: 'center center',
+                  scrub: true,
+                },
+              }
+          );
+        });
       });
-      panelsTitle.forEach((title , index) => {
-        gsap.fromTo(
-            title,
-            { opacity: 0, scale: 0.6 , yPercent:80 },
-            {
-              yPercent:0,
-              opacity: 1,
-              scale: 1,
-              duration:1,
-              scrollTrigger: {
-                trigger: panels[index],
-                start: '-50% top',
-                end:'center center',
-                // end:'center bottom',
-                scrub: true,
-              },
-            }
-        );
+
+      mm.add("(max-width: 599px)", () => {
+        carImageBanner.forEach((image, index) => {
+          gsap.fromTo(
+              image,
+              { opacity: 0, scale: 0.8,  xPercent: 50 },
+              {
+                xPercent: 0,
+                opacity: 1,
+                scale: 1,
+                scrollTrigger: {
+                  trigger: panels[index],
+                  start: '-200% top',
+                  end: 'center center',
+                  scrub: 2,
+                },
+              }
+          );
+        });
+
+        panelsTitle.forEach((title, index) => {
+          gsap.fromTo(
+              title,
+              { opacity: 0, yPercent:0 , height:0 },
+              {
+                height:'100%',
+                yPercent: 10,
+                opacity: 1,
+                duration: 0.8,
+                scrollTrigger: {
+                  trigger: panels[index],
+                  start: '-100% top',
+                  end: 'center center',
+                  scrub: true,
+                },
+              }
+          );
+        });
+      });
+      return () => {
+        ctx.revert();
+        mm.revert();
+      };
     });
-  });
-    return () => ctx.revert();
   }, []);
 
 
@@ -113,7 +177,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="relative bg-[#F9F9F9] max-md:pt-10 overflow-x-hidden md:pb-16 ">
+      <section className="relative bg-[#F9F9F9] max-md:pt-10 overflow-x-hidden md:pb-16 " ref={about}>
         <div className="container">
           <h2 className=" text-[14vw] md:text-[12vw] !leading-[1.3] font-goodTiming text-nowrap ">
             <span className=" gradient-text-light ">О БРЕНДЕ</span>
@@ -126,8 +190,8 @@ export default function Home() {
             <p>В 2021 году в сотрудничестве с Huawei, одной из крупнейших мировых компаний в сфере телекоммуникаций, было запущено производство премиальных гибридных и электромобилей под брендом AITO. Бренд AITO был выбран для продвижения на внешних для КНР рынках.</p>
           </div>
         </div>
-          <div className="w-full relative md:absolute bottom-0 right-0 aspect-[2/1] lg:w-[1100px] md:-right-1/2 lg:-right-[400px] 2xl:-right-[230px]  ">
-            <ImgUI src={'/abouthome.png'} alt={'About Home'} />
+          <div className="w-full relative md:absolute bottom-0 right-0 aspect-[2/1] lg:w-[1100px] md:-right-1/2 lg:-right-[400px] 2xl:-right-[230px] aboutImage ">
+            <ImgUI  src={'/abouthome.png'} alt={'About Home'} />
           </div>
       </section>
       <section className=" bg-gradient-to-b from-[#2A2A2A] to-[#151515] py-14">

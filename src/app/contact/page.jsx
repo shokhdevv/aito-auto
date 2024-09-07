@@ -1,4 +1,4 @@
-import { ButtonUI, SectionTitle } from '@/components'
+import { BgPage, ButtonUI, SectionTitle } from '@/components'
 import React from 'react'
 import { AiFillInstagram } from 'react-icons/ai'
 import { BsFillTelephoneFill } from 'react-icons/bs'
@@ -6,8 +6,8 @@ import { FaFacebookF, FaMapMarkerAlt, FaTelegramPlane } from 'react-icons/fa'
 
 export default function page() {
   return (
-    <div className='pt-[68px] bg-currentDark lg:pt-20'>
-      <section className='py-6 lg:pt-[50px]'>
+    <main className='pt-[68px] bg-currentDark lg:pt-20 relative overflow-x-hidden'>
+      <section className='py-6 lg:pt-[50px] relative z-10'>
         <div className="container grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10 text-white">
           <div className='space-y-6'>
             <SectionTitle title={'Контакты'}/>
@@ -55,6 +55,8 @@ export default function page() {
           </div>
         </div>
       </section>
-    </div>
+      <BgPage positionStyle={' w-[200px] -top-[50px] md:-top-[200px] xl:-top-[300px] -left-[50px] md:w-[350px] xl:w-[500px]'}/>
+      <BgPage positionStyle={' w-[200px] top-[50%]  -right-[50px] md:w-[350px] xl:w-[500px]'}/>
+    </main>
   )
 }

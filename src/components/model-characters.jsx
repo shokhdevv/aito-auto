@@ -167,7 +167,7 @@ export default function ModelCharacters({  }) {
   const [angle, setAngle] = useState(-105);
   useEffect(() => {
     const handleResize = () => {
-      setAngle(window.innerWidth > 1024 ? -105 : -195);
+      setAngle(window.innerWidth > 1023 ? -105 : -195);
     };
 
     window.addEventListener('resize', handleResize);
@@ -178,7 +178,7 @@ export default function ModelCharacters({  }) {
 
   return (
     <>
-      <div className="container">
+      <div className="container relative z-10">
         <Swiper
           slidesPerView={1}
           breakpoints={{
@@ -213,7 +213,7 @@ export default function ModelCharacters({  }) {
           </div>
         </Swiper>
       </div>
-      <div className=' relative pt-10 max-lg:overflow-hidden lg:overflow-x-hidden lg:overflow-y-visible '>
+      <div className=' relative pt-10 max-lg:overflow-hidden lg:overflow-x-hidden lg:overflow-y-visible z-10 '>
           <div className="container">
             <div className='lg:px-10'>
               <SectionTitle extraStyle={'uppercase'} title={'кристально-серый'}/>

@@ -116,15 +116,6 @@ const characters = [
     ]
   },
 ]
-const configuration = [
-  {
-    text : 'Режим гидроусилителя руля (Comfort/Sport)'
-  },
-  {
-    text : 'Режим гидроусилителя руля (Comfort/Sport)'
-  },
-
-]
 export default function Page() {
 
   const featureData = {

@@ -3,7 +3,128 @@ import { BgPage, ButtonUI, ImgUI, ModelCharacters, SectionTitle } from '@/compon
 import React from 'react'
 import { Pagination } from 'swiper/modules'
 import { SwiperSlide, Swiper } from 'swiper/react'
+const characters = [
+  {
+    title : 'Высоковольтная аккумуляторная батарея',
+    _id: 0,
+    image: '/spefication-inner-1.webp',
+    list : [
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 0
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 1
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 2
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 3
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 4
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 5
+      },
+    ]
+  },
+  {
+    title : 'Высоковольтная аккумуляторная батарея',
+    _id: 1,
+    image: '/spefication-inner-2.webp',
+    list : [
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 0
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 1
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 2
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 3
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 4
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 5
+      },
+    ]
+  },
+  {
+    title : 'Высоковольтная аккумуляторная батарея',
+    _id: 2,
+    image: '/spefication-inner-3.webp',
+    list : [
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 0
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 1
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 2
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 3
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 4
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 5
+      },
+    ]
+  },
+]
+const configuration = [
+  {
+    text : 'Режим гидроусилителя руля (Comfort/Sport)'
+  },
+  {
+    text : 'Режим гидроусилителя руля (Comfort/Sport)'
+  },
 
+]
 export default function Page() {
   return (
     <main className=' overflow-x-hidden'>
@@ -71,6 +192,9 @@ export default function Page() {
             <SectionTitle title={'Особенности комплектации'} isDarkText isLittleSize={true}/>
             <p className=' font-conquera text-lg md:text-xl lg:text-2xl font-bold'>AITO M7</p>
             <div className='space-y-2 pt-4 lg:pt-12'>
+              {
+
+              }
               <div className='flex gap-2'>
                 <span className='w-1.5 h-1.5 rounded-full bg-black mt-1.5'></span>
                 <p className=''>Режим гидроусилителя руля (Comfort/Sport)</p>
@@ -126,7 +250,34 @@ export default function Page() {
           <SectionTitle title={'Технические характеристики'} extraStyle={'text-center'} isLittleSize={true}/>
           <p className=' text-white text-center mt-2 lg:mt-4 max-lg:text-sm'>Узнайте больше о внутренних системах автомобиля</p>
           <div className='w-full mt-6 lg:mt-10 xl:mt-[60px]'>
-            <SwiperSpecification/>
+             <Swiper
+              slidesPerView={1}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1.7,
+                },
+                1024: {
+                  slidesPerView: 2.6,
+                },
+                1280: {
+                  slidesPerView: 3,
+                },
+              }}
+              spaceBetween={30}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[Pagination]}
+              className="SwiperSpecification custom-pagination"
+            >
+              {
+                characters?.map(card => (
+                  <SwiperSlide className='!h-[auto]' key={card?._id}>
+                    <SpecificationCard title={card?.title} list={card?.list} image={card?.image}/>
+                  </SwiperSlide>
+                ))
+              }
+            </Swiper>
           </div>
         </div>
       </section>
@@ -155,93 +306,26 @@ export default function Page() {
 
 
 
-function SwiperSpecification () {
+function SpecificationCard ({title , list , image}) {
   return (
-    <div>
-      <Swiper
-        slidesPerView={1}
-        breakpoints={{
-          640: {
-            slidesPerView: 1.7,
-          },
-          1024: {
-            slidesPerView: 2.6,
-          },
-          1280: {
-            slidesPerView: 3,
-          },
-        }}
-        spaceBetween={30}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Pagination]}
-        className="SwiperSpecification custom-pagination"
-      >
-        <SwiperSlide className='!h-[auto]'>
-          <div className='bg-currentDark h-full overflow-hidden rounded-xl text-white'>
-            <div className='relative w-full aspect-[3/2] overflow-hidden rounded-xl'>
-              <ImgUI src={'/spefication-inner-1.webp'}/>
-            </div>
-            <div className=' flex flex-col h-auto items-center justify-between py-4 gap-y-5 lg:py-6 px-2 lg:px-5'>
-              <h2 className='lg:text-lg'>Высоковольтная аккумуляторная батарея</h2>
-              <div className='w-full flex flex-col items-center text-center text-[#FFFFFFCC] gap-1 text-sm'>
-                <span className='h-[0.5px] bg-[#FFFFFFCC] w-[40%]  mb-3 lg:mb-6'></span>
-                {
-                  Array.from({ length: 6 }).map((_, index) => (
-                    <div key={index} className='max-md:flex-col flex items-center gap-1'>
-                      <p>Расход топлива в смешанном цикле:  </p>
-                      <p>1.09 л/100 км</p>
-                    </div>
-                  ))
-                }
+    <div className='bg-currentDark h-full overflow-hidden rounded-xl text-white'>
+      <div className='relative w-full aspect-[3/2] overflow-hidden rounded-xl'>
+        <ImgUI src={image}/>
+      </div>
+      <div className=' flex flex-col h-auto items-center justify-between py-4 gap-y-5 lg:py-6 px-2 lg:px-5'>
+        <h2 className='lg:text-lg'>{title}</h2>
+        <div className='w-full flex flex-col items-center text-center text-[#FFFFFFCC] gap-1 text-sm'>
+          <span className='h-[0.5px] bg-[#FFFFFFCC] w-[40%]  mb-3 lg:mb-6'></span>
+          {
+            list.map(item => (
+              <div key={item?._id} className='max-md:flex-col flex items-center gap-1'>
+                <p>{item?.key}</p>
+                <p>{item?.value}</p>
               </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className='!h-[auto]'>
-          <div className='bg-currentDark h-full overflow-hidden rounded-xl text-white'>
-            <div className='relative w-full aspect-[3/2] overflow-hidden rounded-xl'>
-              <ImgUI src={'/spefication-inner-2.webp'}/>
-            </div>
-            <div className=' flex flex-col h-auto items-center justify-between py-4 gap-y-5 lg:py-6 px-2 lg:px-5'>
-              <h2 className='lg:text-lg'>Высоковольтная аккумуляторная батарея</h2>
-              <div className='w-full flex flex-col items-center text-center text-[#FFFFFFCC] text-sm gap-1'>
-                <span className='h-[0.5px] bg-[#FFFFFFCC] w-[40%]  mb-3 lg:mb-6'></span>
-                {
-                  Array.from({ length: 8 }).map((_, index) => (
-                    <div key={index} className=' max-md:flex-col flex items-center gap-1'>
-                      <p>Суммарная максимальная мощность: </p>
-                      <p>449 л.с.</p>
-                    </div>
-                  ))
-                }
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className='!h-[auto]'>
-          <div className='bg-currentDark h-full overflow-hidden rounded-xl text-white'>
-            <div className='relative w-full aspect-[3/2] overflow-hidden rounded-xl'>
-              <ImgUI src={'/spefication-inner-3.webp'}/>
-            </div>
-            <div className=' flex flex-col h-auto items-center justify-between py-4 gap-y-5 lg:py-6 px-2 lg:px-5'>
-              <h2 className='lg:text-lg'>Высоковольтная аккумуляторная батарея</h2>
-              <div className='w-full flex flex-col items-center text-center text-[#FFFFFFCC] gap-1 text-sm'>
-                <span className='h-[0.5px] bg-[#FFFFFFCC] w-[40%]  mb-3 lg:mb-6'></span>
-                {
-                  Array.from({ length: 8 }).map((_, index) => (
-                    <div key={index} className='max-md:flex-col flex items-center gap-1'>
-                      <p>Расход топлива в смешанном цикле:  </p>
-                      <p>1.09 л/100 км</p>
-                    </div>
-                  ))
-                }
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-      </Swiper>
+            ))
+          }
+        </div>
+      </div>
     </div>
   )
 }

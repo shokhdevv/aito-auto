@@ -5,7 +5,7 @@ import { ButtonUI, ImgUI } from '.'
 export default function IndexBanner({src}) {
   return (
     <div className='h-screen relative'>
-      <video className="object-cover w-full h-full relative z-10" autoPlay loop muted>
+      <video className="object-cover object-bottom w-full h-full relative z-10" autoPlay loop muted>
         <source
           className="w-full"
           src={src}

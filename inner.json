@@ -1,0 +1,64 @@
+{
+  "name": "Car Name",
+  "bannerWeb": "66d6b67cc21bb89a005a51de",
+  "bannerRes": "66d6b67cc21bb89a005a51de",
+  "modelDescriptionRu": "Description in Russian",
+  "modelDescriptionUz": "Description in Uzbek",
+  "character": [
+      {
+          "keyRu": "Key in Russian",
+          "keyUz": "Key in Uzbek",
+          "valueRu": "Value in Russian",
+          "valueUz": "Value in Uzbek"
+      }
+  ],
+  "exteriorReview": {
+      "bannerImage": "66d6b67cc21bb89a005a51de",
+      "textRu": "Text in Russian",
+      "textUz": "Text in Uzbek",
+      "list": [
+          {
+              "image": "66d6b67cc21bb89a005a51de",
+              "titleRu": "Title in Russian",
+              "titleUz": "Title in Uzbek",
+              "textRu": "Text in Russian",
+              "textUz": "Text in Uzbek"
+          }
+      ]
+  },
+  "interiorReview": {
+      "bannerImage": "66d6b67cc21bb89a005a51de",
+      "titleRu": "Title in Russian",
+      "titleUz": "Title in Uzbek",
+      "textRu": "Text in Russian",
+      "textUz": "Text in Uzbek",
+      "list": [
+          "66d6b67cc21bb89a005a51de","66d6b67cc21bb89a005a51de"
+      ]
+  },
+  "equipment": {
+      "image": "66d6b67cc21bb89a005a51de",
+      "pdf": "66d6b67cc21bb89a005a51de",
+      "list": [
+          {
+              "textRu": "Text in Russian",
+              "textUz": "Text in Uzbek"
+          }
+      ]
+  },
+  "technicalCharacter": {
+      "image": "66d6b67cc21bb89a005a51de",
+      "titleRu": "Title in Russian",
+      "titleUz": "Title in Uzbek",
+      "textRu": "Text in Russian",
+      "textUz": "Text in Uzbek"
+  },
+  "safety": {
+      "titleRu": "Safety Title in Russian",
+      "titleUz": "Safety Title in Uzbek",
+      "textRu": "Safety Text in Russian",
+      "textUz": "Safety Text in Uzbek"
+  },
+  "isTestDrive": true,
+  "imageHome": "66d6b67cc21bb89a005a51de"
+}

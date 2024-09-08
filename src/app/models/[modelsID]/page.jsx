@@ -1,5 +1,5 @@
 "use client"
-import { BgPage, ButtonUI, ImgUI, ModelCharacters, SectionTitle } from '@/components'
+import {BgPage, ButtonUI, HeaderCharacteristics, ImgUI, ModelCharacters, SectionTitle} from '@/components'
 import React from 'react'
 import { Pagination } from 'swiper/modules'
 import { SwiperSlide, Swiper } from 'swiper/react'
@@ -126,6 +126,26 @@ const configuration = [
 
 ]
 export default function Page() {
+
+  const featureData = {
+    titleRu: "Автомобильные особенности",
+    titleUz: "Avtomobil xususiyatlari",
+    list: [
+      { titleRu: "Режим гидроусилителя руля (Comfort/Sport)", titleUz: "Gidravlik rulni rejimi (Comfort/Sport)" },
+      { titleRu: "Система экстренного торможения", titleUz: "Favqulodda to'xtatish tizimi" },
+      { titleRu: "Система контроля полосы и удержания полосы движения", titleUz: "Yolda harakat chizig'ini nazorat qilish va ushlab turish tizimi" },
+      { titleRu: "Предупреждение о снижении дистанции", titleUz: "Masofa kamayishi haqida ogohlantirish" },
+      { titleRu: "Автоматическое экстренное торможение AEB", titleUz: "Avtomatik favqulodda to'xtatish AEB" },
+      { titleRu: "Мониторинг слепых зон BSD", titleUz: "Ko'rinmas zonalarni monitoring qilish BSD" },
+      { titleRu: "Панорамный сдвижной люк с электрической солнцезащитной шторкой", titleUz: "Panoramik harakatlanuvchi tom qopqog'i elektr quyosh to'shag'i bilan" },
+      { titleRu: "20\" литые диски с десятью спицами (шины 255/50 R20)", titleUz: "20\" alyuminiy disklari o'n tayanch bilan (tiyish 255/50 R20)" },
+      { titleRu: "Режим гидроусилителя руля (Comfort/Sport)", titleUz: "Gidravlik rulni rejimi (Comfort/Sport)" },
+      { titleRu: "128-цветная подсветка салона", titleUz: "128 rangli salon yoritgichi" }
+    ],
+    carId: "66b9e40235eabcec57e4c81b"
+  };
+
+
   return (
     <main className=' overflow-x-hidden'>
       <section className='h-screen relative flex flex-col items-center justify-end'>
@@ -136,22 +156,10 @@ export default function Page() {
           <h2 className=' font-conquera text-lg md:text-xl lg:text-2xl xl:text-[32px] '>MODEL M7</h2>
           <p className='mt-4 text-sm lg:text-base'>Премиальный спортивный кроссовер</p>
           <div className=' rounded-xl max-w-[760px] w-full bg-[#FFFFFF08] backdrop-blur-xl overflow-hidden mx-3 gap-y-2 p-4 md:p-6 lg:p-10 flex flex-wrap justify-evenly translate-y-[35%]'>
-            <div className='flex flex-col items-center gap-1.5 px-4 lg:px-5 w-[30%] md:w-[25%]'>
-              <h3 className='font-futura text-lg text-center md:text-xl lg:text-2xl xl:text-[32px]'>1200км</h3>
-              <p className='font-futura text-xs lg:text-sm text-center'>Запас хода</p>
-            </div>
-            <div className='flex flex-col items-center gap-1.5 px-4 lg:px-5 w-[30%] md:w-[25%]'>
-              <h3 className='font-futura text-lg text-center md:text-xl lg:text-2xl xl:text-[32px]'>487л.с</h3>
-              <p className='font-futura text-xs lg:text-sm text-center'>Пиковая мощность</p>
-            </div>
-            <div className='flex flex-col items-center gap-1.5 px-4 lg:px-5 w-[30%] md:w-[25%]'>
-              <h3 className='font-futura text-lg text-center md:text-xl lg:text-2xl xl:text-[32px]'>4.6сек</h3>
-              <p className='font-futura text-xs lg:text-sm text-center'>Разгон до 100 км/ч</p>
-            </div>
-            <div className='flex flex-col items-center gap-1.5 px-4 lg:px-5 w-[30%] md:w-[25%]'>
-              <h3 className='font-futura text-lg text-center md:text-xl lg:text-2xl xl:text-[32px]'>4.6сек</h3>
-              <p className='font-futura text-xs lg:text-sm text-center'>Разгон до 100 км/ч</p>
-            </div>
+            <HeaderCharacteristics name={'1200км'} value={'Запас хода'} />
+            <HeaderCharacteristics name={'487л.с'} value={'Пиковая мощность'} />
+            <HeaderCharacteristics name={'4.6сек'} value={'Разгон до 100 км/ч'} />
+            <HeaderCharacteristics name={'4.6сек'} value={'Разгон до 100 км/ч'} />
           </div>
         </div>
       </section>

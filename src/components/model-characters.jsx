@@ -213,7 +213,7 @@ export default function ModelCharacters({  }) {
           </div>
         </Swiper>
       </div>
-      <div className=' relative pt-10 max-lg:overflow-hidden lg:overflow-x-hidden lg:overflow-y-visible z-10 '>
+      <div className=' relative pt-10 max-lg:overflow-hidden lg:overflow-x-hidden  z-10 '>
           <div className="container">
             <div className='lg:px-10'>
               <SectionTitle extraStyle={'uppercase'} title={'кристально-серый'}/>

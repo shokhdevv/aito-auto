@@ -1,9 +1,10 @@
 "use client"
+import { useTranslation } from 'react-i18next';
 import { ButtonUI, ImgUI, SectionTitle } from '.'
 import { MdArrowOutward } from "react-icons/md";
 
 export default function NewsBanner({image, date, title, href}) {
- 
+  const {t} = useTranslation()
   return (
     <div className=' h-[70vh] w-full relative flex flex-col justify-center '>
       <div className='absolute top-0 left-0 z-[4] w-full h-full '>
@@ -17,7 +18,7 @@ export default function NewsBanner({image, date, title, href}) {
             <SectionTitle title={title} extraStyle={'!leading-[1.3]'}/>
             {
               href &&
-              <ButtonUI text={'Подробнее'} href={href} icon={<MdArrowOutward className=' text-lg xl:text-xl' />} />
+              <ButtonUI text={t('btn.more')} href={href} icon={<MdArrowOutward className=' text-lg xl:text-xl' />} />
             }
           </div>
         </div>

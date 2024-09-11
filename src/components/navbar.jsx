@@ -1,11 +1,14 @@
 "use client";
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ImgUI } from '.';
 import { NavList } from '@/config/navbar';
 import { IoGlobeOutline } from "react-icons/io5";
 import { CgMenuRightAlt } from "react-icons/cg";
 import { GrFormClose } from "react-icons/gr";
+import { useTranslation } from "react-i18next";
+import { langSelect } from '@/helper';
+import gsap from 'gsap';
 
 export default function Navbar() {
   const [navScroll, setNavScroll] = useState(false);
@@ -67,10 +70,7 @@ export default function Navbar() {
             }
           </ul>
           <div className='flex items-center gap-2 !font-future'>
-            <IoGlobeOutline className='w-5 h-5 text-white' />
-            <span className='text-sm xl:text-base text-white'>
-              RU
-            </span>
+            <NavbarDropdownLang/>
           </div>
           <div>
             <CgMenuRightAlt className='text-white text-4xl lg:hidden' onClick={handleOpenNav} />
@@ -93,3 +93,80 @@ export default function Navbar() {
     </nav>
   );
 }
+
+
+const NavbarDropdownLang = () => {
+  const { t, i18n } = useTranslation();
+  const [dropdown, setDropdown] = useState(false);
+  const dropdownRef = useRef()
+  const animationRef = useRef(null)
+  const langList = [
+    {
+      title: t("lang.ru"),
+      value: "ru",
+      id: 0,
+    },
+    {
+      title: t("lang.uz"),
+      value: "uz",
+      id: 1,
+    },
+  ];
+  const openDropdown = () => {
+    setDropdown((prevState) => !prevState);
+  };
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdown(false);
+      }
+    };
+
+    if (dropdown) {
+      window.addEventListener('click', handleClick);
+      window.addEventListener('scroll', () => setDropdown(false));
+    }
+    return () => {
+      window.removeEventListener('click', handleClick);
+      window.removeEventListener('scroll', () => setDropdown(false));
+    };
+  }, [dropdown]); 
+  
+  useEffect(() => {
+    if (dropdown) {
+      gsap.to(animationRef.current, { opacity: 1, y: 0, duration: 0.5, ease: "power1.out", display: 'block' });
+    } else {
+      gsap.to(animationRef.current, { opacity: 0, y: -20, duration: 0.3, ease: "power1.in", display: 'none' });
+    }
+  }, [dropdown]);
+  
+  const handleLang = (lang) => {
+    i18n.changeLanguage(lang.value);
+    setDropdown(false);
+  };
+  return (
+    <div className={"relative "}>
+      <div className="flex gap-1 items-center"  ref={dropdownRef} onClick={() => openDropdown()}>
+         <IoGlobeOutline className='w-5 h-5 text-white' />
+         <span className='text-sm xl:text-base text-white'>
+           {langSelect(i18n.language , t('lang.ru') , t('lang.uz'))}
+         </span>
+      </div>
+      {
+        dropdown ?
+          <div ref={animationRef}  style={{ opacity: 0, display: "none" }}  className={`flex flex-col  w-14 absolute z-50 top-[40px] -left-2 font-futura  `}>
+            <ul className={"rounded-b-lg  flex flex-col overflow-hidden  bg-black  text-white  pt-2 "}  onClick={(e) => e.preventDefault()}>
+              {langList.map((lang) => (
+                <li onClick={() => handleLang(lang)} className={"cursor-pointer hover:bg-gray-50/50 text-center  py-1.5 px-2 !leading-[1]"} key={lang?.id}>
+                  {t(lang?.title)}
+                </li>
+              ))}
+            </ul>
+          </div>
+        :
+          null
+      }
+    </div>
+  );
+};

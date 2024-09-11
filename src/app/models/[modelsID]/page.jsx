@@ -1,29 +1,232 @@
 "use client"
 import {BgPage, ButtonUI, HeaderCharacteristics, ImgUI, ModelCharacters, SectionTitle} from '@/components'
-import React from 'react'
 import { Pagination } from 'swiper/modules'
 import { SwiperSlide, Swiper } from 'swiper/react'
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
+const characters = [
+  {
+    title : 'Высоковольтная аккумуляторная батарея',
+    _id: 0,
+    image: '/spefication-inner-1.webp',
+    list : [
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 0
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 1
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 2
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 3
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 4
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 5
+      },
+    ]
+  },
+  {
+    title : 'Высоковольтная аккумуляторная батарея',
+    _id: 1,
+    image: '/spefication-inner-2.webp',
+    list : [
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 0
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 1
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 2
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 3
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 4
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 5
+      },
+    ]
+  },
+  {
+    title : 'Высоковольтная аккумуляторная батарея',
+    _id: 2,
+    image: '/spefication-inner-3.webp',
+    list : [
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 0
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 1
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 2
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 3
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 4
+      },
+      {
+        key: "Расход топлива в смешанном цикле:" ,
+        value: '1.09 л/100 км',
+        _id : 5
+      },
+    ]
+  },
+]
+const featureData = {
+  titleRu: "Автомобильные особенности",
+  titleUz: "Avtomobil xususiyatlari",
+  list: [
+    { _id: 0 , titleRu: "Режим гидроусилителя руля (Comfort/Sport)", titleUz: "Gidravlik rulni rejimi (Comfort/Sport)" },
+    { _id: 1 , titleRu: "Система экстренного торможения", titleUz: "Favqulodda to'xtatish tizimi" },
+    { _id: 2 , titleRu: "Система контроля полосы и удержания полосы движения", titleUz: "Yolda harakat chizig'ini nazorat qilish va ushlab turish tizimi" },
+    { _id: 3 , titleRu: "Предупреждение о снижении дистанции", titleUz: "Masofa kamayishi haqida ogohlantirish" },
+    { _id: 4 , titleRu: "Автоматическое экстренное торможение AEB", titleUz: "Avtomatik favqulodda to'xtatish AEB" },
+    { _id: 5 , titleRu: "Мониторинг слепых зон BSD", titleUz: "Ko'rinmas zonalarni monitoring qilish BSD" },
+    { _id: 6 , titleRu: "Панорамный сдвижной люк с электрической солнцезащитной шторкой", titleUz: "Panoramik harakatlanuvchi tom qopqog'i elektr quyosh to'shag'i bilan" },
+    { _id: 7 , titleRu: "20\" литые диски с десятью спицами (шины 255/50 R20)", titleUz: "20\" alyuminiy disklari o'n tayanch bilan (tiyish 255/50 R20)" },
+    { _id: 8 , titleRu: "Режим гидроусилителя руля (Comfort/Sport)", titleUz: "Gidravlik rulni rejimi (Comfort/Sport)" },
+    { _id: 9 , titleRu: "128-цветная подсветка салона", titleUz: "128 rangli salon yoritgichi" }
+  ],
+  carId: "66b9e40235eabcec57e4c81b"
+}
+const  exteriorData  = [
+  {
+    title: "Светодиодная оптика",
+    image: '/ekstrier-1.png',
+    text: "Вытянутые светодиодные фары автомобиля создают утонченный и элегантный облик",
+    _id: 0
+  },
+  {
+    title: "Светодиодная оптика Светодиодная оптика Светодиодная оптика ",
+    image: '/ekstrier-2.png',
+    text: "Вытянутые светодиодные фары автомобиля создают утонченный и элегантный облик Вытянутые светодиодные фары автомобиля создают утонченный",
+    _id: 1
+  },
+  {
+    title: "Светодиодная оптика",
+    image: '/ekstrier-3.png',
+    text: "Вытянутые светодиодные фары автомобиля создают утонченный и элегантный облик",
+    _id: 2
+  },
+  {
+    title: "Светодиодная оптика",
+    image: '/ekstrier-1.png',
+    text: "Вытянутые светодиодные фары автомобиля создают утонченный и элегантный облик",
+    _id: 3
+  },
+]
+const interiorImages = [
+  {
+    image: '/inner-scroll-1.png',
+    _id: 0
+  },
+  {
+    image: '/inner-scroll-2.png',
+    _id: 1
+  },
+  {
+    image: '/inner-scroll-3.png',
+    _id: 2
+  },
+  {
+    image: '/inner-scroll-1.png',
+    _id: 3
+  },
+]
+const security = [
+  {
+    title: 'Система удержания автомобиля в полосе',
+    text:"Предотвращает возможные опасные ситуации на дорогах, сохраняя движение автомобиля в пределах полосы",
+    _id: 0
+  },
+  {
+    title: 'Система удержания автомобиля в полосе',
+    text:"Предотвращает возможные опасные ситуации на дорогах, сохраняя движение автомобиля в пределах полосы",
+    _id: 1
+  },
+  {
+    title: 'Система удержания автомобиля в полосе',
+    text:"Предотвращает возможные опасные ситуации на дорогах, сохраняя движение автомобиля в пределах полосы",
+    _id: 2
+  },
+  {
+    title: 'Система удержания автомобиля в полосе',
+    text:"Предотвращает возможные опасные ситуации на дорогах, сохраняя движение автомобиля в пределах полосы",
+    _id: 3
+  },
+]
 export default function Page() {
+  const containerRef = useRef(null);
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      let container = containerRef.current;
+      let imagesScroll = gsap.utils.toArray('.scroll-image');
+        gsap.to(imagesScroll, {
+          yPercent: -100 * (imagesScroll.length - 1),
+          ease: 'none',
+          scrollTrigger: {
+            trigger: container, 
+            pin: true,
+            start:'top top',
+            end: () => "+=" + container.offsetHeight,
+            scrub: 2,
+          },
+        });
+    });
 
-  const featureData = {
-    titleRu: "Автомобильные особенности",
-    titleUz: "Avtomobil xususiyatlari",
-    list: [
-      { titleRu: "Режим гидроусилителя руля (Comfort/Sport)", titleUz: "Gidravlik rulni rejimi (Comfort/Sport)" },
-      { titleRu: "Система экстренного торможения", titleUz: "Favqulodda to'xtatish tizimi" },
-      { titleRu: "Система контроля полосы и удержания полосы движения", titleUz: "Yolda harakat chizig'ini nazorat qilish va ushlab turish tizimi" },
-      { titleRu: "Предупреждение о снижении дистанции", titleUz: "Masofa kamayishi haqida ogohlantirish" },
-      { titleRu: "Автоматическое экстренное торможение AEB", titleUz: "Avtomatik favqulodda to'xtatish AEB" },
-      { titleRu: "Мониторинг слепых зон BSD", titleUz: "Ko'rinmas zonalarni monitoring qilish BSD" },
-      { titleRu: "Панорамный сдвижной люк с электрической солнцезащитной шторкой", titleUz: "Panoramik harakatlanuvchi tom qopqog'i elektr quyosh to'shag'i bilan" },
-      { titleRu: "20\" литые диски с десятью спицами (шины 255/50 R20)", titleUz: "20\" alyuminiy disklari o'n tayanch bilan (tiyish 255/50 R20)" },
-      { titleRu: "Режим гидроусилителя руля (Comfort/Sport)", titleUz: "Gidravlik rulni rejimi (Comfort/Sport)" },
-      { titleRu: "128-цветная подсветка салона", titleUz: "128 rangli salon yoritgichi" }
-    ],
-    carId: "66b9e40235eabcec57e4c81b"
-  };
-
+    return () => {
+      ctx.revert();
+    };
+   
+  }, []);
 
   return (
     <main className=' overflow-x-hidden'>
@@ -59,10 +262,59 @@ export default function Page() {
                 <h3 className=' font-conquera text-lg lg:text-xl xl:text-2xl'>AITO M7 </h3>
                 <p className='text-sm lg:text-base'>Обладает современным лаконичным дизайном кузова: светодиодная оптика, приветственное освещение, выдвижные дверные ручки — автомобиль выглядит внушительно и величественно с любого ракурса</p>
               </div>
-
             </div>
             <div className='w-full  max-sm:order-3 sm:col-span-2 lg:row-span-2'>
-              <SwiperAboutCar/>
+              <Swiper
+                slidesPerView={1}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1.8,
+                  },
+                  1024: {
+                    slidesPerView: 1.6,
+                  },
+                  1280: {
+                    slidesPerView: 2,
+                  },
+                }}
+                spaceBetween={20}
+                className="exteriorSwiper"
+              >
+                {
+                  exteriorData?.map(card => (
+                    <SwiperSlide key={card?._id} className='w-full h-auto'>
+                      <ExteriorCard title={card?.title} text={card?.text} image={card?.image}/>
+                    </SwiperSlide>
+                  ))
+                }
+              </Swiper>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section ref={containerRef}  className='bg-currentDark py-7 lg:pt-10 pb-[90px] flex flex-col items-center relative z-[-10] h-screen' >
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-10 max-w-[1630px] w-full' >
+          <div className='w-full aspect-square md:aspect-[3/2] relative rounded-xl overflow-hidden md:col-span-2'> 
+            <div className='w-full h-full absolute top-0 left-0 z-[4]'>
+              <ImgUI src={'/interierdesign-2.jpg'} alt={"Bg Image"}/>
+            </div>
+            <div className='w-full h-full absolute top-0 left-0 z-[5] bg-[#00000094]'></div>
+            <div className=' rounded-lg backdrop-blur-[20px] p-4 lg:p-7 absolute bottom-0 right-0 z-[6] max-w-[680px] bg-[#FFFFFF1A] shadow-[unset_0_0_30px_0_#FFFFFF] '>
+              <p className='text-[#FFFFFFE6] max-lg:text-xs'>Продуманный салон AITO M7 с тремя рядами сидений - удобное и просторное пространство, где каждый пассажир может иметь независимую аудиосистему и лампы для чтения. Отличительной чертой является сиденье с эффектом нулевой гравитации, дающее ощущение «парения в облаках». В производстве М7 используются самые высококачественные и экологичные материалы</p>
+            </div>
+            <div className=' absolute z-[7] top-3 left-3 max-w-[430px] md:top-6 md:left-8 xl:top-[50px] xl:left-20'>
+              <SectionTitle title={'Откройте для себя высочайший уровень комфорта'}/>
+            </div>
+          </div>
+          <div  className='w-full relative rounded-xl  overflow-hidden aspect-square md:h-full'>
+            <div  className='w-full h-full space-y-5' >
+              {
+                interiorImages?.map(image => (
+                  <div key={image?._id} className='w-full !h-full relative scroll-image'>
+                    <ImgUI src={image?.image} alt={'Aito interior'} />
+                  </div>
+                ))
+              }
             </div>
           </div>
         </div>
@@ -79,46 +331,15 @@ export default function Page() {
             <SectionTitle title={'Особенности комплектации'} isDarkText isLittleSize={true}/>
             <p className=' font-conquera text-lg md:text-xl lg:text-2xl font-bold'>AITO M7</p>
             <div className='space-y-2 pt-4 lg:pt-12'>
-              <div className='flex gap-2'>
-                <span className='w-1.5 h-1.5 rounded-full bg-black mt-1.5'></span>
-                <p className=''>Режим гидроусилителя руля (Comfort/Sport)</p>
-              </div>
-              <div className='flex gap-2'>
-                <span className='w-1.5 h-1.5 rounded-full bg-black mt-1.5'></span>
-                <p className=''>Система экстренного торможения </p>
-              </div>
-              <div className='flex gap-2'>
-                <span className='w-1.5 h-1.5 rounded-full bg-black mt-1.5'></span>
-                <p className=''>Система контроля полосы и удержания полосы движения</p>
-              </div>
-              <div className='flex gap-2'>
-                <span className='w-1.5 h-1.5 rounded-full bg-black mt-1.5'></span>
-                <p className=''>Предупреждение о снижении дистанции</p>
-              </div>
-              <div className='flex gap-2'>
-                <span className='w-1.5 h-1.5 rounded-full bg-black mt-1.5'></span>
-                <p className=''>Автоматическое экстренное торможение AEB</p>
-              </div>
-              <div className='flex gap-2'>
-                <span className='w-1.5 h-1.5 rounded-full bg-black mt-1.5'></span>
-                <p className=''>Мониторинг слепых зон BSD</p>
-              </div>
-              <div className='flex gap-2'>
-                <span className='w-1.5 h-1.5 rounded-full bg-black mt-1.5'></span>
-                <p className=''>Панорамный сдвижной люк с электрической солнцезащитной шторкой</p>
-              </div>
-              <div className='flex gap-2'>
-                <span className='w-1.5 h-1.5 rounded-full bg-black mt-1.5'></span>
-                <p className=''>20" литые диски с десятью спицами (шины 255/50 R20)</p>
-              </div>
-              <div className='flex gap-2'>
-                <span className='w-1.5 h-1.5 rounded-full bg-black mt-1.5'></span>
-                <p className=''>Режим гидроусилителя руля (Comfort/Sport)</p>
-              </div>
-              <div className='flex gap-2'>
-                <span className='w-1.5 h-1.5 rounded-full bg-black mt-1.5'></span>
-                <p className=''>128-цветная подсветка салона</p>
-              </div>
+              {
+                featureData?.list?.map(item => (
+                  <div className='flex gap-2' key={item?._id}>
+                    <span className='w-1.5 h-1.5 rounded-full bg-black mt-1.5'></span>
+                    <p className=''>{item?.titleRu}</p>
+                  </div>
+                ))
+              }
+             
             </div>
             <div className='lg:pt-5'>
               <ButtonUI extraStyle={'!bg-black !border-none'} text={'Скачать спецификацию'}/>
@@ -134,7 +355,34 @@ export default function Page() {
           <SectionTitle title={'Технические характеристики'} extraStyle={'text-center'} isLittleSize={true}/>
           <p className=' text-white text-center mt-2 lg:mt-4 max-lg:text-sm'>Узнайте больше о внутренних системах автомобиля</p>
           <div className='w-full mt-6 lg:mt-10 xl:mt-[60px]'>
-            <SwiperSpecification/>
+             <Swiper
+              slidesPerView={1}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1.7,
+                },
+                1024: {
+                  slidesPerView: 2.6,
+                },
+                1280: {
+                  slidesPerView: 3,
+                },
+              }}
+              spaceBetween={30}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[Pagination]}
+              className="SwiperSpecification custom-pagination"
+            >
+              {
+                characters?.map(card => (
+                  <SwiperSlide className='!h-[auto]' key={card?._id}>
+                    <SpecificationCard title={card?.title} list={card?.list} image={card?.image}/>
+                  </SwiperSlide>
+                ))
+              }
+            </Swiper>
           </div>
         </div>
       </section>
@@ -143,9 +391,13 @@ export default function Page() {
           <SectionTitle title={'Безопасность'} isTextCenter />
         </div>
           <div className='flex flex-wrap justify-evenly w-full gap-y-6 mt-7 lg:mt-10 max-w-[1820px]'>
-            <div className='w-[100%] md:w-[30%] lg:w-[23%] xl:w-[20%] '>
-              <SecurityCard/>
-            </div>
+            {
+              security?.map((card , idx) => (
+                <div key={card?._id} className='w-[100%] md:w-[30%] lg:w-[23%] xl:w-[20%] '>
+                  <SecurityCard text={card?.text} title={card?.title} idx={idx}/>
+                </div>
+              ))
+            }
             <div className='w-[100%] md:w-[30%] lg:w-[23%] xl:w-[20%] '>
               <SecurityCard/>
             </div>
@@ -163,163 +415,53 @@ export default function Page() {
 
 
 
-function SwiperSpecification () {
+function SpecificationCard ({title , list , image}) {
   return (
-    <div>
-      <Swiper
-        slidesPerView={1}
-        breakpoints={{
-          640: {
-            slidesPerView: 1.7,
-          },
-          1024: {
-            slidesPerView: 2.6,
-          },
-          1280: {
-            slidesPerView: 3,
-          },
-        }}
-        spaceBetween={30}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Pagination]}
-        className="SwiperSpecification custom-pagination"
-      >
-        <SwiperSlide className='!h-[auto]'>
-          <div className='bg-currentDark h-full overflow-hidden rounded-xl text-white'>
-            <div className='relative w-full aspect-[3/2] overflow-hidden rounded-xl'>
-              <ImgUI src={'/spefication-inner-1.webp'}/>
-            </div>
-            <div className=' flex flex-col h-auto items-center justify-between py-4 gap-y-5 lg:py-6 px-2 lg:px-5'>
-              <h2 className='lg:text-lg'>Высоковольтная аккумуляторная батарея</h2>
-              <div className='w-full flex flex-col items-center text-center text-[#FFFFFFCC] gap-1 text-sm'>
-                <span className='h-[0.5px] bg-[#FFFFFFCC] w-[40%]  mb-3 lg:mb-6'></span>
-                {
-                  Array.from({ length: 6 }).map((_, index) => (
-                    <div key={index} className='max-md:flex-col flex items-center gap-1'>
-                      <p>Расход топлива в смешанном цикле:  </p>
-                      <p>1.09 л/100 км</p>
-                    </div>
-                  ))
-                }
+    <div className='bg-currentDark h-full overflow-hidden rounded-xl text-white'>
+      <div className='relative w-full aspect-[3/2] overflow-hidden rounded-xl'>
+        <ImgUI src={image}/>
+      </div>
+      <div className=' flex flex-col h-auto items-center justify-between py-4 gap-y-5 lg:py-6 px-2 lg:px-5'>
+        <h2 className='lg:text-lg'>{title}</h2>
+        <div className='w-full flex flex-col items-center text-center text-[#FFFFFFCC] gap-1 text-sm'>
+          <span className='h-[0.5px] bg-[#FFFFFFCC] w-[40%]  mb-3 lg:mb-6'></span>
+          {
+            list.map(item => (
+              <div key={item?._id} className='max-md:flex-col flex items-center gap-1'>
+                <p>{item?.key}</p>
+                <p>{item?.value}</p>
               </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className='!h-[auto]'>
-          <div className='bg-currentDark h-full overflow-hidden rounded-xl text-white'>
-            <div className='relative w-full aspect-[3/2] overflow-hidden rounded-xl'>
-              <ImgUI src={'/spefication-inner-2.webp'}/>
-            </div>
-            <div className=' flex flex-col h-auto items-center justify-between py-4 gap-y-5 lg:py-6 px-2 lg:px-5'>
-              <h2 className='lg:text-lg'>Высоковольтная аккумуляторная батарея</h2>
-              <div className='w-full flex flex-col items-center text-center text-[#FFFFFFCC] text-sm gap-1'>
-                <span className='h-[0.5px] bg-[#FFFFFFCC] w-[40%]  mb-3 lg:mb-6'></span>
-                {
-                  Array.from({ length: 8 }).map((_, index) => (
-                    <div key={index} className=' max-md:flex-col flex items-center gap-1'>
-                      <p>Суммарная максимальная мощность: </p>
-                      <p>449 л.с.</p>
-                    </div>
-                  ))
-                }
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className='!h-[auto]'>
-          <div className='bg-currentDark h-full overflow-hidden rounded-xl text-white'>
-            <div className='relative w-full aspect-[3/2] overflow-hidden rounded-xl'>
-              <ImgUI src={'/spefication-inner-3.webp'}/>
-            </div>
-            <div className=' flex flex-col h-auto items-center justify-between py-4 gap-y-5 lg:py-6 px-2 lg:px-5'>
-              <h2 className='lg:text-lg'>Высоковольтная аккумуляторная батарея</h2>
-              <div className='w-full flex flex-col items-center text-center text-[#FFFFFFCC] gap-1 text-sm'>
-                <span className='h-[0.5px] bg-[#FFFFFFCC] w-[40%]  mb-3 lg:mb-6'></span>
-                {
-                  Array.from({ length: 8 }).map((_, index) => (
-                    <div key={index} className='max-md:flex-col flex items-center gap-1'>
-                      <p>Расход топлива в смешанном цикле:  </p>
-                      <p>1.09 л/100 км</p>
-                    </div>
-                  ))
-                }
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-      </Swiper>
+            ))
+          }
+        </div>
+      </div>
     </div>
   )
 }
 
-function SwiperAboutCar() {
+function ExteriorCard({title , text , image , }) {
   return (
-    <div>
-      <Swiper
-        slidesPerView={1}
-        breakpoints={{
-          640: {
-            slidesPerView: 1.8,
-          },
-          1024: {
-            slidesPerView: 1.6,
-          },
-          1280: {
-            slidesPerView: 2,
-          },
-        }}
-        spaceBetween={20}
-        className="exteriorSwiper"
-      >
-        <SwiperSlide className='w-full '>
-          <div className='relative aspect-[4/3] overflow-hidden rounded-xl'>
-            <div className='w-full h-full absolute top-0 left-0 z-[5]'>
-              <ImgUI src={'/ekstrier-1.png'} alt={'Exterior Image'}/>
-            </div>
-            <div className='w-full absolute bottom-0 z-10 rounded-xl space-y-1 !leading-[1.2] overflow-hidden left-0 bg-[#00000080] backdrop-blur-[20px] px-4 py-3 shadow-[inset_0_0_30px_0_rgba(255,255,255,0.05),inset_0_1px_4px_0_rgba(255,255,255,0.15)]'>
-              <h4 className=' text-white text-[15px] '>Светодиодная оптика</h4>
-              <p className=' text-white text-xs'>Вытянутые светодиодные фары автомобиля создают утонченный и элегантный облик</p>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className='w-full '>
-          <div className='relative aspect-[4/3] overflow-hidden rounded-xl'>
-            <div className='w-full h-full absolute top-0 left-0 z-[5]'>
-              <ImgUI src={'/ekstrier-1.png'} alt={'Exterior Image'}/>
-            </div>
-            <div className='w-full absolute bottom-0 z-10 rounded-xl space-y-1 !leading-[1.2] overflow-hidden left-0 bg-[#00000080] backdrop-blur-[20px] px-4 py-3 shadow-[inset_0_0_30px_0_rgba(255,255,255,0.05),inset_0_1px_4px_0_rgba(255,255,255,0.15)]'>
-              <h4 className=' text-white text-[15px] '>Светодиодная оптика</h4>
-              <p className=' text-white text-xs'>Вытянутые светодиодные фары автомобиля создают утонченный и элегантный облик</p>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className='w-full '>
-          <div className='relative aspect-[4/3] overflow-hidden rounded-xl'>
-            <div className='w-full h-full absolute top-0 left-0 z-[5]'>
-              <ImgUI src={'/ekstrier-1.png'} alt={'Exterior Image'}/>
-            </div>
-            <div className='w-full absolute bottom-0 z-10 rounded-xl space-y-1 !leading-[1.2] overflow-hidden left-0 bg-[#00000080] backdrop-blur-[20px] px-4 py-3 shadow-[inset_0_0_30px_0_rgba(255,255,255,0.05),inset_0_1px_4px_0_rgba(255,255,255,0.15)]'>
-              <h4 className=' text-white text-[15px] '>Светодиодная оптика</h4>
-              <p className=' text-white text-xs'>Вытянутые светодиодные фары автомобиля создают утонченный и элегантный облик</p>
-            </div>
-          </div>
-        </SwiperSlide>
-      </Swiper>
+    <div className='relative aspect-[4/3] h-full overflow-hidden rounded-xl'>
+      <div className='w-full h-full absolute top-0 left-0 z-[5]'>
+        <ImgUI src={image} alt={'Exterior Image'}/>
+      </div>
+      <div className='w-full absolute bottom-0 z-10 rounded-xl space-y-1 !leading-[1.2] overflow-hidden left-0 bg-[#00000080] backdrop-blur-[20px] px-4 py-3 shadow-[inset_0_0_30px_0_rgba(255,255,255,0.05),inset_0_1px_4px_0_rgba(255,255,255,0.15)]'>
+        <h4 className=' text-white text-[15px] '>{title}</h4>
+        <p className=' text-white text-xs'>{text}</p>
+      </div>
     </div>
   )
 }
 
 
-function SecurityCard() {
+function SecurityCard({idx , title , text}) {
   return (
     <div className='w-full flex flex-col items-start'>
       <div className='py-3 px-[22px] rounded-full shadow-[0_4px_4px_0_#FFFFFF20] bg-[#474747] text-[#FFFFFFE5] text-3xl md:text-4xl lg:text-5xl'>
-        1
+        {idx}
       </div>
-      <h2 className=' lg:text-lg text-white mt-3 lg:mt-6 '>Система удержания автомобиля в полосе</h2>
-      <p className=' text-xs text-[#FFFFFFCC] lg:text-sm mt-2 lg:mt-4'>Предотвращает возможные опасные ситуации на дорогах, сохраняя движение автомобиля в пределах полосы</p>
+      <h2 className=' lg:text-lg text-white mt-3 lg:mt-6 '>{title}</h2>
+      <p className=' text-xs text-[#FFFFFFCC] lg:text-sm mt-2 lg:mt-4'>{text}</p>
     </div>
   )
 }

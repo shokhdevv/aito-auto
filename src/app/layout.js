@@ -1,10 +1,11 @@
 import "./globals.css";
-import Head from "next/head";
 import { Footer, Navbar } from "@/components";
 import localFont from 'next/font/local'
+import '../localization/i18n'
 
 import 'swiper/css';
 import 'swiper/css/pagination';
+import Layout from "@/layout/layout";
 
 const futura = localFont({
   src: [
@@ -54,9 +55,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`font-futura ${futura.variable} ${conquera.variable} ${goodTiming.variable} `}>
-        <Navbar/>
+       <Layout>
         {children}
-        <Footer/>
+       </Layout>
       </body>
     </html>
   );

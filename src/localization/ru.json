@@ -1,0 +1,159 @@
+{
+  "translation": {
+    "navbar": {
+      "home": "Главная",
+      "about": "О нас",
+      "models": "Модели",
+      "drive": "Тест-драйв",
+      "contact": "Контакт",
+      "more": "Подробнее",
+      "innovation": "Инновации",
+      "dealers": "Стать дилерами",
+      "news": "Новости"
+    },
+    "newsInner" : "Другие новости",
+    "contact" : {
+      "title": "Контакты",
+      "formTitle": "Появились вопросы? Мы Вам поможем",
+      "formText" : "Пожалуйста заполните небольшую форму. Наш оператор свяжется с вами в удобное для вас время"
+    },
+    "input": {
+      "name": "Имя",
+      "errorName": "Укажите свое имя",
+      "telephone": "Телефон",
+      "comment": "Комментарий",
+      "errorComment": "Укажите свое комментарий",
+      "reason": "Причина обращения",
+      "errorReason": "Укажите Причина обращения",
+      "model": "Выберите модель",
+      "date": "Укажите дату",
+      "time": "Укажите время"
+    },
+    "service": {
+      "modalTitle": "Записаться на сервис"
+    },
+    "lang": {
+      "ru": "РУ",
+      "uz": "УЗ"
+    },
+    "footer": {
+      "allRights": "Все права защищены.",
+      "byCreated": "Сайт создан:"
+    },
+    "btn": {
+      "showMore": "Показать больше",
+      "warranty": "Гарантия",
+      "signService": "Записаться на сервис",
+      "more": "Подробнее",
+      "readMore": "Читать далее",
+      "downloadCatalog": "Скачать каталог",
+      "send": "Отправить запрос"
+    },
+    "carInnerNav": {
+      "overview": "Обзор",
+      "performance": "Производительность",
+      "specification": "Спецификация",
+      "setYourLoc": "Установите свое местоположение",
+      "contactDealer": "Свяжитесь с дилером"
+    },
+    "serviceCard": {
+      "testDrive": "Тест-драйв",
+      "saleCar": "Покупка автомобиля",
+      "dealer": "Стать дилером",
+      "contactUs": "Связаться с нами"
+    },
+    "index": {
+      "ourModels": "Наши модели",
+      "ourNews": "Новости"
+    },
+    "innerModel": {
+      "specs": "Спецификация",
+      "sizes": "Размеры",
+      "features": "Функции",
+      "tvc": "ТВЦ",
+      "interior": "Интерьер",
+      "exterior": "Экстерьер",
+      "positions": "Позиции"
+    },
+    "about": {
+      "title": "О компании Leapmotor ",
+      "awards": "Награды"
+    },
+    "models": {
+      "all": "Все",
+      "electro": "Электро",
+      "petrol": "Бензин",
+      "hybrid": "Гибрид",
+      "AT": "АТ",
+      "MT": "МТ",
+      "MT-AT": "МТ/АТ",
+      "price": "Цена:",
+      "splitPrice": "Цена в рассрочку:"
+    },
+    "drive": {
+      "title": "Запрос на тест-драйв",
+      "chooseModel": "Выберите модель",
+      "errorModel": "Требуется модель",
+      "chooseDealerTitle": "Выбор дилера",
+      "errorRegion": "Требуется регион",
+      "chooseRegion": "Выберите регион",
+      "chooseDealer": "Выберите дилера",
+      "errorDealer": "Требуется дилера",
+      "contractTitle": "Договориться о времени",
+      "errorDate": "Требуется день",
+      "chooseDate": "Выберите день",
+      "errorTime": "Требуется время",
+      "chooseTime": "Выберите время",
+      "dataTitle": "  Ваши данные",
+      "errorName": "Требуется ваши данные",
+      "chooseName": " Ф.И.О.",
+      "chooseNumber": "Телефон",
+      "errorNumber": "Требуется телефон данные"
+    },
+    "modal": {
+      "successTitle": "Ваша заявка принята"
+    },
+    "dealers": {
+      "title": "Стать дилером",
+      "allInfoTitle": "Общая информация",
+      "errorCompany": "Название компании обязательно",
+      "labelCompany": "Название компании *",
+      "errorRegion": "Регион обязателен",
+      "labelRegion": "Регион/область *",
+      "labelAddress": "Адрес *",
+      "errorAddress": "Адрес обязателен",
+      "errorCount": "Количество населения обязательно",
+      "labelCount": "Количество населения *",
+      "otherInfoTitle": "Дополнительная информация",
+      "errorBank": "Банковские реквизиты обязательны",
+      "labelBank": "Банковские реквизиты *",
+      "showroomInfoTitle": "Наличие выставочного зала",
+      "totalArea": "Общая площадь *",
+      "totalAreaPlaseholder": "кв м",
+      "errorTotalArea": "Общая площадь обязательна",
+      "usableArea": "Полезная площадь *",
+      "errorUsableArea": "Полезная площадь обязательна",
+      "serviceInfoTitle": "Наличие сервисной зоны",
+      "serviceTotalArea": "Общая площадь *",
+      "errorServiceTotalArea": "Общая площадь обязательна",
+      "serviceUsableArea": "Полезная площадь *",
+      "errorServiceUsableArea": "Полезная площадь обязательна",
+      "experienceInfoTitle": "Опыт",
+      "carExperience": "Опыт продаж автомобилей *",
+      "errorCarExperience": "Продолжительность опыта обязательна",
+      "soldCars": "Информация о фактически проданных автомобилях *",
+      "soldCarsPlaceholder": "штук",
+      "errorSoldCars": "Информация о количестве проданных автомобилей обязательна",
+      "salesMonth": "Прогноз продаж на месяц *",
+      "salesMonthPlaceholder": "штук",
+      "errorSalesMonth": "Прогноз продаж на месяц обязателен",
+      "contactName": "Контактное лицо *",
+      "contactNamePlaceholder": "ФИО",
+      "errorContactName": "Контактное лицо обязательно",
+      "contactNumber": "Контактный номер",
+      "errorContactNumber": "Контактный номер обязателен"
+    },
+    
+    "toTop": "Верх"
+  }
+}

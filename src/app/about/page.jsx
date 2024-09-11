@@ -1,6 +1,6 @@
 "use client"
 import {AboutCard, ImgUI} from '@/components'
-import React, {useEffect, useRef} from 'react'
+import React, {useEffect} from 'react'
 import { gsap } from 'gsap';
 const aboutCards = [
   {

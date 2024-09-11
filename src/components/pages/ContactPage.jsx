@@ -121,6 +121,7 @@ export default function page({data}) {
               </form>
             </div>
           </div>
+          
           <div className='w-full aspect-square m rounded-lg overflow-hidden'>
             <iframe className='w-full h-full' src={data?.location}  loading="lazy"></iframe>
           </div>

@@ -1,6 +1,6 @@
 "use client"
 import { BgPage, ButtonUI, SectionTitle, SuccesModal } from '@/components'
-import { langSelect } from '@/helper'
+import { formatPhoneNumber, langSelect } from '@/helper'
 import apiService from '@/service/axios'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -60,10 +60,10 @@ export default function page({data}) {
               </div>
               <div className='text-[#FFFFFFCC] flex items-center gap-4'>
                 <BsFillTelephoneFill className="lg:text-2xl"/>
-                <div className='flex flex-col'>
+                <div className='flex flex-col'> 
                   {
-                    data?.tel.map((number, idx) => (
-                      <a key={idx} href={`tell:${number}`}>{number}</a>
+                    data?.tel?.map((number, idx) => (
+                      <a key={idx} href={`tell:${number}`}>{formatPhoneNumber(number)}</a>
                     ))
                   }
                 </div>
@@ -107,7 +107,7 @@ export default function page({data}) {
                 {errors.name && (
                   <p className="error-text text-red-600 text-xs lg:text-sm">{t('input.errorName')}</p>
                 )}
-                <InputMask mask="+\9\98 (99) 999-99-99" alwaysShowMask={false} id={'tel'} type={'text'}  className="w-full focus:outline-none px-3 py-2 !leading-[1.2] lg:px-4 lg:py-3 text-white font-futura max-lg:text-sm rounded bg-currentDark border-[0.5px] border-[#FFFFFFE5]"  placeholder={t('input.telephone')}/>
+                <InputMask mask="+\9\98 (99) 999-99-99"  {...register('tel', {required: true})} alwaysShowMask={false} id={'tel'} type={'text'}  className="w-full focus:outline-none px-3 py-2 !leading-[1.2] lg:px-4 lg:py-3 text-white font-futura max-lg:text-sm rounded bg-currentDark border-[0.5px] border-[#FFFFFFE5]"  placeholder={t('input.telephone')}/>
                 {errors.tell && (
                   <p className="error-text text-red-600 text-xs lg:text-sm">{t('input.telephone')}</p>
                 )}
@@ -119,7 +119,7 @@ export default function page({data}) {
               <ButtonUI text={questionsPostLoading ? <AiOutlineLoading className="animate-spin text-2xl"/> : t("btn.send")}/>
             </form>
           </div>
-          <div className='w-full aspect-square md:aspect-[5/2] lg:col-span-2'>
+          <div className='w-full aspect-square md:aspect-[5/2] lg:col-span-2 rounded-lg overflow-hidden'>
             <iframe className='w-full h-full' src={data?.location}  loading="lazy"></iframe>
           </div>
         </div>

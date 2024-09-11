@@ -1,8 +1,7 @@
 "use client"
-import { ImgUI} from '@/components'
+import {AboutCard, ImgUI} from '@/components'
 import React, {useEffect, useRef} from 'react'
 import { gsap } from 'gsap';
-import dynamic from "next/dynamic";
 const aboutCards = [
   {
     src : '/icon-1.png',
@@ -43,7 +42,7 @@ const aboutBannerCard = [
 ]
 
 export default function Page() {
-  const AboutCard = dynamic(() => import('@/components/AboutCard'), { ssr: false });
+  // const AboutCard = dynamic(() => import('@/components/AboutCard'), { ssr: false });
   const bannerCardRefs = useRef([]);
 
   useEffect(() => {
@@ -91,7 +90,7 @@ export default function Page() {
                         key={item._id}
                         title={item.title}
                         number={item._id}
-                        ref={(el) => bannerCardRefs.current[index] = el}
+                        // ref={(el) => bannerCardRefs.current[index] = el}
                     />
                 ))}
               </div>

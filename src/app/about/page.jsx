@@ -15,6 +15,7 @@ const aboutCards = [
     text: 'Стать глобальным производителем “умных” автомобилей',
     _id: 1
   },
+
   {
     src : '/icon-3.png',
     title: 'Главные ценности',
@@ -22,6 +23,8 @@ const aboutCards = [
     _id: 2
   },
 ]
+
+
 
 const aboutBannerCard = [
   {

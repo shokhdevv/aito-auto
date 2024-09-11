@@ -26,6 +26,7 @@ const aboutCards = [
 
 
 
+
 const aboutBannerCard = [
   {
     title: 'Миссия',
@@ -45,8 +46,6 @@ const aboutBannerCard = [
 ]
 
 export default function Page() {
-  // const AboutCard = dynamic(() => import('@/components/AboutCard'), { ssr: false });
-  const bannerCardRefs = useRef([]);
 
   useEffect(() => {
     const countNumberElements = gsap.utils.toArray(".countNumber");
@@ -93,9 +92,10 @@ export default function Page() {
                         key={item._id}
                         title={item.title}
                         number={item._id}
-                        // ref={(el) => bannerCardRefs.current[index] = el}
                     />
                 ))}
+
+
               </div>
             </div>
           </div>

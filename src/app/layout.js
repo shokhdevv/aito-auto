@@ -26,15 +26,16 @@ const goodTiming = localFont({
   weight: '700',
   variable: '--font-goodTiming'
 })
+
 const conquera = localFont({
   src: [
     {
-      path: '../font/Conquera-Bold.woff2',
+      path: '../font/Stereo-Gothic-700.ttf',
       weight: '700',
       style: 'normal',
     },
     {
-      path: '../font/Conquera-Medium.woff2',
+      path: '../font/Stereo-Gothic-500.ttf',
       weight: '500',
       style: 'normal',
     },

@@ -1,14 +1,12 @@
 {
   "translation": {
     "navbar": {
-      "home": "Asosiy",
       "about": "Biz haqimizda",
       "models": "Modellar",
       "drive": "Test drayv",
       "contact": "Bog'lanish",
-      "more": "Batafsil",
       "innovation": "Inovatsiyalar",
-      "dealers": "Dilerlarga aylaning",
+      "dealers": "Servislar",
       "news": "Yangiliklar"
     },
     "newsInner" : "Boshqa yangiliklar",
@@ -40,6 +38,10 @@
       "ru": "RU",
       "uz": "UZ"
     },
+    "modelId": {
+      "header": "MODEL",
+      "uz": "УЗ"
+    },
     "footer": {
       "allRights": "Barcha huquqlar himoyalangan.",
       "byCreated": "Web-sayt yaratildi:"
@@ -53,19 +55,7 @@
       "downloadCatalog": "Katalog yuklab olish",
       "send": "So'rov yuborish"
     },
-    "carInnerNav": {
-      "overview": "Umumiy ko'rinish",
-      "performance": "Ishlash",
-      "specification": "Texnik tavsif",
-      "setYourLoc": "Joylashuvingizni belgilang",
-      "contactDealer": "Diler bilan bog'laning"
-    },
-    "serviceCard": {
-      "testDrive": "Test drayv",
-      "saleCar": "Avtomobil sotib olish",
-      "dealer": "Dilerlikni olish",
-      "contactUs": "Biz bilan bog'lanish"
-    },
+
     "innerModel": {
       "specs": "Xususiyatlari",
       "sizes": "O'lchamlari",
@@ -75,21 +65,9 @@
       "exterior": "Tashqi ko'rinish",
       "positions": "Pozitsiyalar"
     },
-    "toTop": "Tepaga",
     "index": {
       "ourModels": "Bizning modellarimiz",
       "ourNews": " Yangiliklarimiz"
-    },
-    "models": {
-      "all": "Hammasi",
-      "electro": "elektr",
-      "petrol": "benzin",
-      "hybrid": "gibrid",
-      "AT": "AT",
-      "MT": "MT",
-      "MT-AT": "MT/AT",
-      "price": "Narxi:",
-      "splitPrice": "Bo'lib to'lash narxi:"
     },
     "drive": {
       "title": "Test haydovi uchun so'rov",
@@ -110,46 +88,6 @@
       "chooseName": "F.I.Sh",
       "chooseNumber": "Telefon",
       "errorNumber": "Telefon raqami kerak"
-    },
-    "dealers": {
-      "title": "Dilerga aylaning",
-      "allInfoTitle": "Umumiy ma'lumot",
-      "errorCompany": "Kopmaniya nomi talab qilinadi",
-      "labelCompany": "Kopmaniya nomi *",
-      "errorRegion": "Hudud talab qilinadi",
-      "labelRegion": "Mintaqa/viloyat *",
-      "labelAddress": "Manzil *",
-      "errorAddress": "Manzil talab qilinadi",
-      "errorCount": "Aholi soni talab qilinadi",
-      "labelCount": "Aholi soni *",
-      "otherInfoTitle": "Boshqa ma'lumotlar",
-      "errorBank": "Bank rekvizitlari talab qilinadi",
-      "labelBank": "Bank rekvizitlari *",
-      "showroomInfoTitle": "Ko'rgazma zali mavjudligi",
-      "totalArea": "Umumiy maydoni *",
-      "totalAreaPlaseholder": "kv m",
-      "errorTotalArea": "Umumiy maydon talab qilinadi",
-      "usableArea": "Foydalanish maydoni *",
-      "errorUsableArea": "Foydalanish maydoni talab qilinadi",
-      "serviceInfoTitle": "Xizmat ko'rsatish maydoning mavjudligi",
-      "serviceTotalArea": "Umumiy maydoni *",
-      "errorServiceTotalArea": "Umumiy maydon talab qilinadi",
-      "serviceUsableArea": "Foydalanish maydoni *",
-      "errorServiceUsableArea": "Foydalanish maydoni talab qilinadi",
-      "experienceInfoTitle": "Tajriba",
-      "carExperience": "Avtomobil savdosi bo'yicha tajriba *",
-      "errorCarExperience": "Tajriba vaqti talab qilinadi",
-      "soldCars": "Haqiqiy sotilgan mashinalar haqida ma'lumot *",
-      "soldCarsPlaceholder": "dona",
-      "errorSoldCars": "Sotilgan avtomobillar soni to'g'risida ma'lumot talab qilinadi",
-      "salesMonth": "Oylik sotish prognozi *",
-      "salesMonthPlaceholder": "dona",
-      "errorSalesMonth": "Oyiga sotish talab qilinadi",
-      "contactName": "Aloqa qiluvchi shaxs *",
-      "contactNamePlaceholder": "FIO",
-      "errorContactName": "Aloqa qiluvchi shaxs talab qilinadi",
-      "contactNumber": "Aloqa raqami",
-      "errorContactNumber": "Aloqa raqami talab qilinadi"
     },
      "modal": {
       "successTitle": "Sizning arizangiz qabul qilindi"

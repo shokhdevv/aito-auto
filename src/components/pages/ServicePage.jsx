@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 
 export default function page({data}) {
   const {i18n , t} = useTranslation()
-  const [formModal , setFormModal] = useState(true)
+  const [formModal , setFormModal] = useState(false)
   return ( 
     <>
       <section className=' relative flex h-[70vh] flex-col justify-center'>
@@ -19,7 +19,7 @@ export default function page({data}) {
               <SectionTitle isTextCenter={true} title={langSelect(i18n.language , data?.titleRu, data?.titleUz )} isLittleSize/>
               <p className='text-[#FFFFFFCC] text-center max-lg:text-sm'>{langSelect(i18n.language , data?.textRu, data?.textUz )}</p>
               <div className='flex items-center gap-5 pt-4 lg:gap-10'>
-                <ButtonUI text={t('btn.signService')}/>
+                <ButtonUI text={t('btn.signService')} onClick={() => setFormModal(true)}/>
                 <ButtonUI text={t('btn.warranty')} isFillBtn/>
               </div>
             </div>

@@ -20,14 +20,18 @@
     "input": {
       "name": "Ism",
       "errorName": "Ismingizni kiriting",
-      "telephone": "Telefon",
+      "telephone": "Telefon raqami",
+      "errorTelephone": "Telefonni kiriting",
       "comment": "Izoh",
-      "errorComment": "Fikringizni kiriting",
-      "reason": "Murojaat qilish sababi",
-      "errorReason": "Murojaat qilish sababini kiriting",
+      "errorComment": "Izohingizni kiriting",
+      "reason": "Murojaat sababi",
+      "errorReason": "Murojaat sababini kiriting",
       "model": "Modelni tanlang",
-      "date": "Sana kiriting",
-      "time": "Vaqtni kiriting"
+      "errorModel": "Modelni tanlang",
+      "date": "Sanani kiriting",
+      "errorDate": "Sanani kiriting",
+      "time": "Vaqtni kiriting",
+      "errorTime": "Vaqtni kiriting"
     },
     "service": {
       "modalTitle": "Xizmatga yozilish"

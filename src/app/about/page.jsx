@@ -1,8 +1,7 @@
 "use client"
-import { ImgUI} from '@/components'
-import React, {useEffect, useRef} from 'react'
+import {AboutCard, ImgUI} from '@/components'
+import React, {useEffect} from 'react'
 import { gsap } from 'gsap';
-import dynamic from "next/dynamic";
 const aboutCards = [
   {
     src : '/icon-1.png',
@@ -16,6 +15,7 @@ const aboutCards = [
     text: 'Стать глобальным производителем “умных” автомобилей',
     _id: 1
   },
+
   {
     src : '/icon-3.png',
     title: 'Главные ценности',
@@ -23,6 +23,9 @@ const aboutCards = [
     _id: 2
   },
 ]
+
+
+
 
 const aboutBannerCard = [
   {
@@ -43,34 +46,34 @@ const aboutBannerCard = [
 ]
 
 export default function Page() {
-  const AboutCard = dynamic(() => import('@/components/AboutCard'), { ssr: false });
-  const bannerCardRefs = useRef([]);
 
   useEffect(() => {
-    const countNumberElements = gsap.utils.toArray(".countNumber");
+    setTimeout(() => {
+      const countNumberElements = gsap.utils.toArray(".countNumber");
 
-    countNumberElements.forEach((number, index) => {
-      const targetNumber = aboutBannerCard[index]?._id;
-      gsap.to(number, {
-        textContent: targetNumber,
-        duration: 3,
-        delay:  0.1+ index * 0.2,
-        ease: "power1.in",
-        snap: { textContent: 1 },
-        onStart: function() {
-          gsap.to(number, {opacity:0.5 });
-        },
-        onComplete: function() {
-          gsap.to(number, {  opacity:1 });
-        },
-        onUpdate: function () {
-          number.innerHTML = numberWithCommas(Math.ceil(this.targets()[0].textContent));
-        }
+      countNumberElements.forEach((number, index) => {
+        const targetNumber = aboutBannerCard[index]?._id;
+        gsap.to(number, {
+          textContent: targetNumber,
+          duration: 3,
+          delay: 0.1 + index * 0.2,
+          ease: "power1.in",
+          snap: { textContent: 1 },
+          onStart: function() {
+            gsap.to(number, { opacity: 0.5 });
+          },
+          onComplete: function() {
+            gsap.to(number, { opacity: 1 });
+          },
+          onUpdate: function () {
+            number.innerHTML = numberWithCommas(Math.ceil(this.targets()[0].textContent));
+          }
+        });
       });
-    });
-    function numberWithCommas(x) {
-      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
+      function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+    }, 100);
   }, []);
 
   return (
@@ -91,7 +94,6 @@ export default function Page() {
                         key={item._id}
                         title={item.title}
                         number={item._id}
-                        ref={(el) => bannerCardRefs.current[index] = el}
                     />
                 ))}
               </div>
@@ -117,9 +119,9 @@ export default function Page() {
 }
 
 
-const AboutBannerCard = React.forwardRef(({ title, number }, ref) => (
+const AboutBannerCard = ({ title, number }) => (
     <div className='bg-[#FFFFFF08] rounded-xl overflow-hidden backdrop-blur-xl shadow-[unset_0_0_68px_0_#FFFFFF05] p-4 lg:p-7 w-[45%] md:w-[30%]'>
-      <h3 ref={ref} className='text-3xl mb-1.5 lg:text-5xl xl:text-6xl 2xl:text-7xl countNumber'>{number}</h3>
+      <h3 className='text-3xl mb-1.5 lg:text-5xl xl:text-6xl 2xl:text-7xl countNumber'>{number}</h3>
       <p className='text-sm'>{title}</p>
     </div>
-));
+);

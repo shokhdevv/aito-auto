@@ -7,44 +7,10 @@ import {useEffect, useRef} from "react";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
-import moment from "moment";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const banner = {
-    src : 'https://www.global-seres.com/website-resources/video/WHATISSERES.mp4?v=72727988',
-    _id: 0
-}
-const news = [
-    {
-        _id: 0,
-        text: 'Мы вынуждены отталкиваться от того, что социально-экономическое развитие способствует повышению качества прогресса профессионального сообщества. ',
-        date: "03 август, 2024",
-        image: "/news1home.jpg",
-        slug: "/news/1"
-    },
-    {
-        _id: 1,
-        text: 'Мы вынуждены отталкиваться от того, что социально-экономическое развитие способствует повышению качества прогресса профессионального сообщества. ',
-        date: "03 август, 2024",
-        image: "/news2home.jpeg",
-        slug: "/news/1"
-    },
-    {
-        _id: 2,
-        text: 'Мы вынуждены отталкиваться от того, что социально-экономическое развитие способствует повышению качества прогресса профессионального сообщества. ',
-        date: "03 август, 2024",
-        image: "/news3home.webp",
-        slug: "/news/1"
-    },
-    {
-        _id: 3,
-        text: 'Мы вынуждены отталкиваться от того, что социально-экономическое развитие способствует повышению качества прогресса профессионального сообщества. ',
-        date: "03 август, 2024",
-        image: "/news3home.webp",
-        slug: "/news/1"
-    },
-]
+
 
 export default function HomePage({bannerRes,carRes,aboutRes,newsRes}) {
     const component = useRef();

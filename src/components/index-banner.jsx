@@ -3,10 +3,21 @@ import React from 'react'
 import {ButtonUI, ImgUI} from '.'
 import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
-import Link from "next/link";
+import {useDispatch} from "react-redux";
+import {selectCar} from "@/store/slice/testDriveSlice";
+import {useRouter} from "next/navigation";
 
 export default function IndexBanner({banner}) {
+  const router = useRouter()
+
   const {i18n} = useTranslation()
+  const dispatch = useDispatch()
+
+  const handleTestDrive = (model) => {
+    dispatch(selectCar(model))
+    router.push('/drive')
+  }
+
   return (
     <div className='h-screen relative'>
       <video className="object-cover object-bottom w-full h-full relative z-10" autoPlay loop muted>
@@ -24,7 +35,8 @@ export default function IndexBanner({banner}) {
             <p className=' text-base font-future'>{langSelect(i18n.language, banner?.car?.modelDescriptionRu, banner?.car?.modelDescriptionUz
             )}</p>
             <div className='flex lg:w-full w-fit items-center  pt-3 gap-3 md:gap-6 '>
-              <ButtonUI text={'Тест-драйв'}/>
+
+              <ButtonUI text={'Тест-драйв'} onClick={() => handleTestDrive(banner?.car?.name)}/>
 
               <ButtonUI href={`models/${banner?.car?.slug}`} text={'Подробнее'} isFillBtn />
             </div>

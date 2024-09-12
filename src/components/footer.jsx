@@ -1,3 +1,4 @@
+'use client'
 import { FaMapMarkerAlt, FaFacebookF, FaTelegramPlane  } from "react-icons/fa";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { AiFillInstagram } from "react-icons/ai";
@@ -16,7 +17,6 @@ export default function Footer() {
   useEffect(() => {
     refetch()
   }, []);
-  console.log(data)
   const date = new Date();
   const year = date.getFullYear();
   return (

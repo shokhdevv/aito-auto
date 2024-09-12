@@ -1,5 +1,4 @@
 import "./globals.css";
-import { Footer, Navbar } from "@/components";
 import localFont from 'next/font/local'
 import '../localization/i18n'
 

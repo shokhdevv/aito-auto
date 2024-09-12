@@ -211,6 +211,7 @@ export default function Page({data}) {
   useEffect(() => {
     let ctx = gsap.context(() => {
       let container = containerRef.current;
+      console.log(container.offsetHeight)
       let imagesScroll = gsap.utils.toArray('.scroll-image');
         gsap.to(imagesScroll, {
           yPercent: -100 * (imagesScroll.length - 1),
@@ -219,8 +220,9 @@ export default function Page({data}) {
             trigger: container, 
             pin: true,
             start:'top top',
-            end: () => "+=" + container.offsetHeight,
-            scrub: 2,
+            end: () =>  container.offsetHeight,
+            scrub: 3,
+            markers:true
           },
         });
     });
@@ -299,8 +301,8 @@ export default function Page({data}) {
           </div>
         </div>
       </section>
-      <section ref={containerRef}  className='bg-currentDark py-7 lg:pt-10 pb-[90px] flex flex-col items-center justify-center relative z-[-10] h-screen' >
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-10 max-w-[1630px] w-full' >
+      <section ref={containerRef}  className='bg-currentDark py-7 lg:pt-10 pb-[90px] flex flex-col items-center justify-center relative z-[-10] ' >
+        <div  className='grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-10 max-w-[1630px] w-full' >
           <div className='w-full aspect-square md:aspect-[3/2] relative rounded-xl overflow-hidden md:col-span-2'> 
             <div className='w-full h-full absolute top-0 left-0 z-[4]'>
               <ImgUI src={'/interierdesign-2.jpg'} alt={"Bg Image"}/>

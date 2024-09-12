@@ -210,25 +210,23 @@ export default function Page({data}) {
   const containerRef = useRef(null);
   useEffect(() => {
     let ctx = gsap.context(() => {
-      let container = containerRef.current;
-      let imagesScroll = gsap.utils.toArray('.scroll-image');
-        gsap.to(imagesScroll, {
-          yPercent: -100 * (imagesScroll.length - 1),
-          ease: 'none',
-          scrollTrigger: {
-            trigger: container, 
-            pin: true,
-            start:'top top',
-            end: () => "+=" + container.offsetHeight,
-            scrub: 2,
-          },
-        });
+      const container = containerRef.current;
+      const imagesScroll = gsap.utils.toArray('.scroll-image');
+
+      gsap.to(imagesScroll, {
+        yPercent: -100 * (imagesScroll.length - 1),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: container,
+          pin: true,
+          start: 'top top',
+          end: () => "+=" + container.offsetHeight,
+          scrub: 2,
+        },
+      });
     });
 
-    return () => {
-      ctx.revert();
-    };
-   
+    return () => ctx.revert();
   }, []);
   console.log(data);
   return (
@@ -262,12 +260,12 @@ export default function Page({data}) {
         <div className="container relative z-10">
           <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10 lg:grid-rows-3'>
             <div className='w-full aspect-square lg:row-span-3 lg:h-full relative rounded-xl overflow-hidden max-sm:order-2'>
-              <ImgUI src={'/inner-page.png'} alt={'Image About car'} imageStyle={'object-center'}/>
+              <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${data?.exteriorReview?.bannerImage?.path}`} alt={'Image About car'} imageStyle={'object-center'}/>
             </div>
             <div className='text-white lg:col-span-2 lg:h-full flex flex-col justify-center lg:justify-between max-sm:order-1'>
               <div className='space-y-2'>
                 <h3 className=' font-conquera text-lg lg:text-xl xl:text-2xl uppercase font-bold'>{t('modelId.header')} {data?.name}</h3>
-                <p className='text-sm lg:text-base'>Обладает современным лаконичным дизайном кузова: светодиодная оптика, приветственное освещение, выдвижные дверные ручки — автомобиль выглядит внушительно и величественно с любого ракурса</p>
+                <p className='text-sm lg:text-base'>{langSelect(i18n.language , data?.exteriorReview?.textRu , data?.exteriorReview?.textUz)}</p>
               </div>
             </div>
             <div className='w-full  max-sm:order-3 sm:col-span-2 lg:row-span-2'>
@@ -288,9 +286,9 @@ export default function Page({data}) {
                 className="exteriorSwiper"
               >
                 {
-                  exteriorData?.map(card => (
+                  data?.exteriorReview?.list?.map(card => (
                     <SwiperSlide key={card?._id} className='w-full h-auto'>
-                      <ExteriorCard title={card?.title} text={card?.text} image={card?.image}/>
+                      <ExteriorCard title={langSelect(i18n.language , card?.titleRu , card?.titleUz)} text={langSelect(i18n.language , card?.textRu , card?.textUz)} image={`${process.env.NEXT_PUBLIC_API_URL}/${card?.image?.path}`}/>
                     </SwiperSlide>
                   ))
                 }
@@ -303,22 +301,22 @@ export default function Page({data}) {
         <div className='grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-10 max-w-[1630px] w-full' >
           <div className='w-full aspect-square md:aspect-[3/2] relative rounded-xl overflow-hidden md:col-span-2'> 
             <div className='w-full h-full absolute top-0 left-0 z-[4]'>
-              <ImgUI src={'/interierdesign-2.jpg'} alt={"Bg Image"}/>
+              <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${data?.interiorReview?.bannerImage?.path}`} alt={"Bg Image"}/>
             </div>
             <div className='w-full h-full absolute top-0 left-0 z-[5] bg-[#00000094]'></div>
             <div className=' rounded-lg backdrop-blur-[20px] p-4 lg:p-7 absolute bottom-0 right-0 z-[6] max-w-[680px] bg-[#FFFFFF1A] shadow-[unset_0_0_30px_0_#FFFFFF] '>
-              <p className='text-[#FFFFFFE6] max-lg:text-xs'>Продуманный салон AITO M7 с тремя рядами сидений - удобное и просторное пространство, где каждый пассажир может иметь независимую аудиосистему и лампы для чтения. Отличительной чертой является сиденье с эффектом нулевой гравитации, дающее ощущение «парения в облаках». В производстве М7 используются самые высококачественные и экологичные материалы</p>
+              <p className='text-[#FFFFFFE6] max-lg:text-xs'>{langSelect(i18n.language , data?.interiorReview?.textRu , data?.interiorReview?.textUz)}</p>
             </div>
             <div className=' absolute z-[7] top-3 left-3 max-w-[430px] md:top-6 md:left-8 xl:top-[50px] xl:left-20'>
-              <SectionTitle title={'Откройте для себя высочайший уровень комфорта'}/>
+              <SectionTitle title={langSelect(i18n.language , data?.interiorReview?.titleRu , data?.interiorReview?.titleUz)}/>
             </div>
           </div>
           <div  className='w-full relative rounded-xl  overflow-hidden aspect-square md:h-full'>
             <div  className='w-full h-full space-y-5' >
               {
-                interiorImages?.map(image => (
+                data?.interiorReview?.list?.map(image => (
                   <div key={image?._id} className='w-full !h-full relative scroll-image'>
-                    <ImgUI src={image?.image} alt={'Aito interior'} />
+                    <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${image?.path}`} alt={'Aito interior'} />
                   </div>
                 ))
               }
@@ -331,25 +329,24 @@ export default function Page({data}) {
           <div className=' relative lg:col-span-4 flex flex-col justify-end items-center pt-[20%] lg:pt-[50%]'>
             <div className='w-[90%] absolute top-0 h-[90%] clip-path-triagle bg-white'></div>
             <div className=' w-[60%] lg:w-[80%] xl:w-[60%] aspect-[37/30] relative'>
-              <ImgUI src={'/modelpage.png'} alt={'Image Aito'}/>
+              <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${data?.equipment?.image?.path}`} alt={'Image Aito'}/>
             </div>
           </div>
           <div className='lg:col-span-5 lg:pt-14 xl:pt-20 space-y-4 ' >
-            <SectionTitle title={'Особенности комплектации'} isDarkText isLittleSize={true}/>
-            <p className=' font-conquera text-lg md:text-xl lg:text-2xl font-bold'>AITO M7</p>
+            <SectionTitle title={t('modelId.features')} isDarkText isLittleSize={true}/>
+            <p className=' font-conquera text-lg md:text-xl lg:text-2xl font-bold uppercase'>{t('modelId.header')} {data?.name}</p>
             <div className='space-y-2 pt-4 lg:pt-12'>
               {
-                featureData?.list?.map(item => (
+                data?.equipment?.list?.map(item => (
                   <div className='flex gap-2' key={item?._id}>
                     <span className='w-1.5 h-1.5 rounded-full bg-black mt-1.5'></span>
-                    <p className=''>{item?.titleRu}</p>
+                    <p className=''>{langSelect(i18n.language , item?.textRu , item?.textUz)}</p>
                   </div>
                 ))
               }
-             
             </div>
             <div className='lg:pt-5'>
-              <ButtonUI extraStyle={'!bg-black !border-none'} text={'Скачать спецификацию'}/>
+              <ButtonUI dowload={true} href={`${process.env.NEXT_PUBLIC_API_URL}/${data?.equipment?.pdf?.path}`} extraStyle={'!bg-black !border-none w-fit'} text={t('btn.downloadSpecification')}/>
             </div>
           </div>
         </div>  
@@ -426,7 +423,7 @@ function SpecificationCard ({title , list , image}) {
   return (
     <div className='bg-currentDark h-full overflow-hidden rounded-xl text-white'>
       <div className='relative w-full aspect-[3/2] overflow-hidden rounded-xl'>
-        <ImgUI src={image}/>
+        <ImgUI src={image} alt={'Specification Image'}/>
       </div>
       <div className=' flex flex-col h-auto items-center justify-between py-4 gap-y-5 lg:py-6 px-2 lg:px-5'>
         <h2 className='lg:text-lg'>{title}</h2>

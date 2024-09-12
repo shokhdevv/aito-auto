@@ -40,6 +40,7 @@
     },
     "modelId": {
       "header": "МОДЕЛЬ",
+      "features": "Особенности комплектации",
       "uz": "УЗ"
     },
     "footer": {
@@ -49,6 +50,7 @@
     "btn": {
       "showMore": "Показать больше",
       "warranty": "Гарантия",
+      "downloadSpecification": "Скачать спецификацию",
       "signService": "Записаться на сервис",
       "more": "Подробнее",
       "readMore": "Читать далее",

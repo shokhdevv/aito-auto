@@ -40,6 +40,7 @@
     },
     "modelId": {
       "header": "MODEL",
+      "features": "Paketning o'ziga xos xususiyatlari",
       "uz": "УЗ"
     },
     "footer": {
@@ -49,6 +50,7 @@
     "btn": {
       "more": "Batafsil ma'lumot",
       "warranty": "Kafolat",
+      "downloadSpecification": "Spetsifikatsiyani yuklab oling",
       "signService": "Xizmatga ro'yxatdan o'ting",
       "showMore": "Ko'proq ko'rish",
       "readMore": "Batafsil oʻqish",

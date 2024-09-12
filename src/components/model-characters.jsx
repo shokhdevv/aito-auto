@@ -165,7 +165,7 @@ export default function ModelCharacters({positions  }) {
                             const x = 50 + 50 * Math.cos(radians); 
                             const y = 50 + 50 * Math.sin(radians); 
                             return (
-                              <ColorBtn y={y} x={x} image={item?.colorImage.path} isActive={item === exterior} onClick={() => handleModelColor(item)}/>
+                              <ColorBtn key={item?._id} y={y} x={x} image={item?.colorImage.path} isActive={item === exterior} onClick={() => handleModelColor(item)}/>
                             )
                           })
                           : 
@@ -176,7 +176,7 @@ export default function ModelCharacters({positions  }) {
                             const x = 50 + 50 * Math.cos(radians); 
                             const y = 50 + 50 * Math.sin(radians); 
                             return (
-                              <ColorBtn y={y} x={x} image={item?.colorImage.path} isActive={item === interior} onClick={() => handleModelColor(item)}/>
+                              <ColorBtn key={item?._id} y={y} x={x} image={item?.colorImage.path} isActive={item === interior} onClick={() => handleModelColor(item)}/>
                             )
                           })
                       }

@@ -1,12 +1,12 @@
 "use client"
 import {BgPage, ButtonUI, HeaderCharacteristics, ImgUI, ModelCharacters, SectionTitle} from '@/components'
-import { Pagination } from 'swiper/modules'
-import { SwiperSlide, Swiper } from 'swiper/react'
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useTranslation } from 'react-i18next';
-import { langSelect } from '@/helper';
+import {Pagination} from 'swiper/modules'
+import {Swiper, SwiperSlide} from 'swiper/react'
+import {useEffect, useRef} from 'react';
+import {gsap} from 'gsap';
+import {ScrollTrigger} from 'gsap/ScrollTrigger';
+import {useTranslation} from 'react-i18next';
+import {langSelect} from '@/helper';
 
 gsap.registerPlugin(ScrollTrigger);
 const characters = [
@@ -208,42 +208,32 @@ const security = [
 export default function Page({data}) {
   const {t , i18n} = useTranslation()
   const containerRef = useRef(null);
+  const parentRef = useRef(null)
+  const childRef = useRef(null)
   useEffect(() => {
     let ctx = gsap.context(() => {
-      let container = containerRef.current;
-      console.log(container.offsetHeight)
-      let imagesScroll = gsap.utils.toArray('.scroll-image');
-        gsap.to(imagesScroll, {
-          yPercent: -100 * (imagesScroll.length - 1),
-          ease: 'none',
-          scrollTrigger: {
-            trigger: container,
-            pin: true,
-            start:'top top',
-            end: () =>  container.offsetHeight,
-            scrub: 3,
-            markers:true
-          },
+      const endHeight = parentRef.current.scrollHeight - childRef.current.offsetHeight
+      gsap.to(
+          parentRef.current,
+          {
+            y: -endHeight,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: containerRef.current,
+              pin: true,
+              start: 'top top',
+              end: '+=' + endHeight,
+              scrub: true,
+              markers: true
+            },
         });
-      const container = containerRef.current;
-      const imagesScroll = gsap.utils.toArray('.scroll-image');
-
-      gsap.to(imagesScroll, {
-        yPercent: -100 * (imagesScroll.length - 1),
-        ease: 'none',
-        scrollTrigger: {
-          trigger: container,
-          pin: true,
-          start: 'top top',
-          end: () => "+=" + container.offsetHeight,
-          scrub: 2,
-        },
-      });
     });
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+    };
+
   }, []);
-  console.log(data);
   return (
     <main className=' overflow-x-hidden'>
       <section className='h-screen relative flex flex-col items-center justify-end'>
@@ -271,7 +261,7 @@ export default function Page({data}) {
         <BgPage positionStyle={'max-lg:hidden lg:w-[500px] xl:w-[600px] bottom-0 lg:-right-[250px] xl:-right-[300px] 2xl:-bottom-2 2xl:-right-[340px] 2xl:w-[680px] 3xl:-right-[360px] 3xl:w-[720px]'}/>
         <BgPage positionStyle={'max-lg:hidden bottom-[-18%] -left-[10%] lg:w-[350px] xl:left-[-120px]'}/>
       </section>
-      <section className='py-7 lg:py-10 bg-currentDark'>
+      <section className='py-7 lg:py-10 bg-currentDark relative'>
         <div className="container relative z-10">
           <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10 lg:grid-rows-3'>
             <div className='w-full aspect-square lg:row-span-3 lg:h-full relative rounded-xl overflow-hidden max-sm:order-2'>
@@ -312,12 +302,14 @@ export default function Page({data}) {
           </div>
         </div>
       </section>
-      <section ref={containerRef}  className='bg-currentDark py-7 lg:pt-10 pb-[90px] flex flex-col items-center justify-center relative z-[-10] h-screen' >
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-10 max-w-[1630px] w-full' >
-          <div className='w-full aspect-square md:aspect-[3/2] relative rounded-xl overflow-hidden md:col-span-2'> 
-            <div className='w-full h-full absolute top-0 left-0 z-[4]'>
+      <section
+          ref={containerRef}
+          className='bg-currentDark py-7 lg:pt-10 pb-[90px] flex flex-col items-center justify-center relative z-[-10] h-screen'>
+        <div className='  grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-10 max-w-[1630px] w-full '>
+          <div className='w-full aspect-square md:aspect-[3/2] relative rounded-xl overflow-hidden md:col-span-2'>
+            {/*<div className='w-full h-full absolute top-0 left-0 z-[4]'>*/}
               <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${data?.interiorReview?.bannerImage?.path}`} alt={"Bg Image"}/>
-            </div>
+            {/*</div>*/}
             <div className='w-full h-full absolute top-0 left-0 z-[5] bg-[#00000094]'></div>
             <div className=' rounded-lg backdrop-blur-[20px] p-4 lg:p-7 absolute bottom-0 right-0 z-[6] max-w-[680px] bg-[#FFFFFF1A] shadow-[unset_0_0_30px_0_#FFFFFF] '>
               <p className='text-[#FFFFFFE6] max-lg:text-xs'>{langSelect(i18n.language , data?.interiorReview?.textRu , data?.interiorReview?.textUz)}</p>
@@ -326,11 +318,11 @@ export default function Page({data}) {
               <SectionTitle title={langSelect(i18n.language , data?.interiorReview?.titleRu , data?.interiorReview?.titleUz)}/>
             </div>
           </div>
-          <div  className='w-full relative rounded-xl  overflow-hidden aspect-square md:h-full'>
-            <div  className='w-full h-full space-y-5' >
+          <div className='w-full relative rounded-xl  overflow-hidden aspect-square  md:h-full'>
+            <div ref={parentRef} className='w-full h-full space-y-5 image-col '>
               {
                 data?.interiorReview?.list?.map(image => (
-                  <div key={image?._id} className='w-full !h-full relative scroll-image'>
+                    <div ref={childRef} key={image?._id} className='w-full relative scroll-image h-full'>
                     <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${image?.path}`} alt={'Aito interior'} />
                   </div>
                 ))

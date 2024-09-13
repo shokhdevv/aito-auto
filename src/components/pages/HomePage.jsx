@@ -18,7 +18,6 @@ export default function HomePage({bannerRes,carRes,aboutRes,newsRes}) {
     const about = useRef();
 
     const {i18n}=useTranslation()
-    console.log(newsRes)
 
 
     useEffect(() => {

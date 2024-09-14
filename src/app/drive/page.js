@@ -1,3 +1,4 @@
+"use client"
 import { BgPage, TestDriveSection } from '@/components'
 import React from 'react'
 

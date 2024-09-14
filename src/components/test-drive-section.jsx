@@ -52,7 +52,6 @@ export default function TestDriveSection() {
   }, []);
 
   const onSubmit = (data) => {
-    console.log(data)
     userPost({url: '/testDrive', data})
   }
 
@@ -65,7 +64,7 @@ export default function TestDriveSection() {
             <form onSubmit={handleSubmit(onSubmit)}
                   className="w-full font-futura flex flex-col items-center gap-5 xl:gap-8">
               <div className="flex flex-col gap-2 w-full">
-                <label htmlFor="changeModel" className="text-labelText max-lg:text-sm ">Выберите модель автомобиля</label>
+                <label htmlFor="changeModel" className="text-labelText max-lg:text-sm ">{t('input.model')}</label>
                 <select
                     {...register('model', {required: true})}
 
@@ -77,44 +76,39 @@ export default function TestDriveSection() {
                       return (
                           <option selected={selectCar} key={car?._id} value={car?.name}
                                   className="cursor-pointer uppercase">Aito {car?.name}</option>
-
                       )
                     })
-
                   }
-
                 </select>
                 {errors.model && (
-                    <span className={"text-red-600 text-xs"}>Select model car</span>
+                    <span className={"text-red-600 text-xs"}>{t('input.model')}</span>
                 )}
               </div>
               <div className="flex flex-col gap-2 w-full">
-                <label htmlFor="name" className="text-labelText max-lg:text-sm ">Ваше имя</label>
+                <label htmlFor="name" className="text-labelText max-lg:text-sm ">{t('input.name')}</label>
                 <input
                     {...register('name', {required: true})}
                     type="text"
-                    placeholder={t('input.name')}
                     id="name"
                     className="focus:outline-none bg-currentDark p-2 border-b border-labelText text-white"
                 />
                 {errors.name && (
-                    <span className={"text-red-600 text-xs"}>Enter your name</span>
+                    <span className={"text-red-600 text-xs"}>{t('input.errorName')}</span>
                 )}
               </div>
               <div className="flex flex-col gap-2 w-full">
-                <label htmlFor="number" className="text-labelText max-lg:text-sm ">Ваш номер телефона</label>
+                <label htmlFor="number" className="text-labelText max-lg:text-sm ">{t('input.telephone')}</label>
                 <InputMask
                     mask="+\9\98 (99) 999-99-99"
                     alwaysShowMask={false}
                     id="tel"
                     type="text"
                     {...register('tel', {required: true})}
-                    placeholder={t('input.telephone')}
                     className="focus:outline-none bg-currentDark p-2 border-b border-labelText text-white"
                 />
 
                 {errors.tel && (
-                    <span className={"text-red-600 text-xs"}>Enter your tel</span>
+                    <span className={"text-red-600 text-xs"}>{t('input.errorTelephone')}</span>
                 )}
               </div>
               <ButtonUI text={userPostLoading ? <AiOutlineLoading className="animate-spin text-2xl"/> : 'Отправить'} extraStyle={'px-5'}/>
@@ -122,8 +116,8 @@ export default function TestDriveSection() {
           </div>
         </div>
         <div className=" text-white space-y-4 md:mt-8 xl:col-span-4 ">
-          <h2 className="text-2xl lg:text-3xl xl:text-[40px]">Запишитесь на тест-драйв</h2>
-          <p className="lg:text-lg xl:text-xl max-w-[600px]">Оставьте заявку на тест-драйв у официального дистрибьютора в Узбекистане.</p>
+          <h2 className="text-2xl lg:text-3xl xl:text-[40px]">{t('drive.title')}</h2>
+          <p className="lg:text-lg xl:text-xl max-w-[600px]">{t('drive.text')}</p>
         </div>
       </div>
       <div className="absolute right-0 bottom-0 w-[60%] lg:w-[80%] h-full z-[5] max-md:hidden ">

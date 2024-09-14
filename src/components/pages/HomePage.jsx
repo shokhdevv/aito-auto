@@ -17,9 +17,7 @@ export default function HomePage({bannerRes,carRes,aboutRes,newsRes}) {
     const slider = useRef();
     const about = useRef();
 
-    const {i18n}=useTranslation()
-    console.log(newsRes)
-
+    const {i18n , t}=useTranslation()
 
     useEffect(() => {
         let ctx = gsap.context(() => {
@@ -161,7 +159,7 @@ export default function HomePage({bannerRes,carRes,aboutRes,newsRes}) {
             <section ref={about} className="relative bg-[#F9F9F9] max-md:pt-10 overflow-x-hidden overflow-y-visible md:pb-16 ">
                 <div className="container">
                     <h2 className=" text-[14vw] md:text-[12vw] !leading-[1.3] font-goodTiming text-nowrap ">
-                        <span className=" gradient-text-light ">О БРЕНДЕ</span>
+                        <span className=" gradient-text-light ">{t('index.about')}</span>
                     </h2>
                     <h4 className="text-[5.8vw] font-conquera font-bold  !leading-[1.3] -translate-y-[40%]">
                         <span className="gradient-text-dark">AITO</span>

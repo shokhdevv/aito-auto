@@ -9,11 +9,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 
 export default function page({data}) {
   const {t , i18n } = useTranslation()
-  i18next.on('languageChanged', (lng) => {
-    console.log('Language changed to', lng);
-});
   return (
-    <>
+    <main className='overflow-x-hidden'>
       <NewsBanner title={langSelect(i18n.language , data?.titleRu ,data?.titleUz)} date={moment(data?.createdAt).format('MMM DD, YYYY')} image={`${process.env.NEXT_PUBLIC_API_URL}/${data?.image?.path}`}/> 
       <section className='py-6 lg:pt-[50px] bg-currentDark text-white'>
         <div className="container flex flex-col items-center space-y-6 lg:space-y-10">
@@ -61,6 +58,6 @@ export default function page({data}) {
           </div>
         </div>
       </section>
-    </>
+    </main>
   )
 }

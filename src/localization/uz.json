@@ -5,8 +5,7 @@
       "models": "Modellar",
       "drive": "Test drayv",
       "contact": "Bog'lanish",
-      "innovation": "Inovatsiyalar",
-      "dealers": "Servislar",
+      "service": "Servislar",
       "news": "Yangiliklar"
     },
     "newsInner" : "Boshqa yangiliklar",
@@ -41,7 +40,9 @@
     "modelId": {
       "header": "MODEL",
       "features": "Paketning o'ziga xos xususiyatlari",
-      "uz": "УЗ"
+      "charactersTitle" : " Texnik xususiyatlari",
+      "charactersText" : " Avtomobilning ichki tizimlari haqida ko'proq bilib oling",
+      "security" : "Xavfsizlik"
     },
     "footer": {
       "allRights": "Barcha huquqlar himoyalangan.",
@@ -53,11 +54,15 @@
       "downloadSpecification": "Spetsifikatsiyani yuklab oling",
       "signService": "Xizmatga ro'yxatdan o'ting",
       "showMore": "Ko'proq ko'rish",
-      "readMore": "Batafsil oʻqish",
-      "downloadCatalog": "Katalog yuklab olish",
+      "drive": "Test-drayv",
+      "learnMore": "Batafsil ma'lumot oling",
       "send": "So'rov yuborish"
     },
-
+    "about": {
+      "mission": "Missiya",
+      "task": "Maqsadlar va vazifalar",
+      "main": "Asosiy qadriyatlar"
+    },
     "innerModel": {
       "specs": "Xususiyatlari",
       "sizes": "O'lchamlari",
@@ -68,35 +73,17 @@
       "positions": "Pozitsiyalar"
     },
     "index": {
-      "ourModels": "Bizning modellarimiz",
+      "range": "Yurish zahirasi",
+      "acceleration": "100 km/soatgacha tezlanish",
+      "power": "Eng yuqori quvvat",
       "ourNews": " Yangiliklarimiz"
     },
     "drive": {
-      "title": "Test haydovi uchun so'rov",
-      "chooseModel": "Modelni tanlang",
-      "errorModel": "Model talab qilinadi",
-      "chooseDealerTitle": "Diler tanlash",
-      "errorRegion": "Hudud talab qilinadi",
-      "chooseRegion": "Hududni tanlang",
-      "chooseDealer": "Dilerni tanlang",
-      "errorDealer": "Diler talab qilinadi",
-      "contractTitle": "Vaqtni kelishish",
-      "errorDate": "Kun talab qilinadi",
-      "chooseDate": "Kunni tanlang",
-      "errorTime": "Vaqt talab qilinadi",
-      "chooseTime": "Vaqtni tanlang",
-      "dataTitle": "Ma'lumotlaringiz",
-      "errorName": "Ismingiz kerak",
-      "chooseName": "F.I.Sh",
-      "chooseNumber": "Telefon",
-      "errorNumber": "Telefon raqami kerak"
+      "title": "Test-drayvga yoziling",
+      "text": "O'zbekistondagi rasmiy distribyutordan test-drayvga ariza qoldiring."
     },
      "modal": {
       "successTitle": "Sizning arizangiz qabul qilindi"
-    },
-    "about": {
-      "title": "Leapmotor haqida",
-      "awards": "Mukofotlar"
     }
   }
 }

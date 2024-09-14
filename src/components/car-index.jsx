@@ -1,11 +1,11 @@
+import { useTranslation } from "react-i18next";
 import { AnimationBtn, ImgUI } from ".";
 
 export default function CarIndex({ name, image , slug ,  useRef }) {
-
-
+  const {t} = useTranslation() 
   return (
       <section ref={useRef} className="px-[5%] py-10 comparisonSection">
-        <h2 className="text-[10vw] text-nowrap text-center font-extrabold font-conquera !leading-[1.3]">
+        <h2 className="text-[10vw] text-nowrap text-center uppercase font-extrabold font-conquera !leading-[1.3]">
           <span className="gradient-text">{name}</span>
         </h2>
         <div className="lg:mx-[8%] relative">
@@ -14,7 +14,7 @@ export default function CarIndex({ name, image , slug ,  useRef }) {
           </div>
         </div>
         <div className="flex justify-center w-full section-btn">
-          <AnimationBtn text={'Узнать больше'} href={slug} />
+          <AnimationBtn text={t('btn.learnMore')} href={slug} />
         </div>
       </section>
   );

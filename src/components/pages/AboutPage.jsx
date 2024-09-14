@@ -7,30 +7,29 @@ import {langSelect} from "@/helper";
 
 
 export default function About({about}) {
-    const {i18n} = useTranslation()
+    const {i18n , t} = useTranslation()
 
     const aboutCards = [
         {
             src: '/icon-1.png',
-            title: 'Миссия',
+            title: t('about.mission'),
             text: langSelect(i18n.language, about?.missionRu, about?.missionUz),
             _id: 0
         },
         {
             src: '/icon-2.png',
-            title: 'Цели и задачи',
+            title:  t('about.task'),
             text: langSelect(i18n.language, about?.objectivesRu, about?.objectivesUz),
             _id: 1
         },
 
         {
             src: '/icon-3.png',
-            title: 'Главные ценности',
+            title:  t('about.main'),
             text: langSelect(i18n.language, about?.valuesRu, about?.valuesUz),
             _id: 2
         },
     ]
-    console.log(about)
     useEffect(() => {
         const countNumberElements = gsap.utils.toArray(".countNumber");
         gsap.from(countNumberElements, {

@@ -11,6 +11,7 @@ import { langSelect } from '@/helper';
 import gsap from 'gsap';
 
 export default function Navbar() {
+  const {t} = useTranslation()
   const [navScroll, setNavScroll] = useState(false);
   const [openNav, setOpenNav] = useState(false);
   const [isScrollingDown, setIsScrollingDown] = useState(false);
@@ -51,20 +52,20 @@ export default function Navbar() {
           {
             NavList.slice(0, 3).map(link => (
               <li className='!font-future' key={link._id}>
-                <Link href={link.slug}>{link.name}</Link>
+                <Link href={link.slug}>{t(link.name)}</Link>
               </li>
             ))
           }
         </ul>
         <Link href={'https://aitoauto.uz/'} className='w-[140px] h-5 lg:w-[175px] lg:h-6 relative'>
-          <ImgUI objectFitContain src={'/aitologo.png'} alt={'Aito Logo'} />
+          <ImgUI objectFitContain src={'/aitologo.png'} priority alt={'Aito Logo'} />
         </Link>
         <div className='flex items-center gap-3 xl:gap-6 lg:w-[40%] justify-end'>
           <ul className='max-lg:hidden text-white !font-future flex items-center gap-3 text-sm xl:text-base xl:gap-6'>
             {
               NavList.slice(3).map(link => (
                 <li className='' key={link._id}>
-                  <Link href={link.slug}>{link.name}</Link>
+                  <Link href={link.slug}>{t(link.name)}</Link>
                 </li>
               ))
             }
@@ -82,7 +83,7 @@ export default function Navbar() {
               {
                 NavList.map(link => (
                   <li className='' key={link._id}>
-                    <Link href={link.slug}>{link.name}</Link>
+                    <Link href={link.slug}>{t(link.name)}</Link>
                   </li>
                 ))
               }
@@ -146,7 +147,7 @@ const NavbarDropdownLang = () => {
     setDropdown(false);
   };
   return (
-    <div className={"relative "}>
+    <div className={"relative cursor-pointer"}>
       <div className="flex gap-1 items-center"  ref={dropdownRef} onClick={() => openDropdown()}>
          <IoGlobeOutline className='w-5 h-5 text-white' />
          <span className='text-sm xl:text-base text-white'>

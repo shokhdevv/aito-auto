@@ -367,8 +367,8 @@ export default function Page({data}) {
           <ImgUI src={'/bg-inner.png'} alt={'Bg Image'} />
         </div>
         <div className="container flex flex-col items-center relative z-10 px-[5%]">
-          <SectionTitle title={'Технические характеристики'} extraStyle={'text-center'} isLittleSize={true}/>
-          <p className=' text-white text-center mt-2 lg:mt-4 max-lg:text-sm'>Узнайте больше о внутренних системах автомобиля</p>
+          <SectionTitle title={t('modelId.charactersTitle')} extraStyle={'text-center'} isLittleSize={true}/>
+          <p className=' text-white text-center mt-2 lg:mt-4 max-lg:text-sm'>{t('modelId.charactersText')}</p>
           <div className='w-full mt-6 lg:mt-10 xl:mt-[60px]'>
              <Swiper
               slidesPerView={1}
@@ -391,9 +391,9 @@ export default function Page({data}) {
               className="SwiperSpecification custom-pagination"
             >
               {
-                characters?.map(card => (
+                data?.technicalCharacter?.map(card => (
                   <SwiperSlide className='!h-[auto]' key={card?._id}>
-                    <SpecificationCard title={card?.title} list={card?.list} image={card?.image}/>
+                    <SpecificationCard title={langSelect(i18n.language , card?.titleRu ,card?.titleUz)} text={langSelect(i18n.language , card?.textRu ,card?.textUz)} image={`${process.env.NEXT_PUBLIC_API_URL}/${card?.image?.path}`}/>
                   </SwiperSlide>
                 ))
               }
@@ -403,25 +403,16 @@ export default function Page({data}) {
       </section>
       <section className='bg-[#151515] pt-7 lg:pt-[50px] pb-5 flex flex-col items-center'>
         <div className="container flex flex-col items-center ">
-          <SectionTitle title={'Безопасность'} isTextCenter />
+          <SectionTitle title={t('modelId.security')} isTextCenter />
         </div>
           <div className='flex flex-wrap justify-evenly w-full gap-y-6 mt-7 lg:mt-10 max-w-[1820px]'>
             {
-              security?.map((card , idx) => (
+              data?.safety?.map((card , idx) => (
                 <div key={card?._id} className='w-[100%] md:w-[30%] lg:w-[23%] xl:w-[20%] '>
-                  <SecurityCard text={card?.text} title={card?.title} idx={idx}/>
+                  <SecurityCard text={langSelect(i18n.language , card?.textRu ,card?.textUz)} title={langSelect(i18n.language , card?.titleRu ,card?.titleUz)} idx={++idx}/>
                 </div>
               ))
             }
-            <div className='w-[100%] md:w-[30%] lg:w-[23%] xl:w-[20%] '>
-              <SecurityCard/>
-            </div>
-            <div className='w-[100%] md:w-[30%] lg:w-[23%] xl:w-[20%] '>
-              <SecurityCard/>
-            </div>
-            <div className='w-[100%] md:w-[30%] lg:w-[23%] xl:w-[20%] '>
-              <SecurityCard/>
-            </div>
           </div>
       </section>
     </main>
@@ -430,7 +421,7 @@ export default function Page({data}) {
 
 
 
-function SpecificationCard ({title , list , image}) {
+function SpecificationCard ({title , text , image}) {
   return (
     <div className='bg-currentDark h-full overflow-hidden rounded-xl text-white'>
       <div className='relative w-full aspect-[3/2] overflow-hidden rounded-xl'>
@@ -440,14 +431,7 @@ function SpecificationCard ({title , list , image}) {
         <h2 className='lg:text-lg'>{title}</h2>
         <div className='w-full flex flex-col items-center text-center text-[#FFFFFFCC] gap-1 text-sm'>
           <span className='h-[0.5px] bg-[#FFFFFFCC] w-[40%]  mb-3 lg:mb-6'></span>
-          {
-            list.map(item => (
-              <div key={item?._id} className='max-md:flex-col flex items-center gap-1'>
-                <p>{item?.key}</p>
-                <p>{item?.value}</p>
-              </div>
-            ))
-          }
+          <p className=' text-center'>{text}</p>
         </div>
       </div>
     </div>

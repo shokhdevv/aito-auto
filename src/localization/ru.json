@@ -1,13 +1,12 @@
 {
   "translation": {
     "navbar": {
-      "about": "Biz haqimizda",
-      "models": "Modellar",
-      "drive": "Test drayv",
-      "contact": "Bog'lanish",
-      "innovation": "Inovatsiyalar",
-      "dealers": "Servislar",
-      "news": "Yangiliklar"
+      "about": "О нас",
+      "models": "Модели",
+      "drive": "Тест-драйв",
+      "contact": "Контакты",
+      "service": "Сервисы",
+      "news": "Новости"
     },
     "newsInner" : "Другие новости",
     "contact" : {
@@ -41,56 +40,37 @@
     "modelId": {
       "header": "МОДЕЛЬ",
       "features": "Особенности комплектации",
-      "uz": "УЗ"
+      "charactersTitle" : " Технические характеристики",
+      "charactersText" : " Узнайте больше о внутренних системах автомобиля      ",
+      "security" : "Безопасность"
+    },
+    "about": {
+      "mission": "Миссия",
+      "task": "Цели и задачи",
+      "main": "Главные ценности"
     },
     "footer": {
-      "allRights": "Все права защищены.",
-      "byCreated": "Сайт создан:"
+      "allRights": "Все права защищены."
     },
     "btn": {
-      "showMore": "Показать больше",
       "warranty": "Гарантия",
       "downloadSpecification": "Скачать спецификацию",
       "signService": "Записаться на сервис",
       "more": "Подробнее",
-      "readMore": "Читать далее",
-      "downloadCatalog": "Скачать каталог",
+      "drive": "Тест-драйв",
+      "learnMore": "Узнать больше",
       "send": "Отправить запрос"
     },
-    
-    "serviceCard": {
-      "testDrive": "Тест-драйв",
-      "saleCar": "Покупка автомобиля",
-      "dealer": "Стать дилером",
-      "contactUs": "Связаться с нами"
-    },
     "index": {
-      "ourModels": "Наши модели",
+      "range": "Запас хода",
+      "power": "Пиковая мощность",
+      "acceleration": "Разгон до 100 км/ч",
+      "about" : "О БРЕНДЕ",
       "ourNews": "Новости"
     },
-    "about": {
-      "title": "О компании Leapmotor ",
-      "awards": "Награды"
-    },
     "drive": {
-      "title": "Запрос на тест-драйв",
-      "chooseModel": "Выберите модель",
-      "errorModel": "Требуется модель",
-      "chooseDealerTitle": "Выбор дилера",
-      "errorRegion": "Требуется регион",
-      "chooseRegion": "Выберите регион",
-      "chooseDealer": "Выберите дилера",
-      "errorDealer": "Требуется дилера",
-      "contractTitle": "Договориться о времени",
-      "errorDate": "Требуется день",
-      "chooseDate": "Выберите день",
-      "errorTime": "Требуется время",
-      "chooseTime": "Выберите время",
-      "dataTitle": "  Ваши данные",
-      "errorName": "Требуется ваши данные",
-      "chooseName": " Ф.И.О.",
-      "chooseNumber": "Телефон",
-      "errorNumber": "Требуется телефон данные"
+      "title": "Запишитесь на тест-драйв",
+      "text": "Оставьте заявку на тест-драйв у официального дистрибьютора в Узбекистане."
     },
     "modal": {
       "successTitle": "Ваша заявка принята"

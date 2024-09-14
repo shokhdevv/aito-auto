@@ -17,8 +17,7 @@ export default function HomePage({bannerRes,carRes,aboutRes,newsRes}) {
     const slider = useRef();
     const about = useRef();
 
-    const {i18n}=useTranslation()
-
+    const {i18n , t}=useTranslation()
 
     useEffect(() => {
         let ctx = gsap.context(() => {
@@ -160,8 +159,8 @@ export default function HomePage({bannerRes,carRes,aboutRes,newsRes}) {
             </section>
             <section ref={about} className="relative bg-[#F9F9F9] max-md:pt-10 overflow-x-hidden overflow-y-visible md:pb-16 ">
                 <div className="container">
-                    <h2 className=" text-[14vw] md:text-[12vw] !leading-[1.3] font-goodTiming text-nowrap ">
-                        <span className=" gradient-text-light ">О БРЕНДЕ</span>
+                    <h2 className=" text-[12vw] md:text-[10vw] 3xl:text-[200px] !leading-[1.3] font-goodTiming text-nowrap ">
+                        <span className=" gradient-text-light ">{t('index.about')}</span>
                     </h2>
                     <h4 className="text-[5.8vw] font-conquera font-bold  !leading-[1.3] -translate-y-[40%]">
                         <span className="gradient-text-dark">AITO</span>
@@ -176,8 +175,8 @@ export default function HomePage({bannerRes,carRes,aboutRes,newsRes}) {
             </section>
             <section className=" bg-gradient-to-b from-[#2A2A2A] to-[#151515] py-14 relative">
                 <div className="container relative z-10">
-                    <h2 className="text-[14vw] md:text-[12vw] !leading-[1.3] mb-5 font-goodTiming font-bold text-nowrap">
-                        <span className="gradient-text-black ">НОВОСТИ</span>
+                    <h2 className="text-[12vw] md:text-[10vw] 3xl:text-[200px] !leading-[1.3] mb-5 font-goodTiming font-bold text-nowrap">
+                        <span className="gradient-text-black ">{t('index.ourNews')}</span>
                     </h2>
                     <NewsSwiper newsRes={newsRes}/>
                 </div>

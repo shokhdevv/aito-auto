@@ -12,7 +12,7 @@ export default function Footer() {
   const {refetch,data}=useQuery('footer',()=>apiService.getData('/contact'),{
     enabled:false
   })
-  const {i18n}=useTranslation()
+  const {i18n , t}=useTranslation()
 
   useEffect(() => {
     refetch()
@@ -26,7 +26,7 @@ export default function Footer() {
           <FaMapMarkerAlt className="text-[#FFFFFFCC] lg:text-2xl"/>
           <p className=" text-sm xl:text-base">{langSelect(i18n.language,data?.addressRu,data?.addressUz)}</p>
         </div>
-        <a href="tel:+998 98 999 88 99" className='flex gap-2 max-lg:justify-center xl:gap-4 '>
+        <a href={`tel:${data?.tel[0]}`} className='flex gap-2 max-lg:justify-center xl:gap-4 '>
           <BsFillTelephoneFill  className="text-[#FFFFFFCC] lg:text-2xl"/>
           <p className=" text-sm xl:text-base">{data?.tel[0]}</p>
         </a>
@@ -42,7 +42,7 @@ export default function Footer() {
           </a>
         </div>
         <div className="text-sm xl:text-base flex justify-center lg:justify-end">
-          &copy; {year}. Все права защищены.
+          &copy; {year}. {t('footer.allRights')}
         </div>
       </div>
     </footer>

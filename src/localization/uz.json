@@ -8,30 +8,30 @@
       "service": "Servislar",
       "news": "Yangiliklar"
     },
-    "newsInner" : "Boshqa yangiliklar",
-    "contact" : {
-      "title": "Kontaktlar",
+    "newsInner": "Boshqa yangiliklar",
+    "contact": {
+      "title": "Bog'lanish",
       "formTitle": "Savollaringiz bormi? Biz sizga yordam beramiz",
-      "formText" : "Iltimos, qisqa shaklni to'ldiring. Bizning operatorimiz siz uchun qulay vaqtda siz bilan bog'lanadi"
+      "formText": "Iltimos, qisqa shaklni to‘ldiring. Bizning operatorimiz sizga qulay bo'lgan vaqtda siz bilan bog'lanadi"
     },
     "input": {
       "name": "Ism",
       "errorName": "Ismingizni kiriting",
-      "telephone": "Telefon raqami",
-      "errorTelephone": "Telefonni kiriting",
+      "telephone": "Telefon raqam",
+      "errorTelephone": "Telefon raqamingizni kiriting",
       "comment": "Izoh",
       "errorComment": "Izohingizni kiriting",
       "reason": "Murojaat sababi",
       "errorReason": "Murojaat sababini kiriting",
       "model": "Modelni tanlang",
       "errorModel": "Modelni tanlang",
-      "date": "Sanani kiriting",
-      "errorDate": "Sanani kiriting",
-      "time": "Vaqtni kiriting",
-      "errorTime": "Vaqtni kiriting"
+      "date": "Sanani belgilang",
+      "errorDate": "Sanani belgilang",
+      "time": "Vaqtni belgilang",
+      "errorTime": "Vaqtni belgilang"
     },
     "service": {
-      "modalTitle": "Xizmatga yozilish"
+      "modalTitle": "Servisga yozilish"
     },
     "lang": {
       "ru": "RU",
@@ -39,50 +39,40 @@
     },
     "modelId": {
       "header": "MODEL",
-      "features": "Paketning o'ziga xos xususiyatlari",
-      "charactersTitle" : " Texnik xususiyatlari",
-      "charactersText" : " Avtomobilning ichki tizimlari haqida ko'proq bilib oling",
-      "security" : "Xavfsizlik"
-    },
-    "footer": {
-      "allRights": "Barcha huquqlar himoyalangan.",
-      "byCreated": "Web-sayt yaratildi:"
-    },
-    "btn": {
-      "more": "Batafsil ma'lumot",
-      "warranty": "Kafolat",
-      "downloadSpecification": "Spetsifikatsiyani yuklab oling",
-      "signService": "Xizmatga ro'yxatdan o'ting",
-      "showMore": "Ko'proq ko'rish",
-      "drive": "Test-drayv",
-      "learnMore": "Batafsil ma'lumot oling",
-      "send": "So'rov yuborish"
+      "features": "Jihozlash xususiyatlari",
+      "charactersTitle": "Texnik xususiyatlari",
+      "charactersText": "Avtomobilning ichki tizimlari haqida ko‘proq bilib oling",
+      "security": "Xavfsizlik"
     },
     "about": {
       "mission": "Missiya",
       "task": "Maqsadlar va vazifalar",
       "main": "Asosiy qadriyatlar"
     },
-    "innerModel": {
-      "specs": "Xususiyatlari",
-      "sizes": "O'lchamlari",
-      "features": "Funktsiyalari",
-      "tvc": "TVC",
-      "interior": "Ichki",
-      "exterior": "Tashqi ko'rinish",
-      "positions": "Pozitsiyalar"
+    "footer": {
+      "allRights": "Barcha huquqlar himoyalangan."
+    },
+    "btn": {
+      "warranty": "Kafolat",
+      "downloadSpecification": "Texnik ma'lumotlarni yuklab olish",
+      "signService": "Servisga yozilish",
+      "more": "Batafsil",
+      "drive": "Test drayv",
+      "learnMore": "Ko‘proq bilib oling",
+      "send": "So‘rov yuborish"
     },
     "index": {
-      "range": "Yurish zahirasi",
-      "acceleration": "100 km/soatgacha tezlanish",
+      "range": "Yurish zaxirasi",
       "power": "Eng yuqori quvvat",
-      "ourNews": " Yangiliklarimiz"
+      "acceleration": "100 km/soatgacha tezlashish",
+      "about": "BREND HAQIDA",
+      "ourNews": "Yangiliklar"
     },
     "drive": {
-      "title": "Test-drayvga yoziling",
-      "text": "O'zbekistondagi rasmiy distribyutordan test-drayvga ariza qoldiring."
+      "title": "Test drayvga yoziling",
+      "text": "O‘zbekistondagi rasmiy distribyutordan test drayvga ariza bering."
     },
-     "modal": {
+    "modal": {
       "successTitle": "Sizning arizangiz qabul qilindi"
     }
   }

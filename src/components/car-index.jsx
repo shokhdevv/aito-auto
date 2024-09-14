@@ -5,7 +5,7 @@ export default function CarIndex({ name, image , slug ,  useRef }) {
   const {t} = useTranslation() 
   return (
       <section ref={useRef} className="px-[5%] py-10 comparisonSection">
-        <h2 className="text-[10vw] text-nowrap text-center uppercase font-extrabold font-conquera !leading-[1.3]">
+        <h2 className="text-[10vw] text-nowrap 3xl:text-[180px] text-center uppercase font-extrabold font-conquera !leading-[1.3]">
           <span className="gradient-text">{name}</span>
         </h2>
         <div className="lg:mx-[8%] relative">

@@ -18,7 +18,7 @@ export default function NewsCard({news}) {
         <div className="bg-[#FFFFFF08] w-full h-full rounded-xl p-3 md:p-4 overflow-hidden backdrop-blur-[20px]">
           <div className="flex gap-5 lg:gap-7 justify-between">
             <div className="font-futura text-sm  space-y-2 3xl:text-base text-white !leading-[1.1] gap-4 lg:gap-7 ">
-              <p className=" font-medium   text-lg h-16">{langSelect(i18n.language , news?.titleRu , news?.titleUz)}</p>
+              <p className=" font-medium   text-lg h-[56px] line-clamp-2	">{langSelect(i18n.language , news?.titleRu , news?.titleUz)}</p>
               <p className=" font-normal">{formattedDate}</p>
             </div>
             <div className="p-1.5 lg:p-2.5 rounded-full overflow-hidden bg-[#1C1C1C] shrink-0 h-fit mt-1.5">

@@ -48,8 +48,8 @@ export default function About({about}) {
             <section className='relative flex h-[70vh] flex-col justify-center'>
                 <div className="w-full h-full absolute top-0 left-0 z-[4] overflow-hidden">
                     <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${about?.bannerWeb?.path}`} alt={"Banner Image"}
-                           imageStyle={'!object-center'}/>
-                    {/*<ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${about?.bannerRes?.path}`} alt={"Banner Image"} imageStyle={'!object-center'} />*/}
+                           imageStyle={'!object-center lg:block hidden'}/>
+                    <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${about?.bannerRes?.path}`} alt={"Banner Image"} imageStyle={'!object-center lg:hidden '} />
                 </div>
                 <div
                     className='w-full h-full bg-[linear-gradient(231deg,#0B0B0B00_0%,#0404048D_56%,#000000CC_80%)] absolute top-0 left-0 z-[6]'></div>

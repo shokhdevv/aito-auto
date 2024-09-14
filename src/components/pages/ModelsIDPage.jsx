@@ -2,7 +2,7 @@
 import {BgPage, ButtonUI, HeaderCharacteristics, ImgUI, ModelCharacters, SectionTitle} from '@/components'
 import {Pagination} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
-import {useEffect, useRef} from 'react';
+import {useLayoutEffect, useRef} from 'react';
 import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {useTranslation} from 'react-i18next';
@@ -210,30 +210,34 @@ export default function Page({data}) {
   const containerRef = useRef(null);
   const parentRef = useRef(null)
   const childRef = useRef(null)
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      const endHeight = parentRef.current.scrollHeight - childRef.current.offsetHeight
-      gsap.to(
-          parentRef.current,
-          {
-            y: -endHeight,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: containerRef.current,
-              pin: true,
-              start: 'top top',
-              end: '+=' + endHeight,
-              scrub: true,
-              markers: true
-            },
+  useLayoutEffect(() => {
+    const timeout = setTimeout(() => {
+      const endHeight = parentRef.current.scrollHeight - childRef.current.offsetHeight;
+      let ctx = gsap.context(() => {
+        gsap.to(parentRef.current, {
+          y: -endHeight,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            pin: true,
+            start: 'top top',
+            end: '+=' + endHeight,
+            scrub: true,
+            markers: true,
+            invalidateOnRefresh: true,
+          },
         });
-    });
+      });
 
-    return () => {
-      ctx.revert();
-    };
+      ScrollTrigger.refresh();
 
-  }, []);
+      return () => {
+        ctx.revert();
+      };
+    }, 0); // Delay of 0 allows the layout to fully stabilize
+
+    return () => clearTimeout(timeout);
+  }, [data]);
   return (
     <main className=' overflow-x-hidden'>
       <section className='h-screen relative flex flex-col items-center justify-end'>
@@ -304,7 +308,7 @@ export default function Page({data}) {
       </section>
       <section
           ref={containerRef}
-          className='bg-currentDark py-7 lg:pt-10 pb-[90px] flex flex-col items-center justify-center relative z-[-10] h-screen'>
+          className='border border-white bg-currentDark py-7 lg:pt-10 pb-[90px] flex flex-col items-center justify-center relative z-[-10] h-screen'>
         <div className='  grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-10 max-w-[1630px] w-full '>
           <div className='w-full aspect-square md:aspect-[3/2] relative rounded-xl overflow-hidden md:col-span-2'>
             {/*<div className='w-full h-full absolute top-0 left-0 z-[4]'>*/}

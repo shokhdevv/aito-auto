@@ -43,7 +43,6 @@ export default function HomePage({bannerRes,carRes,aboutRes,newsRes}) {
                                 start: '-50% top',
                                 end: 'center center',
                                 scrub: 2,
-                                marker:true,
                             },
                         }
                     );
@@ -62,6 +61,8 @@ export default function HomePage({bannerRes,carRes,aboutRes,newsRes}) {
                                 start: '-50% top',
                                 end: 'center center',
                                 scrub: 2,
+                                markers:true,
+
                             },
                         }
                     );

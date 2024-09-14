@@ -4,3 +4,4 @@ news Id page apis adding
 
 `${process.env.NEXT_PUBLIC_API_URL}/${data?.image?.path}`
 
+

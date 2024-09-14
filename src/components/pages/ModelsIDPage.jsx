@@ -211,32 +211,27 @@ export default function Page({data}) {
   const parentRef = useRef(null)
   const childRef = useRef(null)
   useLayoutEffect(() => {
-    const timeout = setTimeout(() => {
       const endHeight = parentRef.current.scrollHeight - childRef.current.offsetHeight;
-      let ctx = gsap.context(() => {
-        gsap.to(parentRef.current, {
+    let ctx = gsap.to(parentRef.current, {
           y: -endHeight,
           ease: 'none',
           scrollTrigger: {
             trigger: containerRef.current,
             pin: true,
-            start: 'top top',
+            start: `550 top`,
             end: '+=' + endHeight,
             scrub: true,
             markers: true,
             invalidateOnRefresh: true,
           },
         });
-      });
 
       ScrollTrigger.refresh();
 
       return () => {
-        ctx.revert();
+        ctx.kill();
       };
-    }, 0); // Delay of 0 allows the layout to fully stabilize
 
-    return () => clearTimeout(timeout);
   }, [data]);
   return (
     <main className=' overflow-x-hidden'>

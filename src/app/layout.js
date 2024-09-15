@@ -54,7 +54,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`font-futura ${futura.variable} ${conquera.variable} ${goodTiming.variable} `}>
+      <body suppressHydrationWarning={true} className={`font-futura ${futura.variable} ${conquera.variable} ${goodTiming.variable} `}>
        <Layout>
         {children}
        </Layout>

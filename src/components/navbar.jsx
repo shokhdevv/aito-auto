@@ -57,7 +57,7 @@ export default function Navbar() {
             ))
           }
         </ul>
-        <Link href={'https://aitoauto.uz/'} className='w-[140px] h-5 lg:w-[175px] lg:h-6 relative'>
+        <Link href={'/'} className='w-[140px] h-5 lg:w-[175px] lg:h-6 relative'>
           <ImgUI objectFitContain src={'/aitologo.png'} priority alt={'Aito Logo'} />
         </Link>
         <div className='flex items-center gap-3 xl:gap-6 lg:w-[40%] justify-end'>

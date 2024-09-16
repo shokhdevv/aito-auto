@@ -40,21 +40,21 @@ export default function IndexBanner({banner}) {
           <div className='grid grid-cols-3 text-white w-full lg:w-fit divide-x divide-white'>
             <div className='px-5 gap-2 flex flex-col items-center '>
               <div className='w-[42px] aspect-square lg:w-[52px] relative'>
-                <ImgUI src={'/speed.svg'} alt={'Speed icon'}/>
+                <ImgUI src={'/front/speed.svg'} alt={'Speed icon'}/>
               </div>
               <h3 className=' font-futura text-lg md:text-xl text-center lg:text-2xl  xl:text-3xl'>{banner?.powerReserve} км</h3>
               <p className=' text-sm text-center font-futura'>{t('index.range')}</p>
             </div>
             <div className='px-5 gap-2 flex flex-col items-center '>
               <div className='w-[42px] aspect-square lg:w-[52px] relative'>
-                <ImgUI src={'/hybrid.svg'} alt={'hybrid icon'}/>
+                <ImgUI src={'/front/hybrid.svg'} alt={'hybrid icon'}/>
               </div>
               <h3 className=' font-futura text-lg md:text-xl text-center lg:text-2xl  xl:text-3xl'>{banner?.peakPower} л.с</h3>
               <p className=' text-sm text-center font-futura'>{t('index.power')}</p>
             </div>
             <div className='px-5 gap-2 flex flex-col items-center '>
               <div className='w-[42px] aspect-square lg:w-[52px] relative'>
-                <ImgUI src={'/speedometer.svg'} alt={'speedometer icon'}/>
+                <ImgUI src={'/front/speedometer.svg'} alt={'speedometer icon'}/>
               </div>
               <h3 className=' font-futura text-lg md:text-xl text-center lg:text-2xl  xl:text-3xl'>{banner?.acceleration} сек</h3>
               <p className=' text-sm text-center font-futura'>{t('index.acceleration')}</p>

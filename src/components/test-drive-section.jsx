@@ -121,7 +121,7 @@ export default function TestDriveSection() {
         </div>
       </div>
       <div className="absolute right-0 bottom-0 w-[60%] lg:w-[80%] h-full z-[5] max-md:hidden ">
-          <ImgUI src={'/testdrive1home.png'} alt={'Aito Bg Image'} imageStyle={'object-center'}/>
+          <ImgUI src={'/front/testdrive1home.png'} alt={'Aito Bg Image'} imageStyle={'object-center'}/>
       </div>
       <SuccesModal modal={succesModal} setModal={setSuccessModal}/>
     </>

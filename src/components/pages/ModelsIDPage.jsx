@@ -13,7 +13,7 @@ const characters = [
   {
     title : 'Высоковольтная аккумуляторная батарея',
     _id: 0,
-    image: '/spefication-inner-1.webp',
+    image: '/front/spefication-inner-1.webp',
     list : [
       {
         key: "Расход топлива в смешанном цикле:" ,
@@ -50,7 +50,7 @@ const characters = [
   {
     title : 'Высоковольтная аккумуляторная батарея',
     _id: 1,
-    image: '/spefication-inner-2.webp',
+    image: '/front/spefication-inner-2.webp',
     list : [
       {
         key: "Расход топлива в смешанном цикле:" ,
@@ -87,7 +87,7 @@ const characters = [
   {
     title : 'Высоковольтная аккумуляторная батарея',
     _id: 2,
-    image: '/spefication-inner-3.webp',
+    image: '/front/spefication-inner-3.webp',
     list : [
       {
         key: "Расход топлива в смешанном цикле:" ,
@@ -142,44 +142,44 @@ const featureData = {
 const  exteriorData  = [
   {
     title: "Светодиодная оптика",
-    image: '/ekstrier-1.png',
+    image: '/front/ekstrier-1.png',
     text: "Вытянутые светодиодные фары автомобиля создают утонченный и элегантный облик",
     _id: 0
   },
   {
     title: "Светодиодная оптика Светодиодная оптика Светодиодная оптика ",
-    image: '/ekstrier-2.png',
+    image: '/front/ekstrier-2.png',
     text: "Вытянутые светодиодные фары автомобиля создают утонченный и элегантный облик Вытянутые светодиодные фары автомобиля создают утонченный",
     _id: 1
   },
   {
     title: "Светодиодная оптика",
-    image: '/ekstrier-3.png',
+    image: '/front/ekstrier-3.png',
     text: "Вытянутые светодиодные фары автомобиля создают утонченный и элегантный облик",
     _id: 2
   },
   {
     title: "Светодиодная оптика",
-    image: '/ekstrier-1.png',
+    image: '/front/ekstrier-1.png',
     text: "Вытянутые светодиодные фары автомобиля создают утонченный и элегантный облик",
     _id: 3
   },
 ]
 const interiorImages = [
   {
-    image: '/inner-scroll-1.png',
+    image: '/front/inner-scroll-1.png',
     _id: 0
   },
   {
-    image: '/inner-scroll-2.png',
+    image: '/front/inner-scroll-2.png',
     _id: 1
   },
   {
-    image: '/inner-scroll-3.png',
+    image: '/front/inner-scroll-3.png',
     _id: 2
   },
   {
-    image: '/inner-scroll-1.png',
+    image: '/front/inner-scroll-1.png',
     _id: 3
   },
 ]
@@ -360,7 +360,7 @@ export default function Page({data}) {
       </section>
       <section className='py-8 relative  lg:py-10 xl:pt-[90px] bg-currentDark'>
         <div className='absolute top-0 left-0 w-full h-full z-[5]'>
-          <ImgUI src={'/bg-inner.png'} alt={'Bg Image'} />
+          <ImgUI src={'/front/bg-inner.png'} alt={'Bg Image'} />
         </div>
         <div className="container flex flex-col items-center relative z-10 px-[5%]">
           <SectionTitle title={t('modelId.charactersTitle')} extraStyle={'text-center'} isLittleSize={true}/>

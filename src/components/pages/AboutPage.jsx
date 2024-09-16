@@ -11,20 +11,20 @@ export default function About({about}) {
 
     const aboutCards = [
         {
-            src: '/icon-1.png',
+            src: '/front/icon-1.png',
             title: t('about.mission'),
             text: langSelect(i18n.language, about?.missionRu, about?.missionUz),
             _id: 0
         },
         {
-            src: '/icon-2.png',
+            src: '/front/icon-2.png',
             title:  t('about.task'),
             text: langSelect(i18n.language, about?.objectivesRu, about?.objectivesUz),
             _id: 1
         },
 
         {
-            src: '/icon-3.png',
+            src: '/front/icon-3.png',
             title:  t('about.main'),
             text: langSelect(i18n.language, about?.valuesRu, about?.valuesUz),
             _id: 2

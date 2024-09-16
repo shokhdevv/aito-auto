@@ -2,31 +2,31 @@ export const NavList = [
   {
     name: 'navbar.models',
     _id: 0,
-    slug: '/front/#models'
+    slug: '/#models'
   },
   {
     name: 'navbar.about',
     _id: 1,
-    slug: '/front/about'
+    slug: '/about'
   },
   {
     name: 'navbar.drive',
     _id: 2,
-    slug: '/front/drive'
+    slug: '/drive'
   },
   {
     name: 'navbar.service',
     _id: 3,
-    slug: '/front/service'
+    slug: '/service'
   },
   {
     name: 'navbar.news',
     _id: 4,
-    slug: '/front/news'
+    slug: '/news'
   },
   {
     name: 'navbar.contact',
     _id: 5,
-    slug: '/front/contact'
+    slug: '/contact'
   },
 ]

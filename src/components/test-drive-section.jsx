@@ -74,7 +74,7 @@ export default function TestDriveSection() {
                     data?.map(car => {
                       const selectCar=model ? model===car?.name:false
                       return (
-                          <option selected={selectCar} key={car?._id} value={car?.name}
+                          <option defaultValue={selectCar} key={car?._id} value={car?.name}
                                   className="cursor-pointer uppercase">Aito {car?.name}</option>
                       )
                     })

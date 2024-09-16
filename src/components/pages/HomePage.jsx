@@ -144,7 +144,7 @@ export default function HomePage({bannerRes,carRes,aboutRes,newsRes}) {
                         <div className=" overflow-x-hidden relative"  ref={component}>
                             {
                                 carRes?.map(car=>(
-                            <CarIndex key={car?._id} name={`AITO ${car?.name}`} image={`${process.env.NEXT_PUBLIC_API_URL}/${car?.imageHome?.path}`} slug={`models/${car?.slug}`} useRef={slider}/>
+                            <CarIndex key={car?._id} name={`AITO ${car?.name}`} image={`${process.env.NEXT_PUBLIC_API_URL}/${car?.imageHome?.path}`} slug={`/models/${car?.slug}`} useRef={slider}/>
 
                                 ))
                             }

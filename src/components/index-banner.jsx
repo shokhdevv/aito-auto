@@ -34,7 +34,7 @@ export default function IndexBanner({banner}) {
             )}</p>
             <div className='flex lg:w-full w-fit items-center  pt-3 gap-3 md:gap-6 '>
               <ButtonUI text={t('btn.drive')} onClick={() => handleTestDrive(banner?.car?.name)}/>
-              <ButtonUI href={`models/${banner?.car?.slug}`} text={t('btn.more')} isFillBtn />
+              <ButtonUI href={`/models/${banner?.car?.slug}`} text={t('btn.more')} isFillBtn />
             </div>
           </div>
           <div className='grid grid-cols-3 text-white w-full lg:w-fit divide-x divide-white'>

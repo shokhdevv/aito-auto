@@ -18,29 +18,57 @@ export default function Page({data}) {
 
 
   useEffect(() => {
-    let aboutImage = gsap.utils.toArray(".scroll-image");
-    console.log(aboutImage)
-    const endHeight = parentRef.current.scrollWidth-aboutImage[0].offsetWidth
-  console.log(endHeight)
-      let ctx = gsap.context(() => {
-        gsap.to(aboutImage,
-            {
-              x: -endHeight,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: containerRef.current,
-            pin: true,
-            start: `top top`,
-            end:"+=" +endHeight,
-            scrub: 1,
-            // markers: true
-          },
-        });
+
+
+      let ctx = null
+      ctx = gsap.context(() => {
+        let aboutImage = gsap.utils.toArray(".scroll-image");
+        let mm = gsap.matchMedia();
+
+          function calcEndHeight() {
+              return parentRef.current.scrollHeight - aboutImage[0].offsetHeight
+          }
+
+          mm.add("(max-width:767px)",()=>{
+              gsap.to(aboutImage,
+                  {
+                      y: -calcEndHeight(),
+                      ease: 'none',
+                      scrollTrigger: {
+                          trigger: containerRef.current,
+                          pin: true,
+                          start: `top top`,
+                          end: () => `+=${calcEndHeight()}`,
+                          scrub: 1,
+                          invalidateOnRefresh: true,
+                      },
+                  });
+
+          })
+          mm.add("(min-width:768px)",()=>{
+              gsap.to(aboutImage,
+                  {
+                      y: -calcEndHeight(),
+                      ease: 'none',
+                      scrollTrigger: {
+                          trigger: containerRef.current,
+                          pin: true,
+                          start: `top top`,
+                          end: () => `+=${calcEndHeight()}`,
+                          scrub: 1,
+                          invalidateOnRefresh: true,
+                      },
+                  });
+
+          })
       });
 
 
       return () => {
+          if (ctx !== null) {
         ctx.revert();
+
+          }
       };
 
   }, [data]);
@@ -114,10 +142,10 @@ export default function Page({data}) {
       </section>
       <section
           ref={containerRef}
-          className=' bg-currentDark py-7 lg:pt-10 pb-[90px] flex flex-col items-center justify-center relative z-[-10] h-screen overflow-hidden'>
+          className=' bg-currentDark py-7 lg:pt-10 pb-[90px] flex flex-col items-center justify-center relative z-[-10]  min-h-screen overflow-hidden'>
 
-        <div className='  grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-10 max-w-[1630px] w-full '>
-          <div className='w-full aspect-square md:aspect-[3/2] relative rounded-xl overflow-hidden md:col-span-2'>
+          <div className='container  grid grid-cols-1  md:grid-cols-3 gap-5 lg:gap-10 max-w-[1630px] w-full '>
+              <div className='w-full max-md:h-[40vh] md:aspect-[3/2] relative rounded-xl overflow-hidden md:col-span-2'>
             {/*<div className='w-full h-full absolute top-0 left-0 z-[4]'>*/}
               <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${data?.interiorReview?.bannerImage?.path}`} alt={"Bg Image"}/>
             {/*</div>*/}
@@ -129,8 +157,7 @@ export default function Page({data}) {
               <SectionTitle title={langSelect(i18n.language , data?.interiorReview?.titleRu , data?.interiorReview?.titleUz)}/>
             </div>
           </div>
-          <div  className=' w-full relative rounded-xl  overflow-hidden h-full'>
-            <div ref={parentRef} className='parent flex w-full items-center  h-full gap-5 image-col '>
+              <div ref={parentRef} className='w-full  rounded-xl  overflow-hidden h-[40vh] md:h-full space-y-5  '>
               {
                 data?.interiorReview?.list?.map(image => (
                     <div key={image?._id} className='w-full flex-shrink-0 relative scroll-image h-full'>
@@ -140,7 +167,6 @@ export default function Page({data}) {
                 ))
               }
             </div>
-          </div>
         </div>
       </section>
       <section className='pb-10 bg-[#EEEEEE]'>

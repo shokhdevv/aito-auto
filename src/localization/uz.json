@@ -70,7 +70,8 @@
     },
     "drive": {
       "title": "Test drayvga yoziling",
-      "text": "O‘zbekistondagi rasmiy distribyutordan test drayvga ariza bering."
+      "text": "O‘zbekistondagi rasmiy distribyutordan test drayvga ariza bering.",
+      "select": "Model tanlang"
     },
     "modal": {
       "successTitle": "Sizning arizangiz qabul qilindi"

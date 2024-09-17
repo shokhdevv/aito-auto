@@ -82,8 +82,8 @@ export default function Navbar() {
             <ul className='text-white flex flex-col py-6 px-3 items-start gap-2 text-lg'>
               {
                 NavList.map(link => (
-                  <li className='' key={link._id}>
-                    <Link href={link.slug}>{t(link.name)}</Link>
+                  <li className='' key={link._id} >
+                    <Link onClick={closeNav} href={link.slug}>{t(link.name)}</Link>
                   </li>
                 ))
               }

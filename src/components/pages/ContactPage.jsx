@@ -21,12 +21,10 @@ export default function page({data}) {
       register,
       handleSubmit,
       reset,
-      control,
       formState: {errors},
   } = useForm();
   const {
       mutate: questionsPost,
-      data: questionsPostData,
       isLoading: questionsPostLoading,
       isSuccess: questionsPostSuccess,
   } = useMutation(({url, data}) => apiService.postData(url, data));
@@ -56,11 +54,11 @@ export default function page({data}) {
               <SectionTitle title={t('contact.title')}/>
               <div className='lg:space-y-8 space-y-3 max-md:text-sm'>
                 <div className='text-[#FFFFFFCC] flex items-center gap-4'>
-                  <FaMapMarkerAlt className="lg:text-2xl"/>
+                  <FaMapMarkerAlt className="text-lg lg:text-2xl flex-shrink-0"/>
                   <p>{langSelect(i18n.language , data?.addressRu , data?.addressUz)}</p>
                 </div>
                 <div className='text-[#FFFFFFCC] flex items-center gap-4'>
-                  <BsFillTelephoneFill className="lg:text-2xl"/>
+                  <BsFillTelephoneFill className="text-lg lg:text-2xl flex-shrink-0"/>
                   <div className='flex flex-col'> 
                     {
                       data?.tel?.map((number, idx) => (
@@ -73,13 +71,13 @@ export default function page({data}) {
                   {
                     data?.facebook &&
                     <a target='_blank' href={data?.facebook}>
-                      <FaFacebookF className=" text-2xl duration-200 hover:scale-110" />
+                      <FaFacebookF className=" text-2xl duration-200 hover:scale-110 flex-shrink-0" />
                     </a>
                   }
                   {
                     data?.telegram && 
                     <a target='_blank' href={data?.telegram}>
-                      <FaTelegramPlane  className=" text-2xl duration-200 hover:scale-110" />
+                      <FaTelegramPlane  className=" text-2xl duration-200 hover:scale-110 flex-shrink-0" />
                     </a>
                   }
                   {

@@ -158,7 +158,7 @@ export default function HomePage({bannerRes,carRes,aboutRes,newsRes}) {
             </section>
             <section ref={about} className="relative bg-[#F9F9F9] max-md:pt-10 overflow-x-hidden overflow-y-visible md:pb-16 ">
                 <div className="container">
-                    <h2 className=" text-[12vw] md:text-[10vw] 3xl:text-[200px] !leading-[1.3] font-goodTiming text-nowrap ">
+                    <h2 className=" text-[10vw] 3xl:text-[200px] !leading-[1.3] font-goodTiming text-nowrap ">
                         <span className=" gradient-text-light ">{t('index.about')}</span>
                     </h2>
                     <h4 className="text-[5.8vw] font-conquera font-bold  !leading-[1.3] -translate-y-[40%]">

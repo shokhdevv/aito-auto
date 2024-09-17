@@ -8,7 +8,7 @@ import {useForm} from "react-hook-form";
 import {AiOutlineLoading} from "react-icons/ai";
 import InputMask from "react-input-mask";
 import {useTranslation} from "react-i18next";
-import {useRouter} from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 import {selectCar} from "@/store/slice/testDriveSlice";
 
 
@@ -17,6 +17,7 @@ export default function TestDriveSection() {
   const dispatch=useDispatch()
   const [succesModal , setSuccessModal] = useState(false)
   const router=useRouter()
+  const pathName=usePathname()
   const {
     register,
     handleSubmit,
@@ -30,10 +31,10 @@ export default function TestDriveSection() {
 
   const {
     mutate: userPost,
-    data: userPostData,
     isLoading: userPostLoading,
     isSuccess: userPostSuccess
   }=useMutation(({url, data}) => apiService.postData(url, data))
+
 
   useEffect(() => {
     if (userPostSuccess) {
@@ -41,8 +42,9 @@ export default function TestDriveSection() {
       setSuccessModal(true);
       setTimeout(() => {
         setSuccessModal(false);
-        router.push("/");
         reset()
+        router.push('/')
+
         dispatch(selectCar(model))
       }, 2000);
     }
@@ -67,14 +69,15 @@ export default function TestDriveSection() {
                 <label htmlFor="changeModel" className="text-labelText max-lg:text-sm ">{t('input.model')}</label>
                 <select
                     {...register('model', {required: true})}
-
+                    defaultValue={model}
                     id="changeModel"
                     className="md:text-lg cursor-pointer appearance-none lg:text-xl p-2 !text-white bg-currentDark focus:!outline-none border-b border-labelText uppercase">
+                  <option  value={""}
+                          className="cursor-pointer uppercase" disabled>{t('drive.select')}</option>
                   {
                     data?.map(car => {
-                      const selectCar=model ? model===car?.name:false
                       return (
-                          <option defaultValue={selectCar} key={car?._id} value={car?.name}
+                          <option key={car?._id} value={car?.name}
                                   className="cursor-pointer uppercase">Aito {car?.name}</option>
                       )
                     })

@@ -2,7 +2,7 @@
 import {BgPage, ButtonUI, HeaderCharacteristics, ImgUI, ModelCharacters, SectionTitle} from '@/components'
 import {Pagination} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
-import {useEffect, useRef} from 'react';
+import {useEffect, useLayoutEffect, useRef} from 'react';
 import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {useTranslation} from 'react-i18next';
@@ -209,31 +209,36 @@ export default function Page({data}) {
   const {t , i18n} = useTranslation()
   const containerRef = useRef(null);
   const parentRef = useRef(null)
-  const childRef = useRef(null)
+
+
+
   useEffect(() => {
-    const endHeight = parentRef.current.scrollHeight - containerRef.current.offsetHeight;
+    let aboutImage = gsap.utils.toArray(".scroll-image");
+    console.log(aboutImage)
+    const endHeight = parentRef.current.scrollWidth-aboutImage[0].offsetWidth
+  console.log(endHeight)
       let ctx = gsap.context(() => {
-        gsap.to(parentRef.current,
+        gsap.to(aboutImage,
             {
-              y: -endHeight,
+              x: -endHeight,
           ease: 'none',
           scrollTrigger: {
             trigger: containerRef.current,
             pin: true,
             start: `top top`,
-            end: '+=' + endHeight,
+            end:"+=" +endHeight,
             scrub: 1,
+            markers: true
           },
         });
       });
 
-    // ScrollTrigger.refresh();
 
       return () => {
         ctx.revert();
       };
 
-  }, []);
+  }, [data]);
   return (
     <main className=' overflow-x-hidden'>
       <section className='h-screen relative flex flex-col items-center justify-end'>
@@ -305,6 +310,7 @@ export default function Page({data}) {
       <section
           ref={containerRef}
           className=' bg-currentDark py-7 lg:pt-10 pb-[90px] flex flex-col items-center justify-center relative z-[-10] h-screen overflow-hidden'>
+
         <div className='  grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-10 max-w-[1630px] w-full '>
           <div className='w-full aspect-square md:aspect-[3/2] relative rounded-xl overflow-hidden md:col-span-2'>
             {/*<div className='w-full h-full absolute top-0 left-0 z-[4]'>*/}
@@ -318,12 +324,13 @@ export default function Page({data}) {
               <SectionTitle title={langSelect(i18n.language , data?.interiorReview?.titleRu , data?.interiorReview?.titleUz)}/>
             </div>
           </div>
-          <div className='w-full relative rounded-xl  overflow-hidden aspect-square  md:h-full'>
-            <div ref={parentRef} className='w-full h-full space-y-5 image-col '>
+          <div  className=' w-full relative rounded-xl  overflow-hidden h-[500px]'>
+            <div ref={parentRef} className='parent flex w-full items-center  h-full gap-5 image-col '>
               {
                 data?.interiorReview?.list?.map(image => (
-                    <div ref={childRef} key={image?._id} className='w-full relative scroll-image h-full'>
-                    <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${image?.path}`} alt={'Aito interior'} />
+                    <div key={image?._id} className='w-full flex-shrink-0 relative scroll-image h-full'>
+                      <ImgUI  src={`${process.env.NEXT_PUBLIC_API_URL}/${image?.path}`}
+                             alt={'Aito interior'}/>
                   </div>
                 ))
               }
@@ -356,7 +363,7 @@ export default function Page({data}) {
               <ButtonUI dowload={true} href={`${process.env.NEXT_PUBLIC_API_URL}/${data?.equipment?.pdf?.path}`} extraStyle={'!bg-black !border-none w-fit'} text={t('btn.downloadSpecification')}/>
             </div>
           </div>
-        </div>  
+        </div>
       </section>
       <section className='py-8 relative  lg:py-10 xl:pt-[90px] bg-currentDark'>
         <div className='absolute top-0 left-0 w-full h-full z-[5]'>
@@ -401,7 +408,7 @@ export default function Page({data}) {
         <div className="container flex flex-col items-center ">
           <SectionTitle title={t('modelId.security')} isTextCenter />
         </div>
-          <div className='flex flex-wrap justify-evenly w-full gap-y-6 mt-7 lg:mt-10 max-w-[1820px]'>
+        <div className='container flex flex-wrap justify-evenly w-full gap-y-6 mt-7 lg:mt-10 max-w-[1820px]'>
             {
               data?.safety?.map((card , idx) => (
                 <div key={card?._id} className='w-[100%] md:w-[30%] lg:w-[23%] xl:w-[20%] '>
@@ -451,7 +458,7 @@ function ExteriorCard({title , text , image , }) {
 
 function SecurityCard({idx , title , text}) {
   return (
-    <div className='w-full flex flex-col items-start'>
+      <div className='w-full flex flex-col items-center md:items-start'>
       <div className='py-3 px-[22px] rounded-full shadow-[0_4px_4px_0_#FFFFFF20] bg-[#474747] text-[#FFFFFFE5] text-3xl md:text-4xl lg:text-5xl'>
         {idx}
       </div>

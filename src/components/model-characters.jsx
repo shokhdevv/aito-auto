@@ -3,33 +3,12 @@ import { Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { GiCarSeat, GiCheckMark } from "react-icons/gi";
 import { ImgUI, SectionTitle } from '.';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IoCarSportOutline } from 'react-icons/io5';
 import { langSelect } from '@/helper';
 import { useTranslation } from 'react-i18next';
 import apiService from '@/service/axios';
 import { useQuery } from 'react-query';
-const buttons = [
-  {
-    _id: 0
-  },
-  {
-    _id: 1
-  },
-  {
-    _id: 2
-  },
-  {
-    _id: 1
-  },
-  {
-    _id: 2
-  },
-  {
-    _id: 2
-  },
- 
-]
 export default function ModelCharacters({positions  }) {
   const {i18n} = useTranslation()
   const [angle, setAngle] = useState(-105);
@@ -97,6 +76,13 @@ export default function ModelCharacters({positions  }) {
   let activeBtn = 'outline outline-offset-4 outline-1 outline-[#FFFFFF] bg-white'
   let deActiveBtn = 'bg-transparent text-white '
   
+  const getAngleStep = (length) => {
+    if (length === 1) return 75;
+    if (length === 2) return 44;
+    if (length === 3) return 38;
+    return 32;
+  };
+  
   return (
     <>
       <div className="container relative z-10">
@@ -141,7 +127,7 @@ export default function ModelCharacters({positions  }) {
               <div className='lg:px-10 space-y-6 lg:space-y-10'>
                 <SectionTitle extraStyle={'uppercase'} title={!isInterior ? langSelect(i18n.language , exterior?.colorNameRu , exterior?.colorNameUz) : langSelect(i18n.language , interior?.colorNameRu , interior?.colorNameUz) }/>
                 <div className='grid grid-cols-1 grid-rows-2 lg:grid-rows-1 '>
-                  <div className='w-full aspect-[2/1] lg:w-[65%] relative mb-2'>
+                  <div className='w-full aspect-[2/1] lg:w-[65%] relative mb-2 rounded-lg overflow-hidden'>
                     {
                       !isInterior ? 
                       <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${exterior?.carImage?.path}`} alt={'Model color'} objectFitContain/>
@@ -150,12 +136,15 @@ export default function ModelCharacters({positions  }) {
                     }
                   </div>
                   <div className='max-lg:w-[80%] right-[50%] translate-x-1/2   -bottom-[35%] lg:h-[90%] lg:bottom-1/2 lg:translate-y-1/2 lg:-right-0 max-w-[550px] absolute  aspect-square rounded-full border border-[#FFFFFFCC] flex flex-col lg:justify-center max-lg:items-center p-[20%] lg:p-[7%]'>
-                    <div className="absolute inset-0 flex items-center"
+                    <div className="absolute inset-0 flex items-center " 
+                      style={{
+                        transform: `rotate(${getAngleStep(!isInterior ? exteriorData?. exterior?.length : interiorData?. interior?.length)}deg)`
+                      }}
                     >
                       {
                         !isInterior ?
-                        exteriorData?.exterior?.map((item, index) => {
-                            const angleStep = 110 / exteriorData?.exterior?.length;
+                        exteriorData?. exterior?.map((item, index) => {
+                            const angleStep = 110 / exteriorData?. exterior?.length;
                             const currentangle = angleStep * index - angle 
                             const radians = (currentangle * Math.PI) / 180;
                             const x = 50 + 50 * Math.cos(radians); 
@@ -178,13 +167,13 @@ export default function ModelCharacters({positions  }) {
                       }
                     </div>
                     <div className=' flex w-fit justify-end items-center  gap-4 lg:gap-6 relative z-10'>
-                      <button onClick={() => setIsInterior(false)} className={`p-1 lg:p-2 rounded-full  ${!isInterior ? activeBtn : deActiveBtn} `}>
-                        <IoCarSportOutline className='text-2xl lg:text-3xl' />
+                      <button onClick={() => setIsInterior(false)} className={`p-1 lg:p-2 rounded-full duration-75  ${!isInterior ? activeBtn : deActiveBtn} `}>
+                        <IoCarSportOutline className='text-3xl lg:text-3xl' />
                       </button>
                       {
                         interiorData?.interior?.length > 0 &&
-                        <button onClick={() => setIsInterior(true)} className={`p-1 lg:p-2 rounded-full  ${isInterior ? activeBtn : deActiveBtn} `}>
-                          <GiCarSeat className='text-2xl lg:text-3xl ' />
+                        <button onClick={() => setIsInterior(true)} className={`p-1 lg:p-2 rounded-full duration-75  ${isInterior ? activeBtn : deActiveBtn} `}>
+                          <GiCarSeat className='text-3xl lg:text-3xl ' />
                         </button>
                       }
                     </div>
@@ -211,7 +200,7 @@ function ColorBtn({image , y , x, onClick, isActive}) {
         transform: "translate(-50%, -50%)",
       }}
   >
-    <div className={`p-1 border  flex bg-currentDark justify-center !outline-none duration-75 items-center rounded-full  w-8 ${isActive ? 'border-white ' : "border-transparent scale-[.8] opacity-95"}  lg:w-12 xl:w-[60px] aspect-square`}>
+    <div className={`p-1 border  flex bg-currentDark justify-center !outline-none duration-75 items-center rounded-full  w-12 ${isActive ? 'border-white ' : "border-transparent scale-[.8] opacity-95"}  lg:w-12 xl:w-[60px] aspect-square`}>
     <button  className={`w-[90%] aspect-square relative overflow-hidden  rounded-full  `}>
         <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${image}`} alt={"Icon Image"}/>
       </button>

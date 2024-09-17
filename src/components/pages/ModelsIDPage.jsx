@@ -2,209 +2,14 @@
 import {BgPage, ButtonUI, HeaderCharacteristics, ImgUI, ModelCharacters, SectionTitle} from '@/components'
 import {Pagination} from 'swiper/modules'
 import {Swiper, SwiperSlide} from 'swiper/react'
-import {useEffect, useLayoutEffect, useRef} from 'react';
+import {useEffect, useRef} from 'react';
 import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {useTranslation} from 'react-i18next';
 import {langSelect} from '@/helper';
 
 gsap.registerPlugin(ScrollTrigger);
-const characters = [
-  {
-    title : 'Высоковольтная аккумуляторная батарея',
-    _id: 0,
-    image: '/front/spefication-inner-1.webp',
-    list : [
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 0
-      },
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 1
-      },
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 2
-      },
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 3
-      },
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 4
-      },
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 5
-      },
-    ]
-  },
-  {
-    title : 'Высоковольтная аккумуляторная батарея',
-    _id: 1,
-    image: '/front/spefication-inner-2.webp',
-    list : [
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 0
-      },
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 1
-      },
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 2
-      },
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 3
-      },
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 4
-      },
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 5
-      },
-    ]
-  },
-  {
-    title : 'Высоковольтная аккумуляторная батарея',
-    _id: 2,
-    image: '/front/spefication-inner-3.webp',
-    list : [
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 0
-      },
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 1
-      },
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 2
-      },
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 3
-      },
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 4
-      },
-      {
-        key: "Расход топлива в смешанном цикле:" ,
-        value: '1.09 л/100 км',
-        _id : 5
-      },
-    ]
-  },
-]
-const featureData = {
-  titleRu: "Автомобильные особенности",
-  titleUz: "Avtomobil xususiyatlari",
-  list: [
-    { _id: 0 , titleRu: "Режим гидроусилителя руля (Comfort/Sport)", titleUz: "Gidravlik rulni rejimi (Comfort/Sport)" },
-    { _id: 1 , titleRu: "Система экстренного торможения", titleUz: "Favqulodda to'xtatish tizimi" },
-    { _id: 2 , titleRu: "Система контроля полосы и удержания полосы движения", titleUz: "Yolda harakat chizig'ini nazorat qilish va ushlab turish tizimi" },
-    { _id: 3 , titleRu: "Предупреждение о снижении дистанции", titleUz: "Masofa kamayishi haqida ogohlantirish" },
-    { _id: 4 , titleRu: "Автоматическое экстренное торможение AEB", titleUz: "Avtomatik favqulodda to'xtatish AEB" },
-    { _id: 5 , titleRu: "Мониторинг слепых зон BSD", titleUz: "Ko'rinmas zonalarni monitoring qilish BSD" },
-    { _id: 6 , titleRu: "Панорамный сдвижной люк с электрической солнцезащитной шторкой", titleUz: "Panoramik harakatlanuvchi tom qopqog'i elektr quyosh to'shag'i bilan" },
-    { _id: 7 , titleRu: "20\" литые диски с десятью спицами (шины 255/50 R20)", titleUz: "20\" alyuminiy disklari o'n tayanch bilan (tiyish 255/50 R20)" },
-    { _id: 8 , titleRu: "Режим гидроусилителя руля (Comfort/Sport)", titleUz: "Gidravlik rulni rejimi (Comfort/Sport)" },
-    { _id: 9 , titleRu: "128-цветная подсветка салона", titleUz: "128 rangli salon yoritgichi" }
-  ],
-  carId: "66b9e40235eabcec57e4c81b"
-}
-const  exteriorData  = [
-  {
-    title: "Светодиодная оптика",
-    image: '/front/ekstrier-1.png',
-    text: "Вытянутые светодиодные фары автомобиля создают утонченный и элегантный облик",
-    _id: 0
-  },
-  {
-    title: "Светодиодная оптика Светодиодная оптика Светодиодная оптика ",
-    image: '/front/ekstrier-2.png',
-    text: "Вытянутые светодиодные фары автомобиля создают утонченный и элегантный облик Вытянутые светодиодные фары автомобиля создают утонченный",
-    _id: 1
-  },
-  {
-    title: "Светодиодная оптика",
-    image: '/front/ekstrier-3.png',
-    text: "Вытянутые светодиодные фары автомобиля создают утонченный и элегантный облик",
-    _id: 2
-  },
-  {
-    title: "Светодиодная оптика",
-    image: '/front/ekstrier-1.png',
-    text: "Вытянутые светодиодные фары автомобиля создают утонченный и элегантный облик",
-    _id: 3
-  },
-]
-const interiorImages = [
-  {
-    image: '/front/inner-scroll-1.png',
-    _id: 0
-  },
-  {
-    image: '/front/inner-scroll-2.png',
-    _id: 1
-  },
-  {
-    image: '/front/inner-scroll-3.png',
-    _id: 2
-  },
-  {
-    image: '/front/inner-scroll-1.png',
-    _id: 3
-  },
-]
-const security = [
-  {
-    title: 'Система удержания автомобиля в полосе',
-    text:"Предотвращает возможные опасные ситуации на дорогах, сохраняя движение автомобиля в пределах полосы",
-    _id: 0
-  },
-  {
-    title: 'Система удержания автомобиля в полосе',
-    text:"Предотвращает возможные опасные ситуации на дорогах, сохраняя движение автомобиля в пределах полосы",
-    _id: 1
-  },
-  {
-    title: 'Система удержания автомобиля в полосе',
-    text:"Предотвращает возможные опасные ситуации на дорогах, сохраняя движение автомобиля в пределах полосы",
-    _id: 2
-  },
-  {
-    title: 'Система удержания автомобиля в полосе',
-    text:"Предотвращает возможные опасные ситуации на дорогах, сохраняя движение автомобиля в пределах полосы",
-    _id: 3
-  },
-]
+
 export default function Page({data}) {
   const {t , i18n} = useTranslation()
   const containerRef = useRef(null);
@@ -241,7 +46,7 @@ export default function Page({data}) {
   }, [data]);
   return (
     <main className=' overflow-x-hidden'>
-      <section className='h-screen relative flex flex-col items-center justify-end'>
+      <section className='h-[70vh] relative flex flex-col items-center justify-end'>
         <div className='max-lg:hidden absolute top-0 left-0 w-full h-full z-[4]'>
           <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${data?.bannerWeb?.path}`} alt={'Header Image'}/>
         </div>
@@ -252,7 +57,7 @@ export default function Page({data}) {
         <div className='flex flex-col items-center relative z-10 text-white'>
           <h2 className=' font-conquera text-lg md:text-xl lg:text-2xl xl:text-[32px] font-bold uppercase'>{t('modelId.header')} {data?.name}</h2>
           <p className='mt-4 text-sm lg:text-base'>{langSelect(i18n.language, data?.modelDescriptionRu , data?.modelDescriptionUz)}</p>
-          <div className=' rounded-xl max-w-[760px] w-full bg-[#FFFFFF08] backdrop-blur-xl overflow-hidden mx-3 gap-y-2 p-4 md:p-6 lg:p-10 flex flex-wrap justify-evenly translate-y-[35%]'>
+          <div className=' rounded-xl max-w-[760px] lg:gap-y-5 w-full bg-[#FFFFFF08] backdrop-blur-xl overflow-hidden mx-3 gap-y-2 p-4 md:p-6 lg:p-10 flex flex-wrap justify-evenly translate-y-[35%]'>
             {
               data?.character?.map(card =>  (
                 <HeaderCharacteristics key={card?._id} name={langSelect(i18n.language, card?.keyRu , card?.keyUz )} value={langSelect(i18n.language, card?.valueRu , card?.valueUz )} />
@@ -346,10 +151,10 @@ export default function Page({data}) {
               <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${data?.equipment?.image?.path}`} alt={'Image Aito'}/>
             </div>
           </div>
-          <div className='lg:col-span-5 lg:pt-14 xl:pt-20 space-y-4 ' >
+          <div className='lg:col-span-5 lg:pt-14 xl:pt-20 space-y-4 max-lg:!text-center' >
             <SectionTitle title={t('modelId.features')} isDarkText isLittleSize={true}/>
-            <p className=' font-conquera text-lg md:text-xl lg:text-2xl font-bold uppercase'>{t('modelId.header')} {data?.name}</p>
-            <div className='space-y-2 pt-4 lg:pt-12'>
+            <p className=' font-conquera text-lg md:text-xl  lg:text-2xl font-bold uppercase'>{t('modelId.header')} {data?.name}</p>
+            <div className='gap-y-2 pt-4 lg:pt-12 flex flex-col max-lg:items-center'>
               {
                 data?.equipment?.list?.map(item => (
                   <div className='flex gap-2' key={item?._id}>
@@ -358,9 +163,9 @@ export default function Page({data}) {
                   </div>
                 ))
               }
-            </div>
-            <div className='lg:pt-5'>
+            <div className='lg:pt-5 pt-3'>
               <ButtonUI dowload={true} href={`${process.env.NEXT_PUBLIC_API_URL}/${data?.equipment?.pdf?.path}`} extraStyle={'!bg-black !border-none w-fit'} text={t('btn.downloadSpecification')}/>
+            </div>
             </div>
           </div>
         </div>
@@ -458,7 +263,7 @@ function ExteriorCard({title , text , image , }) {
 
 function SecurityCard({idx , title , text}) {
   return (
-      <div className='w-full flex flex-col items-center md:items-start'>
+    <div className='w-full flex flex-col items-start max-md:items-center max-md:px-5'>
       <div className='py-3 px-[22px] rounded-full shadow-[0_4px_4px_0_#FFFFFF20] bg-[#474747] text-[#FFFFFFE5] text-3xl md:text-4xl lg:text-5xl'>
         {idx}
       </div>

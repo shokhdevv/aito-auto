@@ -156,7 +156,7 @@ export default function HomePage({bannerRes,carRes,aboutRes,newsRes}) {
                 <BgPage positionStyle={'w-[250px] lg:w-[500px] bottom-[10%] -right-[40%] md:bottom-[8%] md:-right-[17%]'}/>
                 <BgPage positionStyle={'w-[250px] lg:w-[500px]  -bottom-[5%] -right-[25%] md:-bottom-[4%]  md:-right-[10%]'}/>
             </section>
-            <section ref={about} className="relative bg-[#F9F9F9] max-md:pt-10 overflow-x-hidden overflow-y-visible md:pb-16 ">
+            <section ref={about} className="relative bg-[#F9F9F9] max-md:pt-10  md:pb-16 ">
                 <div className="container">
                     <h2 className=" text-[10vw] 3xl:text-[200px] !leading-[1.3] font-goodTiming text-nowrap ">
                         <span className=" gradient-text-light ">{t('index.about')}</span>

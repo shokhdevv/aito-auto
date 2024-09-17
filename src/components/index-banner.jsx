@@ -18,12 +18,14 @@ export default function IndexBanner({banner}) {
   }
   return (
     <div className='h-screen relative'>
-      <video className="object-cover object-bottom w-full h-full relative z-10" autoPlay loop muted>
+      <video className="object-cover object-bottom w-full h-full relative z-10" poster={`${process.env.NEXT_PUBLIC_API_URL}/${banner?.video?.path}`} playsinline autoPlay loop muted>
         <source
           className="w-full"
           src={`${process.env.NEXT_PUBLIC_API_URL}/${banner?.video?.path}`}
           type="video/mp4"
         />
+        <source src={`${process.env.NEXT_PUBLIC_API_URL}/${banner?.video?.path}`} type="video/ogv" />
+        <source type="video/webm" src={`${process.env.NEXT_PUBLIC_API_URL}/${banner?.video?.path}`} />
       </video>
       <div className=' z-[11]  absolute bottom-8 left-0 right-0'>
         <div className='container flex max-lg:flex-col justify-between items-center lg:items-end gap-y-5'>

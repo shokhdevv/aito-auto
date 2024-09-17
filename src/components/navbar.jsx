@@ -76,10 +76,10 @@ export default function Navbar() {
           <div>
             <CgMenuRightAlt className='text-white text-4xl lg:hidden' onClick={handleOpenNav} />
           </div>
-          <div className={`bg-black/30 w-screen h-screen absolute z-[5] top-0 left-0 ${openNav ? "block" : "hidden"}`} onClick={closeNav}></div>
-          <div className={`w-[300px] flex flex-col fixed lg:hidden top-0 z-[6] duration-300 bg-black h-screen ${openNav ? "right-0" : "-right-full"}`}>
+          <div className={`bg-black/50 w-screen h-screen absolute z-[5] top-0 left-0 ${openNav ? "block" : "hidden"}`} onClick={closeNav}></div>
+          <div className={`w-[300px] xs:w-[340px] flex flex-col fixed lg:hidden top-0 z-[6] duration-300 bg-black h-screen ${openNav ? "right-0" : "-right-full"}`}>
             <GrFormClose className='text-3xl text-white self-end m-5' onClick={closeNav} />
-            <ul className='text-white flex flex-col py-6 px-3 items-start gap-2 text-lg'>
+            <ul className='text-white flex flex-col py-6 px-5 items-start gap-2 text-xl'>
               {
                 NavList.map(link => (
                   <li className='' key={link._id} >
@@ -149,8 +149,8 @@ const NavbarDropdownLang = () => {
   return (
     <div className={"relative cursor-pointer"}>
       <div className="flex gap-1 items-center"  ref={dropdownRef} onClick={() => openDropdown()}>
-         <IoGlobeOutline className='w-5 h-5 text-white' />
-         <span className='text-sm xl:text-base text-white'>
+         <IoGlobeOutline className='w-6 h-6 text-white' />
+         <span className=' text-white'>
            {langSelect(i18n.language , t('lang.ru') , t('lang.uz'))}
          </span>
       </div>

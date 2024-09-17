@@ -33,7 +33,7 @@ export default function Page({data}) {
             start: `top top`,
             end:"+=" +endHeight,
             scrub: 1,
-            markers: true
+            // markers: true
           },
         });
       });
@@ -129,7 +129,7 @@ export default function Page({data}) {
               <SectionTitle title={langSelect(i18n.language , data?.interiorReview?.titleRu , data?.interiorReview?.titleUz)}/>
             </div>
           </div>
-          <div  className=' w-full relative rounded-xl  overflow-hidden h-[500px]'>
+          <div  className=' w-full relative rounded-xl  overflow-hidden h-full'>
             <div ref={parentRef} className='parent flex w-full items-center  h-full gap-5 image-col '>
               {
                 data?.interiorReview?.list?.map(image => (

@@ -15,18 +15,16 @@ export default function Page({data}) {
   const {t , i18n} = useTranslation()
   const containerRef = useRef(null);
   const parentRef = useRef(null)
-
-  useEffect(() => {
+    useEffect(() => {
       let ctx = null
-      ctx = gsap.context(() => {
-        let aboutImage = gsap.utils.toArray(".scroll-image");
-        let mm = gsap.matchMedia();
+        setTimeout(() => {
+            ctx = gsap.context(() => {
+                let aboutImage = gsap.utils.toArray(".scroll-image");
 
-          function calcEndHeight() {
-              return parentRef.current.scrollHeight - aboutImage[0].offsetHeight
-          }
+                function calcEndHeight() {
+                    return parentRef.current.scrollHeight - aboutImage[0].offsetHeight
+                }
 
-          mm.add("(max-width:767px)",()=>{
               gsap.to(aboutImage,
                   {
                       y: -calcEndHeight(),
@@ -40,24 +38,10 @@ export default function Page({data}) {
                           invalidateOnRefresh: true,
                       },
                   });
+                ScrollTrigger.refresh()
+            });
+        }, 1000)
 
-          })
-          mm.add("(min-width:768px)",()=>{
-              gsap.to(aboutImage,
-                  {
-                      y: -calcEndHeight(),
-                      ease: 'none',
-                      scrollTrigger: {
-                          trigger: containerRef.current,
-                          pin: true,
-                          start: `top top`,
-                          end: () => `+=${calcEndHeight()}`,
-                          scrub: 1,
-                          invalidateOnRefresh: true,
-                      },
-                  });
-          })
-      });
 
       return () => {
           if (ctx !== null) {
@@ -66,8 +50,10 @@ export default function Page({data}) {
           }
       };
 
-  }, [data]);
-  return (
+  }, []);
+
+
+    return (
     <main className=' overflow-x-hidden'>
       <section className='h-[70vh] relative flex flex-col items-center justify-end'>
         <div className='max-lg:hidden absolute top-0 left-0 w-full h-full z-[4]'>

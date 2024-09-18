@@ -18,7 +18,7 @@ export default function IndexBanner({banner}) {
   }
   return (
     <div className='h-screen relative'>
-      <video className="object-cover object-bottom w-full h-full relative z-10" poster={`${process.env.NEXT_PUBLIC_API_URL}/${banner?.video?.path}`} playsinline autoPlay loop muted>
+      <video className="object-cover object-bottom w-full h-full relative z-10" poster={`${process.env.NEXT_PUBLIC_API_URL}/${banner?.video?.path}`} playsInline autoPlay loop muted>
         <source
           className="w-full"
           src={`${process.env.NEXT_PUBLIC_API_URL}/${banner?.video?.path}`}

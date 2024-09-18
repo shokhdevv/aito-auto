@@ -7,6 +7,7 @@ import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {useTranslation} from 'react-i18next';
 import {langSelect} from '@/helper';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,11 +16,7 @@ export default function Page({data}) {
   const containerRef = useRef(null);
   const parentRef = useRef(null)
 
-
-
   useEffect(() => {
-
-
       let ctx = null
       ctx = gsap.context(() => {
         let aboutImage = gsap.utils.toArray(".scroll-image");
@@ -59,10 +56,8 @@ export default function Page({data}) {
                           invalidateOnRefresh: true,
                       },
                   });
-
           })
       });
-
 
       return () => {
           if (ctx !== null) {
@@ -94,39 +89,51 @@ export default function Page({data}) {
           </div>
         </div>
       </section>
-      <section className='pt-28 pb-10  bg-currentDark relative '>
+      <section className='pt-28 pb-10 lg:pt-32  bg-currentDark relative '>
         <ModelCharacters positions={data?.position}/>
         <BgPage positionStyle={'max-lg:hidden lg:w-[500px] xl:w-[600px] bottom-0 lg:-right-[250px] xl:-right-[300px] 2xl:-bottom-2 2xl:-right-[340px] 2xl:w-[680px] 3xl:-right-[360px] 3xl:w-[720px]'}/>
         <BgPage positionStyle={'max-lg:hidden bottom-[-18%] -left-[10%] lg:w-[350px] xl:left-[-120px]'}/>
       </section>
       <section className='py-7 lg:py-10 bg-currentDark relative'>
         <div className="container relative z-10">
-          <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10 lg:grid-rows-3'>
-            <div className='w-full aspect-square lg:row-span-3 lg:h-full relative rounded-xl overflow-hidden max-sm:order-2'>
+          <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 xl:gap-10 lg:grid-rows-3'>
+            <div className='w-full aspect-square max-lg:min-h-full lg:row-span-3 lg:col-span-2 lg:h-full relative rounded-xl overflow-hidden max-sm:order-2'>
               <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${data?.exteriorReview?.bannerImage?.path}`} alt={'Image About car'} imageStyle={'object-center'}/>
             </div>
-            <div className='text-white lg:col-span-2 lg:h-full flex flex-col justify-center lg:justify-between max-sm:order-1'>
+            <div className='text-white lg:col-span-3 lg:h-full flex flex-col  justify-center lg:justify-between max-sm:order-1'>
               <div className='space-y-2'>
                 <h3 className=' font-conquera text-lg lg:text-xl xl:text-2xl uppercase font-bold'>{t('modelId.header')} {data?.name}</h3>
                 <p className='text-sm lg:text-base'>{langSelect(i18n.language , data?.exteriorReview?.textRu , data?.exteriorReview?.textUz)}</p>
+                
               </div>
             </div>
-            <div className='w-full  max-sm:order-3 sm:col-span-2 lg:row-span-2'>
+            <div className='w-full max-sm:order-3 sm:col-span-2 lg:col-span-3 lg:row-span-2 lg:h-full lg:flex lg:justify-end'>
               <Swiper
                 slidesPerView={1}
+                spaceBetween={20}
                 breakpoints={{
                   640: {
                     slidesPerView: 1.8,
+                    spaceBetween: 20
                   },
                   1024: {
                     slidesPerView: 1.6,
+                    spaceBetween: 20
                   },
                   1280: {
                     slidesPerView: 2,
+                    spaceBetween: 20
                   },
                 }}
-                spaceBetween={20}
-                className="exteriorSwiper"
+                pagination={{
+                  clickable: true,
+                }}
+                navigation={{
+                  nextEl: ".swiper-button-next",
+                  prevEl: ".swiper-button-prev",
+                }}
+                modules={[Pagination]}
+                className="exteriorSwiper custom-pagination w-full flex flex-col"
               >
                 {
                   data?.exteriorReview?.list?.map(card => (
@@ -177,13 +184,13 @@ export default function Page({data}) {
               <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${data?.equipment?.image?.path}`} alt={'Image Aito'}/>
             </div>
           </div>
-          <div className='lg:col-span-5 lg:pt-14 xl:pt-20 space-y-4 max-lg:!text-center' >
+          <div className='lg:col-span-5 lg:pt-14 xl:pt-20 space-y-4 ' >
             <SectionTitle title={t('modelId.features')} isDarkText isLittleSize={true}/>
-            <p className=' font-conquera text-lg md:text-xl  lg:text-2xl font-bold uppercase'>{t('modelId.header')} {data?.name}</p>
+            <p className=' font-conquera text-lg md:text-xl  lg:text-2xl max-lg:!text-center font-bold uppercase'>{t('modelId.header')} {data?.name}</p>
             <div className='gap-y-2 pt-4 lg:pt-12 flex flex-col max-lg:items-center'>
               {
                 data?.equipment?.list?.map(item => (
-                  <div className='flex gap-2' key={item?._id}>
+                  <div className='flex gap-2 w-full' key={item?._id}>
                     <span className='w-1.5 h-1.5 rounded-full bg-black mt-1.5'></span>
                     <p className=''>{langSelect(i18n.language , item?.textRu , item?.textUz)}</p>
                   </div>
@@ -203,7 +210,7 @@ export default function Page({data}) {
         <div className="container flex flex-col items-center relative z-10 px-[5%]">
           <SectionTitle title={t('modelId.charactersTitle')} extraStyle={'text-center'} isLittleSize={true}/>
           <p className=' text-white text-center mt-2 lg:mt-4 max-lg:text-sm'>{t('modelId.charactersText')}</p>
-          <div className='w-full mt-6 lg:mt-10 xl:mt-[60px]'>
+          <div className='w-full mt-6 lg:mt-10 xl:mt-[60px]'> 
              <Swiper
               slidesPerView={1}
               breakpoints={{
@@ -258,8 +265,8 @@ export default function Page({data}) {
 function SpecificationCard ({title , text , image}) {
   return (
     <div className='bg-currentDark h-full overflow-hidden rounded-xl text-white'>
-      <div className='relative w-full aspect-[3/2] overflow-hidden rounded-xl'>
-        <ImgUI src={image} alt={'Specification Image'}/>
+      <div className='relative w-full aspect-[3/2] overflow-hidden rounded-2xl'>
+        <ImgUI src={image} alt={'Specification Image'}/> 
       </div>
       <div className=' flex flex-col h-auto items-center justify-between py-4 gap-y-5 lg:py-6 px-2 lg:px-5'>
         <h2 className='lg:text-lg'>{title}</h2>
@@ -274,12 +281,12 @@ function SpecificationCard ({title , text , image}) {
 
 function ExteriorCard({title , text , image , }) {
   return (
-    <div className='relative aspect-[4/3] h-full overflow-hidden rounded-xl'>
+    <div className='relative aspect-[4/3] h-full overflow-hidden rounded-xl w-full'>
       <div className='w-full h-full absolute top-0 left-0 z-[5]'>
         <ImgUI src={image} alt={'Exterior Image'}/>
       </div>
       <div className='w-full absolute bottom-0 z-10 rounded-xl space-y-1 !leading-[1.2] overflow-hidden left-0 bg-[#00000080] backdrop-blur-[20px] px-4 py-3 shadow-[inset_0_0_30px_0_rgba(255,255,255,0.05),inset_0_1px_4px_0_rgba(255,255,255,0.15)]'>
-        <h4 className=' text-white text-[15px] '>{title}</h4>
+        <h4 className=' text-white text-[15px] line-clamp-2'>{title}</h4>
         <p className=' text-white text-xs'>{text}</p>
       </div>
     </div>
@@ -289,7 +296,7 @@ function ExteriorCard({title , text , image , }) {
 
 function SecurityCard({idx , title , text}) {
   return (
-    <div className='w-full flex flex-col items-start max-md:items-center max-md:px-5'>
+    <div className='w-full flex flex-col items-start max-md:items-center max-md:text-center max-md:px-5'>
       <div className='py-3 px-[22px] rounded-full shadow-[0_4px_4px_0_#FFFFFF20] bg-[#474747] text-[#FFFFFFE5] text-3xl md:text-4xl lg:text-5xl'>
         {idx}
       </div>

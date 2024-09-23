@@ -86,6 +86,9 @@
     content: ' ';
   }
 }
+.exteriorSwiper .swiper-pagination{
+  height: 10%;
+}
 .custom-pagination .swiper-pagination .swiper-pagination-bullet-active{
   &::after{
     display: block;

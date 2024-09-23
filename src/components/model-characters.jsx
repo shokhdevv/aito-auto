@@ -127,7 +127,7 @@ export default function ModelCharacters({positions  }) {
               <div className='lg:px-10 space-y-6 lg:space-y-10'>
                 <SectionTitle extraStyle={'uppercase'} title={!isInterior ? langSelect(i18n.language , exterior?.colorNameRu , exterior?.colorNameUz) : langSelect(i18n.language , interior?.colorNameRu , interior?.colorNameUz) }/>
                 <div className='grid grid-cols-1 grid-rows-2 lg:grid-rows-1 '>
-                  <div className='w-full aspect-[2/1] lg:w-[65%] relative mb-2 rounded-lg overflow-hidden'>
+                  <div className={`w-full aspect-[2/1] lg:w-[65%] relative mb-2 rounded-lg overflow-hidden ${isInterior && 'bg-white'}`}>
                     {
                       !isInterior ? 
                       <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${exterior?.carImage?.path}`} alt={'Model color'} objectFitContain/>

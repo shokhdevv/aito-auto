@@ -5,7 +5,7 @@ import { AiFillInstagram } from "react-icons/ai";
 import {useQuery} from "react-query";
 import apiService from "@/service/axios";
 import {useEffect} from "react";
-import {langSelect} from "@/helper";
+import {formatPhoneNumber, langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
 
 export default function Footer() {
@@ -28,7 +28,7 @@ export default function Footer() {
         </div>
         <a href={`tel:${data?.tel[0]}`} className='flex gap-2 max-lg:justify-center xl:gap-4 '>
           <BsFillTelephoneFill  className="text-[#FFFFFFCC] lg:text-2xl"/>
-          <p className=" text-sm xl:text-base">{data?.tel[0]}</p>
+          <p className=" text-sm xl:text-base">{formatPhoneNumber(data?.tel[0])}</p>
         </a>
         <div className="flex gap-3 xl:gap-6  max-lg:justify-center">
           <a target={"_blank"} href={data?.facebook}>

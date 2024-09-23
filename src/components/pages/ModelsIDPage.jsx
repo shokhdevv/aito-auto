@@ -55,14 +55,14 @@ export default function Page({data}) {
 
     return (
     <main className=' overflow-x-hidden'>
-      <section className='h-[70vh] relative flex flex-col items-center justify-end'>
+      <section className='h-[80vh] relative flex flex-col items-center justify-end'>
         <div className='max-lg:hidden absolute top-0 left-0 w-full h-full z-[4]'>
-          <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${data?.bannerWeb?.path}`} alt={'Header Image'}/>
+          <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${data?.bannerWeb?.path}`} imageStyle={'object-center'} alt={'Header Image'}/>
         </div>
         <div className='lg:hidden absolute top-0 left-0 w-full h-full z-[4]'>
-          <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${data?.bannerRes?.path}`} alt={'Header Image'}/>
+          <ImgUI src={`${process.env.NEXT_PUBLIC_API_URL}/${data?.bannerRes?.path}`} imageStyle={'object-center'} alt={'Header Image'}/>
         </div>
-        <div className='w-full h-full absolute top-0 left-0 z-[5] bg-black/50 '></div>
+        <div className='w-full h-full absolute top-0 left-0 z-[5] bg-black/30 '></div>
         <div className='flex flex-col items-center relative z-10 text-white'>
           <h2 className=' font-conquera text-lg md:text-xl lg:text-2xl xl:text-[32px] font-bold uppercase'>{t('modelId.header')} {data?.name}</h2>
           <p className='mt-4 text-sm lg:text-base'>{langSelect(i18n.language, data?.modelDescriptionRu , data?.modelDescriptionUz)}</p>
@@ -90,7 +90,6 @@ export default function Page({data}) {
               <div className='space-y-2'>
                 <h3 className=' font-conquera text-lg lg:text-xl xl:text-2xl uppercase font-bold'>{t('modelId.header')} {data?.name}</h3>
                 <p className='text-sm lg:text-base'>{langSelect(i18n.language , data?.exteriorReview?.textRu , data?.exteriorReview?.textUz)}</p>
-                
               </div>
             </div>
             <div className='w-full max-sm:order-3 sm:col-span-2 lg:col-span-3 lg:row-span-2 lg:h-full lg:flex lg:justify-end'>
@@ -114,12 +113,8 @@ export default function Page({data}) {
                 pagination={{
                   clickable: true,
                 }}
-                navigation={{
-                  nextEl: ".swiper-button-next",
-                  prevEl: ".swiper-button-prev",
-                }}
                 modules={[Pagination]}
-                className="exteriorSwiper custom-pagination w-full flex flex-col"
+                className="exteriorSwiper h-full custom-pagination w-full flex flex-col"
               >
                 {
                   data?.exteriorReview?.list?.map(card => (

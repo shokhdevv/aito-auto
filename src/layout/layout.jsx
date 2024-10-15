@@ -13,7 +13,9 @@ const  Layout = ({children}) =>  {
            <Provider store={store}>
                <Client>
                    <Navbar/>
-                   {children}
+                   <main className=' overflow-x-hidden'>
+                    {children}
+                   </main>
                    <Footer/>
                </Client>
            </Provider>

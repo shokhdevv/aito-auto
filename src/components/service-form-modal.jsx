@@ -95,6 +95,9 @@ const onSubmit = (data) => {
                       className='w-full focus:outline-none px-3 py-2 !leading-[1.2] lg:px-4 lg:py-3 text-white font-futura max-lg:text-sm rounded bg-currentDark border-[0.5px] border-[#FFFFFFE5] appearance-none pr-10'
                     >
                       <option selected value=" ">{t('input.model')}</option>
+                      <option  value="Aito M5">{'Aito M5'}</option>
+                      <option  value="Aito M7">{'Aito M7'}</option>
+                      <option  value="Aito M9">{'Aito M9'}</option>
                     </select>
                     <span className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
